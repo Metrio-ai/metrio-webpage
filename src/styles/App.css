@@ -83,3 +83,47 @@
     }
 }
 /* ------------------------------------------------------------------------- */
+
+/* Footer */
+.footerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh;
+    background-color: rgba(0, 188, 212, 0.7);
+    position: relative;
+    margin-top: auto;
+}
+
+.footerContent {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-item a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-item a:hover {
+    color: #000;
+}
+
+.footerCopyright p {
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Footer para pantallas tipo portrait */
+@media (max-width: 990px) {
+    .footerContent {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* ------------------------------------------------------------------------- */
