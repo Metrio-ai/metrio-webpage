@@ -1,1 +1,85 @@
+/* ------------------------------------------------------------------------- */
+/* Header */
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 
+.headerLogo {
+    width: 120px;
+    height: auto;
+}
+
+.headerNav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin-left: auto;
+    transition: opacity 1s ease, visibility 0s linear 0.5s;
+}
+
+.headerNav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.headerNav a:hover {
+    color: #00bcd4;
+}
+
+.headerNav--burger {
+    display: none;
+    cursor: pointer;
+}
+
+.headerNav--burger-icon {
+    font-size: 30px;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.headerNav--burger-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Header para pantallas tipo portrait */
+@media (max-width: 990px) {
+    .headerNav {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        padding: 1rem 2rem;
+        flex-direction: column;
+        gap: 1.5rem;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .headerNav.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 1s ease, visibility 0s linear 0s;
+    }
+
+    .headerNav--burger {
+        display: block;
+    }
+
+    .headerNav.active .menu-item {
+        display: block;
+    }
+}
+/* ------------------------------------------------------------------------- */
