@@ -5,11 +5,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
     z-index: 10;
+}
+
+.headerContainer:hover {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .headerLogo {
@@ -123,7 +127,6 @@
 /* Footer para pantallas tipo portrait */
 @media (max-width: 990px) {
     .footerContent {
-        flex-direction: column;
         align-items: center;
     }
 }
