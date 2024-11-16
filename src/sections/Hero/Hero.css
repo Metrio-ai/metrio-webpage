@@ -12,6 +12,7 @@
     padding: 2rem;
     background-size: cover;
     background-position: center;
+    z-index: 1;
   }
 
   .heroOverlay {
@@ -21,7 +22,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1;
+    z-index: 2;
 }
   
   .heroTitle {
