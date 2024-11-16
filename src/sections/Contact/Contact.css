@@ -1,0 +1,85 @@
+/* Estilo general de la sección de contacto */
+.contact {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  /* Contenedor principal */
+  .contactContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5;
+  }
+  
+  /* Texto principal de la sección */
+  .contactText {
+    margin-bottom: 20px;
+  }
+  
+  /* Título principal "Contacto" */
+  .contactHeader {
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  /* Subtítulo con la pregunta */
+  .contactSubheader {
+    font-size: 20px;
+    color: #f9f9f9;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para el botón */
+  .contactBtn {
+    padding: 12px 25px;
+    background-color: rgba(0, 188, 212, 0.7);
+    color: #f9f9f9;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Efecto hover para el botón */
+  .contactBtn:hover {
+    background-color: #00bcd4;
+    color: #000;
+  }
+  
+  /* Estilos responsivos para pantallas pequeñas */
+  
+  /* Pantallas medianas (tablet) */
+  @media (max-width: 768px) {
+    .contactHeader {
+      font-size: 30px;
+    }
+  
+    .contactSubheader {
+      font-size: 18px;
+    }
+  
+    .contactBtn {
+      font-size: 16px;
+    }
+  }
+  
+  /* Pantallas pequeñas (móviles) */
+  @media (max-width: 480px) {
+    .contactHeader {
+      font-size: 24px;
+    }
+  
+    .contactSubheader {
+      font-size: 16px;
+    }
+  
+    .contactBtn {
+      font-size: 14px;
+    }
+  }
+  
