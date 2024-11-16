@@ -13,8 +13,9 @@
 }
 
 .headerLogo {
-    width: 120px;
-    height: auto;
+    height: 48px;
+    display: flex;
+    align-items: center;
 }
 
 .headerNav {

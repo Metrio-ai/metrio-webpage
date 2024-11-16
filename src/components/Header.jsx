@@ -15,7 +15,7 @@ function Header() {
             <a href="/">
                 <img
                     className="headerLogo"
-                    src=""
+                    src="../../public/metrioLogo.svg"
                     alt="metrioLogo"
                 />
             </a>
