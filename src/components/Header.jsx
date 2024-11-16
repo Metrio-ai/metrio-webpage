@@ -22,13 +22,18 @@ function Header() {
 
             {/* Navbar */}
             <nav className={`headerNav ${isBurgerOpen ? "active" : ""}`}>
+            <span className="menu-item">
+                    <a href="#hero" aria-current="page">
+                        Inicio
+                    </a>
+                </span>
                 <span className="menu-item">
-                    <a href="" aria-current="page">
+                    <a href="#about" aria-current="page">
                         Sobre Nosotros
                     </a>
                 </span>
                 <span className="menu-item">
-                    <a href="">Contacto</a>
+                    <a href="#contact">Contacto</a>
                 </span>
             </nav>
 
