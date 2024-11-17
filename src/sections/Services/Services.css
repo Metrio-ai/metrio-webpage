@@ -1,0 +1,84 @@
+/* Estilo general de la sección */
+.servicesContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background-color: #f9f9f9;
+  }
+  
+  .servicesContent {
+    flex: 1;
+    text-align: left;
+    flex-wrap: wrap;
+    max-width: 600px;
+    padding: 0 1rem;
+    text-align: center;
+    margin-top: 5vh;
+  }
+  
+  .servicesHeader {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  /* Galería */
+  .gallery {
+    position: relative;
+    display: inline-block;
+    max-width: 900px;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Botones de navegación */
+  .galleryNav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+    display: none; /* Ocultos por defecto */
+  }
+  
+  .galleryNav-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .galleryNav-button.prev {
+    left: 10px;
+  }
+  
+  .galleryNav-button.next {
+    right: 10px;
+  }
+  
+  /* Mostrar botones al hacer hover en la galería */
+  .gallery:hover .galleryNav-button {
+    display: block;
+  }
+  
+  /* Iconos de material-icons */
+  .material-icons {
+    font-size: 1.5rem;
+  }
+  
