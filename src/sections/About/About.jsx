@@ -1,6 +1,6 @@
 import './About.css'
 import pythonLogo from '/src/assets/img/python.svg'
-import nodejsLogo from '/src/assets/img/python.svg'
+import nodejsLogo from '/src/assets/img/nodejs.svg'
 import postgresLogo from '/src/assets/img/postgresql.svg'
 import mongodbLogo from '/src/assets/img/mongodb.svg'
 import reactlogo from '/src/assets/img/react.svg'
