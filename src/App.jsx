@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="appContainer">
       <Header />
-      <Hero id="hero"/>
+      <Hero />
       <FadeInSection id="about">
         <About />
       </FadeInSection>

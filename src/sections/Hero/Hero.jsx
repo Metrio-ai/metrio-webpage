@@ -4,7 +4,7 @@ import './Hero.css'
 function Hero() {
   
   return (
-    <section className="heroContainer">
+    <section className="heroContainer" id="hero">
       <div className="heroOverlay"></div>
       <h1 className="heroTitle conectar">Conectar</h1>
       <h1 className="heroTitle analizar">Analizar</h1>
