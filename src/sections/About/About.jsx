@@ -1,5 +1,16 @@
 import './About.css'
-
+import pythonLogo from '/src/assets/img/python.svg'
+import nodejsLogo from '/src/assets/img/python.svg'
+import postgresLogo from '/src/assets/img/postgresql.svg'
+import mongodbLogo from '/src/assets/img/mongodb.svg'
+import reactlogo from '/src/assets/img/react.svg'
+import dockerLogo from '/src/assets/img/docker.svg'
+import excelLogo from '/src/assets/img/excel.svg'
+import powerbiLogo from '/src/assets/img/powerbi.svg'
+import tableauLogo from '/src/assets/img/tableau.svg'
+import pandasLogo from '/src/assets/img/pandas.svg'
+import matplotlibLogo from '/src/assets/img/matplotlib.svg'
+import tensorflowLogo from '/src/assets/img/tensorflow.svg'
 
 function About() {
     return (
@@ -15,12 +26,12 @@ function About() {
                 </p>
                 {/* Lista de tecnologías */}
                 <div className="aboutTechIcons">
-                    <img className="techIcon" src="/src/assets/img/python.svg" alt="Python" />
-                    <img className="techIcon" src="/src/assets/img/nodejs.svg" alt="NodeJS" />
-                    <img className="techIcon" src="/src/assets/img/postgresql.svg" alt="PostgreSQL" />
-                    <img className="techIcon" src="/src/assets/img/mongodb.svg" alt="MongoDB" />
-                    <img className="techIcon" src="/src/assets/img/react.svg" alt="React" />
-                    <img className="techIcon" src="/src/assets/img/docker.svg" alt="Docker" />
+                    <img className="techIcon" src={pythonLogo} alt="Python" />
+                    <img className="techIcon" src={nodejsLogo} alt="NodeJS" />
+                    <img className="techIcon" src={postgresLogo} alt="PostgreSQL" />
+                    <img className="techIcon" src={mongodbLogo} alt="MongoDB" />
+                    <img className="techIcon" src={reactlogo} alt="React" />
+                    <img className="techIcon" src={dockerLogo} alt="Docker" />
                 </div>
                 <p className="aboutDescription">
                     Seleccionamos cuidadosamente las herramientas 
@@ -32,12 +43,12 @@ function About() {
                     garantizar resultados sobresalientes en cada proyecto.
                 </p>
                 <div className="aboutTechIcons">
-                    <img className="techIcon" src="/src/assets/img/excel.svg" alt="Excel" />
-                    <img className="techIcon" src="/src/assets/img/powerbi.svg" alt="PowerBI" />
-                    <img className="techIcon" src="/src/assets/img/tableau.svg" alt="Tableau" />
-                    <img className="techIcon" src="/src/assets/img/pandas.svg" alt="Pandas" />
-                    <img className="techIcon" src="/src/assets/img/matplotlib.svg" alt="Matplotlob" />
-                    <img className="techIcon" src="/src/assets/img/tensorflow.svg" alt="TensorFlow" />
+                    <img className="techIcon" src={excelLogo} alt="Excel" />
+                    <img className="techIcon" src={powerbiLogo} alt="PowerBI" />
+                    <img className="techIcon" src={tableauLogo} alt="Tableau" />
+                    <img className="techIcon" src={pandasLogo} alt="Pandas" />
+                    <img className="techIcon" src={matplotlibLogo} alt="Matplotlob" />
+                    <img className="techIcon" src={tensorflowLogo} alt="TensorFlow" />
                 </div>
             </div>
         </section>

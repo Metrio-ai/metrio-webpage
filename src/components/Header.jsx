@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import metrioLogo from '../../public/metrioLogo.svg'
 
 
 function Header() {
@@ -15,7 +16,7 @@ function Header() {
             <a href="/">
                 <img
                     className="headerLogo"
-                    src="../../public/metrioLogo.svg"
+                    src={metrioLogo}
                     alt="metrioLogo"
                 />
             </a>
