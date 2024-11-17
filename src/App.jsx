@@ -4,6 +4,7 @@ import FadeInSection from './components/FadeInSection'
 import About from './sections/About/About'
 import Contact from './sections/Contact/Contact'
 import Hero from './sections/Hero/Hero'
+import Services from './sections/Services/Services'
 import './styles/App.css'
 
 function App() {
@@ -14,6 +15,9 @@ function App() {
       <Hero />
       <FadeInSection id="about">
         <About />
+      </FadeInSection>
+      <FadeInSection id="#services">
+        <Services />
       </FadeInSection>
       <FadeInSection id="contact">
         <Contact />
