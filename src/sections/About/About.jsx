@@ -13,6 +13,22 @@ import matplotlibLogo from '/src/assets/img/matplotlib.svg'
 import tensorflowLogo from '/src/assets/img/tensorflow.svg'
 
 function About() {
+    const techIcons = [
+        { src: pythonLogo, alt: "Python", description: "Python aplicado a ciencia de datos"},
+        { src: nodejsLogo, alt: "NodeJS", description: "Flujos de carga de datos y APIs desarrollados en NodeJS"},
+        { src: postgresLogo, alt: "PostgreSQL", description: "Servicios PostgreSQL para bases de datos relacionales"},
+        { src: mongodbLogo, alt: "MongoDB", description: "Servicios MongoDB para colecciones de datos flexibles"},
+        { src: reactlogo, alt: "React", description: "Diseño de páginas web con React"},
+        { src: dockerLogo, alt: "Docker", description: "Despliegue de microservicios mediante Docker"}
+    ]
+    const toolIcons = [
+        { src: excelLogo, alt: "Excel", description: "Reportes para interactuar con los análisis"},
+        { src: powerbiLogo, alt: "PowerBI", description: "Dashboards para el área de negocio"},
+        { src: tableauLogo, alt: "Tableau", description: "Tableau para Business Insights avanzados"},
+        { src: pandasLogo, alt: "Pandas", description: "Herramientas a medida para analizar los datos"},
+        { src: matplotlibLogo, alt: "Matplotlib", description: "Gráficos personalizados"},
+        { src: tensorflowLogo, alt: "TensorFlow", description: "Modelos de Machine Learning e IA"}
+    ]
     return (
         <section className="aboutContainer">  
             {/* Texto y tecnologías */}
@@ -26,12 +42,12 @@ function About() {
                 </p>
                 {/* Lista de tecnologías */}
                 <div className="aboutTechIcons">
-                    <img className="techIcon" src={pythonLogo} alt="Python" />
-                    <img className="techIcon" src={nodejsLogo} alt="NodeJS" />
-                    <img className="techIcon" src={postgresLogo} alt="PostgreSQL" />
-                    <img className="techIcon" src={mongodbLogo} alt="MongoDB" />
-                    <img className="techIcon" src={reactlogo} alt="React" />
-                    <img className="techIcon" src={dockerLogo} alt="Docker" />
+                    {techIcons.map((icon, index) => (
+                        <div className="techIconContainer" key={index}>
+                            <img className="techIcon" src={icon.src} alt={icon.alt} />
+                            <div className="tooltip">{icon.description}</div>
+                        </div>
+                    ))}
                 </div>
                 <p className="aboutDescription">
                     Seleccionamos cuidadosamente las herramientas 
@@ -43,12 +59,12 @@ function About() {
                     garantizar resultados sobresalientes en cada proyecto.
                 </p>
                 <div className="aboutTechIcons">
-                    <img className="techIcon" src={excelLogo} alt="Excel" />
-                    <img className="techIcon" src={powerbiLogo} alt="PowerBI" />
-                    <img className="techIcon" src={tableauLogo} alt="Tableau" />
-                    <img className="techIcon" src={pandasLogo} alt="Pandas" />
-                    <img className="techIcon" src={matplotlibLogo} alt="Matplotlob" />
-                    <img className="techIcon" src={tensorflowLogo} alt="TensorFlow" />
+                    {toolIcons.map((icon, index) => (
+                        <div className="techIconContainer" key={index}>
+                            <img className="techIcon" src={icon.src} alt={icon.alt} />
+                            <div className="tooltip">{icon.description}</div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
