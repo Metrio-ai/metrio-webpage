@@ -18,9 +18,7 @@ function App() {
       <FadeInSection id="contact">
         <Contact />
       </FadeInSection>
-      <FadeInSection id="footer">
-        <Footer />
-      </FadeInSection>
+      <Footer />
     </div>
   )
 }
