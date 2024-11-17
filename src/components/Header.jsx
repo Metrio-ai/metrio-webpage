@@ -34,6 +34,11 @@ function Header() {
                     </a>
                 </span>
                 <span className="menu-item">
+                    <a href="#services" aria-current="page">
+                        Servicios
+                    </a>
+                </span>
+                <span className="menu-item">
                     <a href="#contact">Contacto</a>
                 </span>
             </nav>
