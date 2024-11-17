@@ -15,7 +15,7 @@ function App() {
       <Hero />
       <FadeInSection id="about">
         <About />
-        <Services id="services"/>
+        <Services/>
       </FadeInSection>
       <FadeInSection id="contact">
         <Contact />
