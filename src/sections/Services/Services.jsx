@@ -2,26 +2,32 @@ import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 import './Services.css'
 
-import excelService from '../../assets/img/excel-service.avif'
 import powerbiService from '../../assets/img/powerbi-service.avif'
 import report1Service from '../../assets/img/report1-service.png'
+import optimizationService from '../../assets/img/businessoptimization-service.jpg'
+import digitaltransformService from '../../assets/img/digitaltransform-service.webp'
 
 const Services = () => {
   const images = [
     {
-      original: excelService,
-      originalHeight: 400, originalWidth: 600,
-      description: "Reportes Excel avanzados"
-    },
-    {
       original: powerbiService,
       originalHeight: 400, originalWidth: 600,
-      description: "Tablones PowerBI personalizados"
+      description: "Desarrollo de soluciones BI"
     },
     {
       original: report1Service,
       originalHeight: 400, originalWidth: 600,
       description: "Diseño de herramientas propias para visualización de datos"
+    },
+    {
+      original: optimizationService,
+      originalHeight: 400, originalWidth: 600,
+      description: "Asesoramiento estratégico sobre los datos"
+    },
+    {
+      original: digitaltransformService,
+      originalHeight: 400, originalWidth: 600,
+      description: "Transformación digital de la empresa"
     }
   ]
 
