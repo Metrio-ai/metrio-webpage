@@ -1,6 +1,6 @@
-import './Services.css'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
+import './Services.css'
 
 import excelService from '../../assets/img/excel-service.avif'
 import powerbiService from '../../assets/img/powerbi-service.avif'
