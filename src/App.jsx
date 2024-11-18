@@ -13,10 +13,8 @@ function App() {
     <div className="appContainer">
       <Header />
       <Hero />
-      <FadeInSection id="about">
-        <About />
-        <Services/>
-      </FadeInSection>
+      <About />
+      <Services />
       <FadeInSection id="contact">
         <Contact />
       </FadeInSection>
