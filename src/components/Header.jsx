@@ -13,7 +13,7 @@ function Header() {
         <header className="headerContainer">
 
             {/* Logo */}
-            <a href="/">
+            <a href="#">
                 <img
                     className="headerLogo"
                     src={metrioLogo}
@@ -24,13 +24,18 @@ function Header() {
             {/* Navbar */}
             <nav className={`headerNav ${isBurgerOpen ? "active" : ""}`}>
             <span className="menu-item">
-                    <a href="#hero" aria-current="page">
+                    <a href="#" aria-current="page">
                         Inicio
                     </a>
                 </span>
                 <span className="menu-item">
                     <a href="#about" aria-current="page">
                         Sobre Nosotros
+                    </a>
+                </span>
+                <span className="menu-item">
+                    <a href="#services" aria-current="page">
+                        Servicios
                     </a>
                 </span>
                 <span className="menu-item">
