@@ -1,56 +1,33 @@
-import { useState } from 'react'
 import './Services.css'
+import ImageGallery from 'react-image-gallery'
+import 'react-image-gallery/styles/css/image-gallery.css'
 
 import excelService from '../../assets/img/excel-service.avif'
-import powerbiService from '../../assets/img/powerbi-service.jpeg'
-import tableauService from '../../assets/img/tableau-service.jpeg'
-import report1Service from '../../assets/img/report1-service.jpeg'
+import powerbiService from '../../assets/img/powerbi-service.avif'
+import report1Service from '../../assets/img/report1-service.png'
 
 const Services = () => {
   const images = [
-    excelService,
-    powerbiService,
-    tableauService,
-    report1Service
+    { original: excelService, originalHeight: 400, originalWidth: 600, description: "Reportes Excel avanzados" },
+    { original: powerbiService, originalHeight: 400, originalWidth: 600, description: "Tablones PowerBI personalizados" },
+    { original: report1Service, originalHeight: 400, originalWidth: 600, description: "Diseño de herramientas propias para visualización de datos" }
   ]
-
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-
-  const handleNavigation = (direction) => {
-    if (direction === 'prev') {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? images.length - 1 : prevIndex - 1
-      )
-    } else if (direction === 'next') {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      )
-    }
-  }
 
   return (
     <section className="servicesContainer" id="services">
         <div className="servicesContent">
             <p className="servicesHeader">Nuestros servicios</p>
             <div className="gallery">
-                <button
-                    className="galleryNav-button prev"
-                    onClick={() => handleNavigation('prev')}
-                >
-                    <span className="material-icons">arrow_back</span>
-                </button>
-                <img
-                    src={images[currentIndex]}
-                    alt={`Service ${currentIndex + 1}`}
-                    className="gallery-image"
+                <ImageGallery
+                  items={images}
+                  infinite={true}
+                  showFullscreenButton={false}
+                  showThumbnails={false}
+                  showBullets={true}
+                  autoPlay={true}
+                  slideInterval={3000}
+                  slideDuration={500}
                 />
-                <button
-                    className="galleryNav-button next"
-                    onClick={() => handleNavigation('next')}
-                >
-                    <span className="material-icons">arrow_forward</span>
-                </button>
             </div>
         </div>
     </section>
