@@ -30,7 +30,7 @@ function About() {
         { src: tensorflowLogo, alt: "TensorFlow", description: "Modelos de Machine Learning e IA"}
     ]
     return (
-        <section className="aboutContainer">  
+        <section className="aboutContainer" id="about">  
             {/* Texto y tecnologías */}
             <div className="aboutContent">
                 <p className="aboutHeader">Sobre Nosotros</p>
