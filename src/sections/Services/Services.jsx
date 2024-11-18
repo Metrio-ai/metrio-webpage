@@ -3,8 +3,8 @@ import 'react-image-gallery/styles/css/image-gallery.css'
 import './Services.css'
 
 import powerbiService from '../../assets/img/powerbi-service.avif'
-import report1Service from '../../assets/img/report1-service.png'
-import optimizationService from '../../assets/img/businessoptimization-service.jpg'
+import reportService from '../../assets/img/report1-service.png'
+import consultingService from '../../assets/img/businessoptimization-service.jpg'
 import digitaltransformService from '../../assets/img/digitaltransform-service.webp'
 
 const Services = () => {
@@ -15,12 +15,12 @@ const Services = () => {
       description: "Desarrollo de soluciones BI"
     },
     {
-      original: report1Service,
+      original: reportService,
       originalHeight: 400, originalWidth: 600,
       description: "Diseño de herramientas propias para visualización de datos"
     },
     {
-      original: optimizationService,
+      original: consultingService,
       originalHeight: 400, originalWidth: 600,
       description: "Asesoramiento estratégico sobre los datos"
     },
