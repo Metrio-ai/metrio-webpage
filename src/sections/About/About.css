@@ -1,90 +1,94 @@
 /* Contenedor principal */
 .aboutContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    padding: 4rem 2rem;
-    background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  background-color: #f8f8f8;
+}
+
+/* Imagen destacada */
+.aboutImageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  /* Asegura que no se desborde */
+  overflow: hidden;
+  /* Prevenir desbordamientos */
+}
+
+.aboutImage {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
   }
-  
-  /* Imagen destacada */
-  .aboutImageContainer {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 100%; /* Asegura que no se desborde */
-    overflow: hidden; /* Prevenir desbordamientos */
+
+  50% {
+    transform: translateY(-10px);
   }
-  
-  .aboutImage {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    animation: float 3s ease-in-out infinite;
+
+  100% {
+    transform: translateY(0);
   }
-  
-  @keyframes float {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  
-  /* Texto y contenido */
-  .aboutContent {
-    flex: 1;
-    text-align: left;
-    flex-wrap: wrap;
-    max-width: 600px;
-    padding: 0 1rem;
-    text-align: center;
-    margin-top: 5vh;
-  }
-  
-  .aboutHeader {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  .aboutDescription {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 2rem;
-  }
-  
-  /* Iconos de tecnologías */
-  .aboutTechIcons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  
-  .techIcon {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-  }
-  
-  .techIcon:hover {
-    transform: scale(1.1);
-  }
-  
-  /* Contenedor para el ícono con descripción */
+}
+
+/* Texto y contenido */
+.aboutContent {
+  flex: 1;
+  text-align: left;
+  flex-wrap: wrap;
+  max-width: 600px;
+  padding: 0 1rem;
+  text-align: center;
+  margin-top: 5vh;
+}
+
+.aboutHeader {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.aboutDescription {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Iconos de tecnologías */
+.aboutTechIcons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.techIcon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.techIcon:hover {
+  transform: scale(1.1);
+}
+
+/* Contenedor para el ícono con descripción */
 .techIconContainer {
   position: relative;
   display: inline-block;
@@ -104,6 +108,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  max-width: 600px !important;
 }
 
 /* Muestra el tooltip al hacer hover */
