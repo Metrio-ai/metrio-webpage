@@ -1,30 +1,32 @@
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from 'react'
 import PostCard from './PostCard'
+import { getPosts } from '../../utils/api'
 import './Blog.css'
 
 function Blog() {
-  // Lista de posts (esto podría provenir de una API, archivo JSON, etc.)
-  const posts = [
-    { 
-      id: 1,
-      title: "Cómo empezar con React",
-      author: "Pablo Sierra",
-      timestamp: "20241119",
-      date: "19 de noviembre de 2024", 
-      description: "Una guía para comenzar a desarrollar con React.js.",
-      slug: "como-empezar-con-react",
-      content: "Este es el contenido completo del post sobre cómo empezar con React. Aquí se explica cómo configurar tu entorno de desarrollo y empezar con los primeros componentes."
-    },
-    { 
-      id: 2,
-      title: "Manejo de estado en React",
-      author: "Pablo Sierra",
-      timestamp: "20241117",
-      date: "17 de noviembre de 2024", 
-      description: "Exploramos cómo manejar el estado en componentes de React.",
-      slug:"manejo-de-estado-en-react",
-      content: "En este post, cubrimos cómo manejar el estado en React usando useState y useEffect, y cómo compartir estado entre componentes."
-    }
-  ]
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const data = await getPosts()
+        setPosts(data)
+      } catch (err) {
+        setError('Error al cargar los posts')
+      } finally {
+        setLoading(false)
+      }
+    };
+
+    fetchPosts()
+  }, [])
+
+  if (loading) return <p>Cargando...</p>
+
+  if (error) return <p>{error}</p>
 
   return (
     <div className="blogContainer">
@@ -32,16 +34,25 @@ function Blog() {
       <p>Últimos posts</p>
 
       <div className="postsContainer">
-        {posts.map((post, index) => (
-          <PostCard 
-            key={index}
-            title={post.title}
-            author={post.author}
-            date={post.date}
-            description={post.description}
-            href={post.url}
-          />
-        ))}
+        {posts.map((post) => {
+          const formattedDate = new Date(post.date).toLocaleDateString('es-ES', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+
+          return (
+            <PostCard 
+              key={post._id}
+              title={post.title}
+              author={post.author}
+              date={formattedDate}
+              description={post.description}
+              href={post.slug}
+            />
+          )
+        })}
       </div>
     </div>
   )
