@@ -7,6 +7,7 @@ import Contact from './sections/Contact/Contact'
 import Hero from './sections/Hero/Hero'
 import Services from './sections/Services/Services'
 import Blog from './sections/Blog/Blog'
+import BlogPost from './sections/Blog/BlogPost'
 import './styles/App.css'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             </FadeInSection>
           </>} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:postId" element={<BlogPost />} />
         </Routes>
       <Footer />
     </div>
