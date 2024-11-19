@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 import PostCard from './PostCard'
 import { getPosts } from '../../utils/api'
 import './Blog.css'
+import '../../styles/App.css'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 
 function Blog() {
   const [posts, setPosts] = useState([])
@@ -29,7 +32,8 @@ function Blog() {
   if (error) return <p>{error}</p>
 
   return (
-    <div className="blogContainer">
+    <div className="appContainer">
+      <Header />
       <h1>Metrio.es - Blog</h1>
       <p>Últimos posts</p>
 
@@ -54,6 +58,7 @@ function Blog() {
           )
         })}
       </div>
+      <Footer />
     </div>
   )
 }
