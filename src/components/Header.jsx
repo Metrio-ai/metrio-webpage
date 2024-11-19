@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
+import { Link as ScrollLink } from 'react-scroll'
 import metrioLogo from '../../public/metrioLogo.svg'
 
 
@@ -19,29 +20,29 @@ function Header() {
         <header className="headerContainer">
 
             {/* Logo */}
-            <a href="/">
+            <a><Link to="/" smooth={true} duration={500}>
                 <img
                     className="headerLogo"
                     src={metrioLogo}
                     alt="metrioLogo"
                 />
-            </a>
+            </Link></a>
 
             {/* Navbar */}
             <nav className={`headerNav ${isBurgerOpen ? "active" : ""}`}>
                 {isHomePage && (
                     <>
                         <span className="menu-item">
-                            <a href="#">Inicio</a>
+                            <a><ScrollLink to="top" smooth={true} duration={500}>Inicio</ScrollLink></a>
                         </span>
                         <span className="menu-item">
-                            <a href="#about">Sobre Nosotros</a>
+                            <a><ScrollLink to="about" smooth={true} duration={500}>Sobre Nosotros</ScrollLink></a>
                         </span>
                         <span className="menu-item">
-                            <a href="#services">Servicios</a>
+                            <a><ScrollLink to="services" smooth={true} duration={500}>Servicios</ScrollLink></a>
                         </span>
                         <span className="menu-item">
-                            <a href="#contact">Contacto</a>
+                            <a><ScrollLink to="contact" smooth={true} duration={500}>Contacto</ScrollLink></a>
                         </span>
                         <span className="menu-item">
                             <a><Link to="/blog">Blog</Link></a>
