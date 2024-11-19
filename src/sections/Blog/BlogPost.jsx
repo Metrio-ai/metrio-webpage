@@ -1,36 +1,40 @@
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { getPostById } from '../../utils/api'; // Asegúrate de tener la función para obtener el post por su ID
-import './BlogPost.css';
+/* eslint-disable no-unused-vars */
+import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { getPostById } from '../../utils/api'
+import './BlogPost.css'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 
 function BlogPost() {
-  const { postId } = useParams();  // Capturamos el slug del post desde la URL
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { slug } = useParams()
+  const [post, setPost] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const data = await getPostById(postId); // Llamada a la API para obtener el post
-        setPost(data);  // Establecer el post en el estado
+        const data = await getPostById(slug)
+        setPost(data)
       } catch (err) {
-        setError('Error al cargar el post');
+        setError('Error al cargar el post')
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     };
 
-    fetchPost();
-  }, [postId]); // Solo vuelve a ejecutar el efecto si el postId cambia
+    fetchPost()
+  }, [slug])
 
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p>Cargando...</p>
+  if (error) return <p>{error}</p>
 
   return (
-    <div className="blogPostContainer">
+    <div className="appContainer">
       {post ? (
         <>
+          <Header />
           <h1>{post.title}</h1>
           <p><strong>Autor:</strong> {post.author}</p>
           <p><strong>Fecha:</strong> {new Date(post.date).toLocaleDateString('es-ES', {
@@ -40,12 +44,13 @@ function BlogPost() {
             day: 'numeric',
           })}</p>
           <p>{post.content}</p>
+          <Footer />
         </>
       ) : (
         <p>Post no encontrado.</p>
       )}
     </div>
-  );
+  )
 }
 
-export default BlogPost;
+export default BlogPost
