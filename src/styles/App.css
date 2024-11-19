@@ -40,6 +40,7 @@
 
 .headerNav a:hover {
     color: #00bcd4;
+    cursor: pointer;
 }
 
 .headerNav--burger {

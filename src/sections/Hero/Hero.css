@@ -79,6 +79,7 @@
   .buttonShowMore:hover {
     background-color: #00bcd4;
     color: #000;
+    cursor: pointer;
   }
   
   /* Ajustes para pantallas más pequeñas */
