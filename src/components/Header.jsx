@@ -13,6 +13,7 @@ function Header() {
 
     const isHomePage = location.pathname === '/'
     const isBlogPage = location.pathname === '/blog'
+    const isBlogPost = location.pathname.startsWith('/blog/')
 
     return (
         <header className="headerContainer">
@@ -50,12 +51,19 @@ function Header() {
                 {isBlogPage && (
                     <>
                         <span className="menu-item">
-                            <a href="/latest_post">Último post</a>
-                        </span>
-                        <span className="menu-item">
                             <a href="/">Inicio</a>
                         </span>
                     </>
+                )}
+                {isBlogPost && (
+                    <>
+                    <span className="menu-item">
+                        <a href="/blog">Blog</a>
+                    </span>
+                    <span className="menu-item">
+                        <a href="/">Inicio</a>
+                    </span>
+                </>
                 )}
             </nav>
 
