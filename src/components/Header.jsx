@@ -1,19 +1,25 @@
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import metrioLogo from '../../public/metrioLogo.svg'
 
 
 function Header() {
     const [isBurgerOpen, setIsBurgerOpen] = useState(false)
+    const location = useLocation()
 
     const toggleBurgerMenu = () => {
         setIsBurgerOpen(!isBurgerOpen)
     }
 
+    const isHomePage = location.pathname === '/'
+    const isBlogPage = location.pathname === '/blog'
+    const isBlogPost = location.pathname.startsWith('/blog/')
+
     return (
         <header className="headerContainer">
 
             {/* Logo */}
-            <a href="#">
+            <a href="/">
                 <img
                     className="headerLogo"
                     src={metrioLogo}
@@ -23,24 +29,42 @@ function Header() {
 
             {/* Navbar */}
             <nav className={`headerNav ${isBurgerOpen ? "active" : ""}`}>
-            <span className="menu-item">
-                    <a href="#" aria-current="page">
-                        Inicio
-                    </a>
-                </span>
-                <span className="menu-item">
-                    <a href="#about" aria-current="page">
-                        Sobre Nosotros
-                    </a>
-                </span>
-                <span className="menu-item">
-                    <a href="#services" aria-current="page">
-                        Servicios
-                    </a>
-                </span>
-                <span className="menu-item">
-                    <a href="#contact">Contacto</a>
-                </span>
+                {isHomePage && (
+                    <>
+                        <span className="menu-item">
+                            <a href="#">Inicio</a>
+                        </span>
+                        <span className="menu-item">
+                            <a href="#about">Sobre Nosotros</a>
+                        </span>
+                        <span className="menu-item">
+                            <a href="#services">Servicios</a>
+                        </span>
+                        <span className="menu-item">
+                            <a href="#contact">Contacto</a>
+                        </span>
+                        <span className="menu-item">
+                            <a href="/blog">Blog</a>
+                        </span>
+                    </>
+                )}
+                {isBlogPage && (
+                    <>
+                        <span className="menu-item">
+                            <a href="/">Inicio</a>
+                        </span>
+                    </>
+                )}
+                {isBlogPost && (
+                    <>
+                    <span className="menu-item">
+                        <a href="/blog">Blog</a>
+                    </span>
+                    <span className="menu-item">
+                        <a href="/">Inicio</a>
+                    </span>
+                </>
+                )}
             </nav>
 
             {/* Burger menu for mobile */}
