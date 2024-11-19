@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import metrioLogo from '../../public/metrioLogo.svg'
 
 
@@ -44,24 +44,24 @@ function Header() {
                             <a href="#contact">Contacto</a>
                         </span>
                         <span className="menu-item">
-                            <a href="/blog">Blog</a>
+                            <a><Link to="/blog">Blog</Link></a>
                         </span>
                     </>
                 )}
                 {isBlogPage && (
                     <>
                         <span className="menu-item">
-                            <a href="/">Inicio</a>
+                            <a><Link to="/">Inicio</Link></a>
                         </span>
                     </>
                 )}
                 {isBlogPost && (
                     <>
                     <span className="menu-item">
-                        <a href="/blog">Blog</a>
+                        <a><Link to="/blog">Blog</Link></a>
                     </span>
                     <span className="menu-item">
-                        <a href="/">Inicio</a>
+                        <a><Link to="/">Inicio</Link></a>
                     </span>
                 </>
                 )}
