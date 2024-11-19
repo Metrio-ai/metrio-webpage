@@ -7,7 +7,7 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename={window.location.hostname === "localhost" ? "" : process.env.PUBLIC_URL}>
       <App />
     </BrowserRouter>
   </StrictMode>,
