@@ -2,6 +2,8 @@
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { getPostById } from '../../utils/api'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import './BlogPost.css'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
@@ -9,6 +11,7 @@ import Footer from '../../components/Footer'
 function BlogPost () {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
+  const [markdownContent, setMarkdownContent] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
@@ -17,8 +20,15 @@ function BlogPost () {
       try {
         const data = await getPostById(slug)
         setPost(data)
-      } catch (err) {
-        setError('Error al cargar el post')
+
+        if (data && data.content) {
+          const response = await fetch(data.content)
+          if (!response.ok) {
+            throw new Error('Error al obtener el contenido Markdown')
+          }
+          const markdown = await response.text()
+          setMarkdownContent(markdown)
+        }
       } finally {
         setLoading(false)
       }
@@ -50,18 +60,29 @@ function BlogPost () {
       {post ? (
         <>
           <Header />
-          <h1>{post.title}</h1>
-          <p>
-            <strong>Autor:</strong> {post.author}
-          </p>
-          <p>
-            <strong>Fecha:</strong> {formattedDate}
-          </p>
-          <p>{post.content}</p>
+          <section className='postContainer'>
+            <p className="postContent postAuthor">
+              <strong>Autor:</strong> {post.author}
+            </p>
+            <p className="postContent postDate">
+              <strong>Fecha:</strong> {formattedDate}
+            </p>
+            <div className='postContent postBody'>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {markdownContent}
+              </ReactMarkdown>
+            </div>
+          </section>
           <Footer />
         </>
       ) : (
-        <p>Post no encontrado.</p>
+        <>
+          <Header />
+          <section className='postContent notFound'>
+            <p>Post no encontrado.</p>
+          </section>
+          <Footer />
+        </>
       )}
     </div>
   )
