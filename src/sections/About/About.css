@@ -44,8 +44,11 @@
 
 /* Texto y contenido */
 .aboutContent {
+  display: flex;
   flex: 1;
-  text-align: left;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   max-width: 600px;
   padding: 0 1rem;
@@ -120,10 +123,15 @@
 
 /* Ajustes para pantallas más pequeñas */
 @media (max-width: 768px) {
+  .aboutTechIcons {
+    max-width: 75%;
+  }
+
   .tooltip {
-    bottom: 50px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
     max-width: 150px;
+    z-index: 1;
   }
 }
