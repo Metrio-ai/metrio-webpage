@@ -33,16 +33,44 @@ function Header() {
                 {isHomePage && (
                     <>
                         <span className="menu-item">
-                            <a><ScrollLink to="top" smooth={true} duration={500}>Inicio</ScrollLink></a>
+                            <a><ScrollLink
+                                    to="top"
+                                    smooth={true}
+                                    duration={500}
+                                    onClick={toggleBurgerMenu}
+                                >
+                                    Inicio
+                                </ScrollLink></a>
                         </span>
                         <span className="menu-item">
-                            <a><ScrollLink to="about" smooth={true} duration={500}>Sobre Nosotros</ScrollLink></a>
+                            <a><ScrollLink
+                                    to="about"
+                                    smooth={true}
+                                    duration={500}
+                                    onClick={toggleBurgerMenu}
+                                >
+                                    Sobre Nosotros
+                                </ScrollLink></a>
                         </span>
                         <span className="menu-item">
-                            <a><ScrollLink to="services" smooth={true} duration={500}>Servicios</ScrollLink></a>
+                            <a><ScrollLink
+                                    to="services"
+                                    smooth={true}
+                                    duration={500}
+                                    onClick={toggleBurgerMenu}
+                                >
+                                    Servicios
+                                </ScrollLink></a>
                         </span>
                         <span className="menu-item">
-                            <a><ScrollLink to="contact" smooth={true} duration={500}>Contacto</ScrollLink></a>
+                            <a><ScrollLink
+                                    to="contact"
+                                    smooth={true}
+                                    duration={500}
+                                    onClick={toggleBurgerMenu}
+                                >
+                                    Contacto
+                                </ScrollLink></a>
                         </span>
                         <span className="menu-item">
                             <a><Link to="/blog">Blog</Link></a>
