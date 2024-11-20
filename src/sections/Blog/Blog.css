@@ -1,28 +1,67 @@
 .blogContainer {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  margin-bottom: 5vh;
+  ;
+}
+
+.blogHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(25vh - 4rem);
+  width: 100vw;
+  text-align: center;
+  position: relative;
+  color: #fff;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.blogHeader-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0.25rem;
+  line-height: 1;
+  z-index: 2;
+  position: relative;
+}
+
+.blogHeader-subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0.25rem;
+  line-height: 1;
+  z-index: 2;
+  position: relative;
 }
 
 .postsContainer {
   display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
 .postCard {
-  width: 90%;
-  max-width: 600px;
+  width: 400px;
+  height: 200px;
   padding: 20px;
   border-radius: 8px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
   text-align: center;
+}
+
+.postCard:hover {
+  background: #fff;
+  border: rgba(0, 188, 212, 0.7) 1px solid;
 }
 
 .postCard h3 {
@@ -33,15 +72,57 @@
 
 .postAuthor {
   font-size: 0.8rem;
-  color: #888;
+  color: #555;
 }
 
 .postDate {
   font-size: 0.9rem;
-  color: #777;
+  color: #444;
 }
 
 .postDescription {
   font-size: 1rem;
   color: #333;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #f9f9f9;
+  border: transparent;
+  border-radius: 50%;
+}
+
+.pagination button:hover {
+  background-color: rgba(0, 188, 212, 0.7);
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+}
+
+.pagination button:disabled:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.pagination span {
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  .postCard {
+    width: 100%;
+    max-width: 350px;
+    height: 200px;
+  }
 }
