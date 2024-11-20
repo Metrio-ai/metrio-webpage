@@ -11,25 +11,25 @@ const Services = () => {
   const images = [
     {
       original: powerbiService,
-      originalHeight: 400,
+      originalHeight: 300,
       originalWidth: 600,
       description: 'Desarrollo de soluciones BI'
     },
     {
       original: reportService,
-      originalHeight: 400,
+      originalHeight: 300,
       originalWidth: 600,
       description: 'Diseño de herramientas propias para visualización de datos'
     },
     {
       original: consultingService,
-      originalHeight: 400,
+      originalHeight: 300,
       originalWidth: 600,
       description: 'Asesoramiento estratégico sobre los datos'
     },
     {
       original: digitaltransformService,
-      originalHeight: 400,
+      originalHeight: 300,
       originalWidth: 600,
       description: 'Transformación digital de la empresa'
     }
