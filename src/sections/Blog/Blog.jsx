@@ -39,19 +39,25 @@ function Blog() {
 
       <div className="postsContainer">
         {posts.map((post) => {
-          const formattedDate = new Date(post.date).toLocaleDateString('es-ES', {
+          if (post) {
+            const timestamp = post.timestamp
+            const year = timestamp.substring(0, 4)
+            const month = timestamp.substring(4, 6) - 1
+            const day = timestamp.substring(6, 8)
+          const formattedDate = new Date(year, month, day).toLocaleDateString('es-ES', {
             weekday: 'long',
             year: 'numeric',
             month: 'long',
             day: 'numeric',
           })
-
+          post.formattedDate = formattedDate
+        }
           return (
             <PostCard 
               key={post._id}
               title={post.title}
               author={post.author}
-              date={formattedDate}
+              date={post.formattedDate}
               description={post.description}
               href={post.slug}
             />
