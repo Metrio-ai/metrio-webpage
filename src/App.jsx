@@ -7,14 +7,14 @@ import Hero from './sections/Hero/Hero'
 import Services from './sections/Services/Services'
 import './styles/App.css'
 
-function App() {
+function App () {
   return (
-    <div className="appContainer" id="top">
+    <div className='appContainer' id='top'>
       <Header />
       <Hero />
       <About />
       <Services />
-      <FadeInSection id="contact">
+      <FadeInSection id='contact'>
         <Contact />
       </FadeInSection>
       <Footer />

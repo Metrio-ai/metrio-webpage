@@ -6,7 +6,7 @@ import './BlogPost.css'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
-function BlogPost() {
+function BlogPost () {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -22,7 +22,7 @@ function BlogPost() {
       } finally {
         setLoading(false)
       }
-    };
+    }
 
     fetchPost()
   }, [slug])
@@ -41,18 +41,22 @@ function BlogPost() {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
-      day: 'numeric',
+      day: 'numeric'
     })
   }
 
   return (
-    <div className="appContainer">
+    <div className='appContainer'>
       {post ? (
         <>
           <Header />
           <h1>{post.title}</h1>
-          <p><strong>Autor:</strong> {post.author}</p>
-          <p><strong>Fecha:</strong> {formattedDate}</p>
+          <p>
+            <strong>Autor:</strong> {post.author}
+          </p>
+          <p>
+            <strong>Fecha:</strong> {formattedDate}
+          </p>
           <p>{post.content}</p>
           <Footer />
         </>
