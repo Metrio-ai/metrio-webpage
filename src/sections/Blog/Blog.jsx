@@ -12,7 +12,7 @@ function Blog () {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
-  const postsPerPage = 1
+  const postsPerPage = 2
 
   useEffect(() => {
     const fetchPosts = async () => {
