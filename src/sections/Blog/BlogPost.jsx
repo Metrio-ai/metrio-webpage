@@ -6,7 +6,7 @@ import './BlogPost.css'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
-function BlogPost() {
+function BlogPost () {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -22,7 +22,7 @@ function BlogPost() {
       } finally {
         setLoading(false)
       }
-    };
+    }
 
     fetchPost()
   }, [slug])
@@ -30,19 +30,33 @@ function BlogPost() {
   if (loading) return <p>Cargando...</p>
   if (error) return <p>{error}</p>
 
+  let formattedDate = null
+  if (post) {
+    const timestamp = post.timestamp
+    const year = timestamp.substring(0, 4)
+    const month = timestamp.substring(4, 6) - 1
+    const day = timestamp.substring(6, 8)
+
+    formattedDate = new Date(year, month, day).toLocaleDateString('es-ES', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  }
+
   return (
-    <div className="appContainer">
+    <div className='appContainer'>
       {post ? (
         <>
           <Header />
           <h1>{post.title}</h1>
-          <p><strong>Autor:</strong> {post.author}</p>
-          <p><strong>Fecha:</strong> {new Date(post.date).toLocaleDateString('es-ES', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}</p>
+          <p>
+            <strong>Autor:</strong> {post.author}
+          </p>
+          <p>
+            <strong>Fecha:</strong> {formattedDate}
+          </p>
           <p>{post.content}</p>
           <Footer />
         </>

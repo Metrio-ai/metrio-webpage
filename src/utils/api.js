@@ -9,7 +9,9 @@ export const getPosts = async () => {
       }
     })
     if (!response.ok) {
-      throw new Error(`Error fetching posts: ${response.status} ${response.statusText}`)
+      throw new Error(
+        `Error fetching posts: ${response.status} ${response.statusText}`
+      )
     }
     const data = await response.json()
     return data
@@ -19,7 +21,7 @@ export const getPosts = async () => {
   }
 }
 
-export const getPostById = async (id) => {
+export const getPostById = async id => {
   try {
     const response = await fetch(`${API_URL}/${id}`, {
       method: 'GET',
@@ -28,7 +30,9 @@ export const getPostById = async (id) => {
       }
     })
     if (!response.ok) {
-      throw new Error(`Error fetching post by ID: ${response.status} ${response.statusText}`)
+      throw new Error(
+        `Error fetching post by ID: ${response.status} ${response.statusText}`
+      )
     }
     const data = await response.json()
     return data

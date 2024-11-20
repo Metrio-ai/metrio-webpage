@@ -7,7 +7,7 @@ import '../../styles/App.css'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
-function Blog() {
+function Blog () {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -22,7 +22,7 @@ function Blog() {
       } finally {
         setLoading(false)
       }
-    };
+    }
 
     fetchPosts()
   }, [])
@@ -32,26 +32,35 @@ function Blog() {
   if (error) return <p>{error}</p>
 
   return (
-    <div className="appContainer">
+    <div className='appContainer'>
       <Header />
       <h1>Metrio.es - Blog</h1>
       <p>Últimos posts</p>
 
-      <div className="postsContainer">
-        {posts.map((post) => {
-          const formattedDate = new Date(post.date).toLocaleDateString('es-ES', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })
-
+      <div className='postsContainer'>
+        {posts.map(post => {
+          if (post) {
+            const timestamp = post.timestamp
+            const year = timestamp.substring(0, 4)
+            const month = timestamp.substring(4, 6) - 1
+            const day = timestamp.substring(6, 8)
+            const formattedDate = new Date(year, month, day).toLocaleDateString(
+              'es-ES',
+              {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              }
+            )
+            post.formattedDate = formattedDate
+          }
           return (
-            <PostCard 
+            <PostCard
               key={post._id}
               title={post.title}
               author={post.author}
-              date={formattedDate}
+              date={post.formattedDate}
               description={post.description}
               href={post.slug}
             />

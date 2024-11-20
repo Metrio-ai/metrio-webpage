@@ -11,43 +11,47 @@ const Services = () => {
   const images = [
     {
       original: powerbiService,
-      originalHeight: 400, originalWidth: 600,
-      description: "Desarrollo de soluciones BI"
+      originalHeight: 400,
+      originalWidth: 600,
+      description: 'Desarrollo de soluciones BI'
     },
     {
       original: reportService,
-      originalHeight: 400, originalWidth: 600,
-      description: "Diseño de herramientas propias para visualización de datos"
+      originalHeight: 400,
+      originalWidth: 600,
+      description: 'Diseño de herramientas propias para visualización de datos'
     },
     {
       original: consultingService,
-      originalHeight: 400, originalWidth: 600,
-      description: "Asesoramiento estratégico sobre los datos"
+      originalHeight: 400,
+      originalWidth: 600,
+      description: 'Asesoramiento estratégico sobre los datos'
     },
     {
       original: digitaltransformService,
-      originalHeight: 400, originalWidth: 600,
-      description: "Transformación digital de la empresa"
+      originalHeight: 400,
+      originalWidth: 600,
+      description: 'Transformación digital de la empresa'
     }
   ]
 
   return (
-    <section className="servicesContainer" id="services">
-        <div className="servicesContent">
-            <p className="servicesHeader">Nuestros servicios</p>
-            <div className="gallery">
-                <ImageGallery
-                  items={images}
-                  infinite={true}
-                  showFullscreenButton={false}
-                  showThumbnails={false}
-                  showBullets={true}
-                  autoPlay={true}
-                  slideInterval={3000}
-                  slideDuration={500}
-                />
-            </div>
+    <section className='servicesContainer' id='services'>
+      <div className='servicesContent'>
+        <p className='servicesHeader'>Nuestros servicios</p>
+        <div className='gallery'>
+          <ImageGallery
+            items={images}
+            infinite={true}
+            showFullscreenButton={false}
+            showThumbnails={false}
+            showBullets={true}
+            autoPlay={true}
+            slideInterval={3000}
+            slideDuration={500}
+          />
         </div>
+      </div>
     </section>
   )
 }

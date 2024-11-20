@@ -23,7 +23,6 @@ const router = createHashRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}>
-    </RouterProvider>
-  </StrictMode>,
+    <RouterProvider router={router} />
+  </StrictMode>
 )
