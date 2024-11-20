@@ -1,4 +1,4 @@
-const API_URL = 'http://api.metrio.es:3000/api/posts'
+const API_URL = 'https://sierrapablo.duckdns.org/api/posts'
 
 export const getPosts = async () => {
   try {
