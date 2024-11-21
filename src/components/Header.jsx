@@ -14,6 +14,7 @@ function Header () {
   const isHomePage = location.pathname === '/'
   const isBlogPage = location.pathname === '/blog'
   const isBlogPost = location.pathname.startsWith('/blog/')
+  const isContactPage = location.pathname === '/contact'
 
   return (
     <header className='headerContainer'>
@@ -105,6 +106,20 @@ function Header () {
               </a>
             </span>
           </>
+        )}
+        {isContactPage && (
+          <>
+          <span className='menu-item'>
+            <a>
+              <Link to='/'>Inicio</Link>
+            </a>
+          </span>
+          <span className='menu-item'>
+            <a>
+              <Link to='/blog'>Blog</Link>
+            </a>
+          </span>
+        </>
         )}
       </nav>
 

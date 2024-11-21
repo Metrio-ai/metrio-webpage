@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Footer () {
   return (
     <footer className='footerContainer'>
@@ -12,13 +14,9 @@ function Footer () {
           </a>
         </span>
         <span className='footer-item'>
-          <a
-            href='mailto:hola@metrio.es'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
+          <Link to='/contact'><a>
             <span className='material-icons'>mail</span>
-          </a>
+          </a></Link>
         </span>
       </div>
       <div className='footerCopyright'>

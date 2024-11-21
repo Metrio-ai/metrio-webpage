@@ -5,6 +5,7 @@ import './styles/index.css'
 import App from './App.jsx'
 import Blog from './sections/Blog/Blog.jsx'
 import BlogPost from './sections/Blog/BlogPost.jsx'
+import ContactPage from './sections/Contact/ContactPage.jsx'
 
 const router = createHashRouter([
   {
@@ -18,6 +19,10 @@ const router = createHashRouter([
   {
     path: 'blog/:slug',
     element: <BlogPost />
+  },
+  {
+    path: '/contact',
+    element: <ContactPage />
   }
 ])
 
