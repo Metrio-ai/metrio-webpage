@@ -82,3 +82,82 @@
     font-size: 14px;
   }
 }
+
+/* Contenedor del formulario */
+.contactFormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Estilo del formulario */
+.contactForm {
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal "Contacto" */
+.contactFormHeader {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+/* Subtítulo con la pregunta */
+.contactFormSubheader {
+  font-size: 20px;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Estilo de los grupos de campos */
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #00bcd4;
+  outline: none;
+}
+
+/* Botón de envío */
+.formButton {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #00bcd4;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formButton:hover {
+  background-color: #008ba3;
+}
