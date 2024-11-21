@@ -52,6 +52,16 @@
     color: #d9534f;
 }
 
+.postBody img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 /* Ajuste para dispositivos móviles */
 @media (max-width: 1200px) {
     .postContainer {
@@ -60,12 +70,8 @@
     }
 }
 
-.postBody img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+@media (max-width: 768px) {
+    .postBody img {
+        max-width: 100%;
+    }
 }
