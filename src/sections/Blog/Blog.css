@@ -55,13 +55,20 @@
   height: 200px;
   padding: 20px;
   border-radius: 8px;
-  background-color: #f7f7f7;
+  background-color: #f9f9f9;
   text-align: center;
+  text-decoration: none;
 }
 
 .postCard:hover {
-  background: #fff;
-  border: rgba(0, 188, 212, 0.7) 1px solid;
+  background-color: rgba(0, 188, 212, 0.7);
+}
+
+.postCard:hover h3,
+.postCard:hover .postAuthor,
+.postCard:hover .postDate,
+.postCard:hover .postDescription {
+  color: #f9f9f9; 
 }
 
 .postCard h3 {
