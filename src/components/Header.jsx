@@ -67,14 +67,7 @@ function Header () {
             </span>
             <span className='menu-item'>
               <a>
-                <ScrollLink
-                  to='contact'
-                  smooth={true}
-                  duration={500}
-                  onClick={toggleBurgerMenu}
-                >
-                  Contacto
-                </ScrollLink>
+                <Link to='/contact'>Contacto</Link>
               </a>
             </span>
             <span className='menu-item'>
@@ -91,6 +84,11 @@ function Header () {
                 <Link to='/'>Inicio</Link>
               </a>
             </span>
+            <span className='menu-item'>
+              <a>
+                <Link to='/contact'>Contacto</Link>
+              </a>
+            </span>
           </>
         )}
         {isBlogPost && (
@@ -103,6 +101,11 @@ function Header () {
             <span className='menu-item'>
               <a>
                 <Link to='/'>Inicio</Link>
+              </a>
+            </span>
+            <span className='menu-item'>
+              <a>
+                <Link to='/contact'>Contacto</Link>
               </a>
             </span>
           </>
