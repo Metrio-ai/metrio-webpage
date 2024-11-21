@@ -1,4 +1,5 @@
 import './Contact.css'
+import { Link } from 'react-router-dom'
 
 const Contact = () => {
   return (
@@ -7,14 +8,7 @@ const Contact = () => {
         <div className='contactText'>
           <p className='contactHeader'>Contacto</p>
           <p className='contactSubheader'>¿Qué proyecto tienes en mente?</p>
-          <a
-            className='contactBtn'
-            href='mailto:hola@metrio.es?subject=Consulta%20sobre%20proyecto'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Cuéntanos
-          </a>
+          <Link to='/contact' className='contactBtn'>Cuéntanos</Link>
         </div>
       </div>
     </section>
