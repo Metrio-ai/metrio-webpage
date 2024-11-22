@@ -13,7 +13,7 @@ function BlogPost () {
   const [post, setPost] = useState(null)
   const [markdownContent, setMarkdownContent] = useState('')
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error] = useState(null)
 
   useEffect(() => {
     const fetchPost = async () => {
