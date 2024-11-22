@@ -37,7 +37,7 @@ function About () {
     {
       src: reactlogo,
       alt: 'React',
-      description: 'Diseño de páginas web con React'
+      description: 'Diseño de aplicaciones web con React'
     },
     {
       src: dockerLogo,
