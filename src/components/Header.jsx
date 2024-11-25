@@ -70,11 +70,11 @@ function Header () {
                 <Link to='/contact'>Contacto</Link>
               </a>
             </span>
-            <span className='menu-item'>
+            {/*<span className='menu-item'>
               <a>
                 <Link to='/blog'>Blog</Link>
               </a>
-            </span>
+            </span>*/}
           </>
         )}
         {isBlogPage && (
