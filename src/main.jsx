@@ -6,11 +6,16 @@ import App from './App.jsx'
 import Blog from './sections/Blog/Blog.jsx'
 import BlogPost from './sections/Blog/BlogPost.jsx'
 import ContactPage from './sections/Contact/ContactPage.jsx'
+import ServicesPage from './sections/Services/ServicesPage.jsx'
 
 const router = createHashRouter([
   {
     path: '/',
     element: <App />
+  },
+  {
+    path: '/services',
+    element: <ServicesPage />
   },
   {
     path: '/blog',

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { Link as ScrollLink } from 'react-scroll'
-import metrioLogo from '../../public/metrioLogo.svg'
 
 function Header () {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false)
@@ -15,129 +14,111 @@ function Header () {
   const isBlogPage = location.pathname === '/blog'
   const isBlogPost = location.pathname.startsWith('/blog/')
   const isContactPage = location.pathname === '/contact'
+  const isServicesPage = location.pathname === '/services'
 
   return (
-    <header className='headerContainer'>
-      {/* Logo */}
-      <a>
-        <Link to='/' smooth={true} duration={500}>
-          <img className='headerLogo' src={metrioLogo} alt='metrioLogo' />
-        </Link>
-      </a>
+    <header className="headerContainer" role="banner">
+      <Link to="/" className="headerLogoLink" aria-label="Metrio Consulting - Ir a inicio">
+        <img
+          className="headerLogo"
+          src={`${import.meta.env.BASE_URL}metrioLogo.svg`}
+          alt="Metrio Consulting"
+          width="120"
+          height="40"
+        />
+      </Link>
 
-      {/* Navbar */}
-      <nav className={`headerNav ${isBurgerOpen ? 'active' : ''}`}>
-        {isHomePage && (
-          <>
-            <span className='menu-item'>
-              <a>
-                <ScrollLink
-                  to='top'
-                  smooth={true}
-                  duration={500}
-                  onClick={toggleBurgerMenu}
-                >
+      <nav
+        className={`headerNav ${isBurgerOpen ? 'active' : ''}`}
+        aria-label="Navegación principal"
+      >
+        <ul style={{ listStyle: 'none', display: 'flex', alignItems: 'center', gap: 'inherit', margin: 0, padding: 0 }}>
+          {isHomePage && (
+            <>
+              <li className="menu-item">
+                <ScrollLink to="top" smooth duration={500} onClick={toggleBurgerMenu}>
                   Inicio
                 </ScrollLink>
-              </a>
-            </span>
-            <span className='menu-item'>
-              <a>
-                <ScrollLink
-                  to='about'
-                  smooth={true}
-                  duration={500}
-                  onClick={toggleBurgerMenu}
-                >
-                  Sobre Nosotros
+              </li>
+              <li className="menu-item">
+                <ScrollLink to="about" smooth duration={500} onClick={toggleBurgerMenu}>
+                  Sobre nosotros
                 </ScrollLink>
-              </a>
-            </span>
-            <span className='menu-item'>
-              <a>
-                <ScrollLink
-                  to='services'
-                  smooth={true}
-                  duration={500}
-                  onClick={toggleBurgerMenu}
-                >
-                  Servicios
-                </ScrollLink>
-              </a>
-            </span>
-            <span className='menu-item'>
-              <a>
-                <Link to='/contact'>Contacto</Link>
-              </a>
-            </span>
-            {/*<span className='menu-item'>
-              <a>
-                <Link to='/blog'>Blog</Link>
-              </a>
-            </span>*/}
-          </>
-        )}
-        {isBlogPage && (
-          <>
-            <span className='menu-item'>
-              <a>
-                <Link to='/'>Inicio</Link>
-              </a>
-            </span>
-            <span className='menu-item'>
-              <a>
-                <Link to='/contact'>Contacto</Link>
-              </a>
-            </span>
-          </>
-        )}
-        {isBlogPost && (
-          <>
-            <span className='menu-item'>
-              <a>
-                <Link to='/blog'>Volver al Blog</Link>
-              </a>
-            </span>
-            <span className='menu-item'>
-              <a>
-                <Link to='/'>Inicio</Link>
-              </a>
-            </span>
-            <span className='menu-item'>
-              <a>
-                <Link to='/contact'>Contacto</Link>
-              </a>
-            </span>
-          </>
-        )}
-        {isContactPage && (
-          <>
-          <span className='menu-item'>
-            <a>
-              <Link to='/'>Inicio</Link>
-            </a>
-          </span>
-          {/*<span className='menu-item'>
-            <a>
-              <Link to='/blog'>Blog</Link>
-            </a>
-          </span>*/}
-        </>
-        )}
+              </li>
+              <li className="menu-item">
+                <Link to="/services" onClick={toggleBurgerMenu}>Servicios</Link>
+              </li>
+              <li className="menu-item">
+                <Link to="/blog" onClick={toggleBurgerMenu}>Blog</Link>
+              </li>
+              <li className="menu-item">
+                <Link to="/contact">Contacto</Link>
+              </li>
+            </>
+          )}
+          {isServicesPage && (
+            <>
+              <li className="menu-item">
+                <Link to="/" onClick={toggleBurgerMenu}>Inicio</Link>
+              </li>
+              <li className="menu-item">
+                <Link to="/blog" onClick={toggleBurgerMenu}>Blog</Link>
+              </li>
+              <li className="menu-item">
+                <Link to="/contact">Contacto</Link>
+              </li>
+            </>
+          )}
+          {isBlogPage && (
+            <>
+              <li className="menu-item">
+                <Link to="/">Inicio</Link>
+              </li>
+              <li className="menu-item">
+                <Link to="/contact">Contacto</Link>
+              </li>
+            </>
+          )}
+          {isBlogPost && (
+            <>
+              <li className="menu-item">
+                <Link to="/blog">Volver al blog</Link>
+              </li>
+              <li className="menu-item">
+                <Link to="/">Inicio</Link>
+              </li>
+              <li className="menu-item">
+                <Link to="/contact">Contacto</Link>
+              </li>
+            </>
+          )}
+          {isContactPage && (
+            <>
+              <li className="menu-item">
+                <Link to="/" onClick={toggleBurgerMenu}>Inicio</Link>
+              </li>
+              <li className="menu-item">
+                <Link to="/services" onClick={toggleBurgerMenu}>Servicios</Link>
+              </li>
+              <li className="menu-item">
+                <Link to="/blog" onClick={toggleBurgerMenu}>Blog</Link>
+              </li>
+            </>
+          )}
+        </ul>
       </nav>
 
-      {/* Burger menu for mobile */}
-      <div
-        className={`nav light headerNav--burger ${
-          isBurgerOpen ? 'active' : ''
-        }`}
-        id='burger'
+      <button
+        type="button"
+        className="headerNav--burger"
         onClick={toggleBurgerMenu}
+        aria-expanded={isBurgerOpen}
+        aria-label={isBurgerOpen ? 'Cerrar menú' : 'Abrir menú'}
       >
-        <span className='material-icons headerNav--burger-icon'>
+        <span className="material-icons" aria-hidden="true">
           {isBurgerOpen ? 'close' : 'menu'}
         </span>
-      </div>
+      </button>
     </header>
   )
 }

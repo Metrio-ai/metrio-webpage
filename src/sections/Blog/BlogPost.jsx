@@ -1,88 +1,89 @@
-import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import { getPostById } from '../../utils/api'
+import { useParams, Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import './BlogPost.css'
+import { getPostBySlug } from '../../data/blogPosts'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import './BlogPost.css'
 
 function BlogPost () {
   const { slug } = useParams()
-  const [post, setPost] = useState(null)
-  const [markdownContent, setMarkdownContent] = useState('')
-  const [loading, setLoading] = useState(true)
-  const [error] = useState(null)
+  const post = getPostBySlug(slug)
 
   useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const data = await getPostById(slug)
-        setPost(data)
-
-        if (data && data.content) {
-          const response = await fetch(data.content)
-          if (!response.ok) {
-            throw new Error('Error al obtener el contenido Markdown')
-          }
-          const markdown = await response.text()
-          setMarkdownContent(markdown)
-        }
-      } finally {
-        setLoading(false)
-      }
+    if (post) {
+      document.title = `${post.title} | Blog Metrio Consulting`
+      const metaDesc = document.querySelector('meta[name="description"]')
+      if (metaDesc) metaDesc.setAttribute('content', post.description)
     }
+    return () => {
+      document.title = 'Metrio Consulting | Consultoría tecnológica y desarrollo de producto'
+      const metaDesc = document.querySelector('meta[name="description"]')
+      if (metaDesc) metaDesc.setAttribute('content', 'Metrio Consulting: consultoría tecnológica desde 2024. BI, desarrollo de producto, transformación digital, leads cualificados. Tecnología, producto y criterio.')
+    }
+  }, [post])
 
-    fetchPost()
-  }, [slug])
-
-  if (loading) return <p>Cargando...</p>
-  if (error) return <p>{error}</p>
-
-  let formattedDate = null
-  if (post) {
-    const timestamp = post.timestamp
-    const year = timestamp.substring(0, 4)
-    const month = timestamp.substring(4, 6) - 1
-    const day = timestamp.substring(6, 8)
-
-    formattedDate = new Date(year, month, day).toLocaleDateString('es-ES', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
+  if (!post) {
+    return (
+      <div className="appContainer">
+        <Header />
+        <main className="postPage">
+          <section className="postNotFound">
+            <h1>Artículo no encontrado</h1>
+            <Link to="/blog">Volver al blog</Link>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    )
   }
 
+  const imageSrc = post.image.startsWith('/')
+    ? import.meta.env.BASE_URL + post.image.slice(1)
+    : post.image
+
+  const formattedDate = new Date(post.date + 'T12:00:00').toLocaleDateString('es-ES', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+
   return (
-    <div className='appContainer'>
-      {post ? (
-        <>
-          <Header />
-          <section className='postContainer'>
-            <p className="postContent postAuthor">
-              <strong>Autor:</strong> {post.author}
-            </p>
-            <p className="postContent postDate">
-              <strong>Fecha:</strong> {formattedDate}
-            </p>
-            <div className='postContent postBody'>
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {markdownContent}
-              </ReactMarkdown>
+    <div className="appContainer">
+      <Header />
+      <main className="postPage">
+        <article className="postArticle">
+          <header className="postHeader">
+            <img
+              src={imageSrc}
+              alt={post.imageAlt || ''}
+              className="postHeroImage"
+              width={1200}
+              height={600}
+            />
+            <div className="postHeaderContent">
+              <h1 className="postTitle">{post.title}</h1>
+              <p className="postMeta">
+                <span>{post.author}</span>
+                <span className="postMetaSep">·</span>
+                <time dateTime={post.date}>{formattedDate}</time>
+              </p>
             </div>
-          </section>
-          <Footer />
-        </>
-      ) : (
-        <>
-          <Header />
-          <section className='postContent notFound'>
-            <p>Post no encontrado.</p>
-          </section>
-          <Footer />
-        </>
-      )}
+          </header>
+          <div className="postBody">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+          </div>
+          <footer className="postFooter">
+            <Link to="/blog" className="postBackLink">
+              <span className="material-icons" aria-hidden="true">arrow_back</span>
+              Volver al blog
+            </Link>
+          </footer>
+        </article>
+      </main>
+      <Footer />
     </div>
   )
 }

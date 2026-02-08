@@ -9,14 +9,16 @@ import './styles/App.css'
 
 function App () {
   return (
-    <div className='appContainer' id='top'>
+    <div className="appContainer" id="top">
       <Header />
-      <Hero />
-      <About />
-      <Services />
-      <FadeInSection id='contact'>
-        <Contact />
-      </FadeInSection>
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Services />
+        <FadeInSection id="contact">
+          <Contact />
+        </FadeInSection>
+      </main>
       <Footer />
     </div>
   )

@@ -1,107 +1,89 @@
-/* eslint-disable no-unused-vars */
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import PostCard from './PostCard'
-import { getPosts } from '../../utils/api'
-import './Blog.css'
-import '../../styles/App.css'
+import { getPosts } from '../../data/blogPosts'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import './Blog.css'
 
 function Blog () {
-  const [posts, setPosts] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const posts = getPosts()
   const [currentPage, setCurrentPage] = useState(1)
   const postsPerPage = 3
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const data = await getPosts()
-        setPosts(data)
-      } catch (err) {
-        setError('Error al cargar los posts')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchPosts()
-  }, [])
-
-  if (loading) return <p>Cargando...</p>
-
-  if (error) return <p>{error}</p>
-
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
-
-  const paginate = pageNumber => setCurrentPage(pageNumber)
-
   const totalPages = Math.ceil(posts.length / postsPerPage)
 
+  const formatDate = (dateStr) => {
+    return new Date(dateStr + 'T12:00:00').toLocaleDateString('es-ES', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  }
+
   return (
-    <div className='appContainer'>
+    <div className="blogPage appContainer">
       <Header />
-      <div className='blogContainer'>
-        <section className='blogHeader'>
-          <p className='blogHeader-title'>Publicaciones</p>
-          <p className='blogHeader-subtitle'>
-            Echa un vistazo a las últimas entradas
+      <main className="blogMain">
+        <header className="blogHero">
+          <p className="blogHeroLabel">Blog</p>
+          <h1 className="blogHeroTitle">Ideas que suman</h1>
+          <p className="blogHeroLead">
+            Por qué es importante la estrategia de datos, el BI, los leads cualificados y medir lo que importa.
           </p>
+        </header>
+
+        <section className="blogGrid" aria-label="Artículos">
+          {currentPosts.map((post) => (
+            <PostCard
+              key={post.slug}
+              slug={post.slug}
+              title={post.title}
+              description={post.description}
+              author={post.author}
+              date={formatDate(post.date)}
+              image={post.image}
+              imageAlt={post.imageAlt}
+            />
+          ))}
         </section>
-        <div className='postsContainer'>
-          {currentPosts.map(post => {
-            if (post) {
-              const timestamp = post.timestamp
-              const year = timestamp.substring(0, 4)
-              const month = timestamp.substring(4, 6) - 1
-              const day = timestamp.substring(6, 8)
-              const formattedDate = new Date(
-                year,
-                month,
-                day
-              ).toLocaleDateString('es-ES', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })
-              post.formattedDate = formattedDate
-            }
-            return (
-              <PostCard
-                key={post._id}
-                title={post.title}
-                author={post.author}
-                date={post.formattedDate}
-                description={post.description}
-                href={post.slug}
-              />
-            )
-          })}
+
+        {totalPages > 1 && (
+          <nav className="blogPagination" aria-label="Paginación">
+            <button
+              type="button"
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="blogPaginationBtn"
+              aria-label="Página anterior"
+            >
+              <span className="material-icons" aria-hidden="true">arrow_back</span>
+            </button>
+            <span className="blogPaginationInfo">
+              Página {currentPage} de {totalPages}
+            </span>
+            <button
+              type="button"
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className="blogPaginationBtn"
+              aria-label="Página siguiente"
+            >
+              <span className="material-icons" aria-hidden="true">arrow_forward</span>
+            </button>
+          </nav>
+        )}
+
+        <div className="blogBack">
+          <Link to="/" className="blogBackLink">
+            <span className="material-icons" aria-hidden="true">arrow_back</span>
+            Volver al inicio
+          </Link>
         </div>
-        <div className='pagination'>
-          <button
-            onClick={() => paginate(currentPage - 1)}
-            disabled={currentPage === 1}
-            className='pagination-button'
-          >
-            <span className='material-icons'>arrow_back</span>
-          </button>
-          <span>
-            Página {currentPage} de {totalPages}
-          </span>
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className='pagination-button'
-          >
-            <span className='material-icons'>arrow_forward</span>
-          </button>
-        </div>
-      </div>
+      </main>
       <Footer />
     </div>
   )
