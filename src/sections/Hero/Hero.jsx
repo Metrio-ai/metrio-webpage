@@ -3,16 +3,25 @@ import { Link as ScrollLink } from 'react-scroll'
 
 function Hero () {
   return (
-    <section className='heroContainer' id='hero'>
-      <div className='heroOverlay'></div>
-      <h1 className='heroTitle conectar'>Conectar</h1>
-      <h1 className='heroTitle analizar'>Analizar</h1>
-      <h1 className='heroTitle impulsar'>Impulsar</h1>
-      <a className='heroTitle buttonShowMore descubrir'>
-        <ScrollLink to='about' smooth={true} duration={500}>
-          Descubre cómo
-        </ScrollLink>
-      </a>
+    <section className="heroContainer" id="hero" aria-labelledby="hero-heading">
+      <div className="heroOverlay" aria-hidden="true" />
+
+      <h1 id="hero-heading" className="heroH1">
+        Consultoría tecnológica y desarrollo de producto
+      </h1>
+
+      <span className="heroTitle conectar" aria-hidden="true">Conectar</span>
+      <span className="heroTitle analizar" aria-hidden="true">Analizar</span>
+      <span className="heroTitle impulsar" aria-hidden="true">Impulsar</span>
+
+      <ScrollLink
+        to="about"
+        smooth
+        duration={500}
+        className="heroTitle buttonShowMore descubrir"
+      >
+        Descubre cómo
+      </ScrollLink>
     </section>
   )
 }

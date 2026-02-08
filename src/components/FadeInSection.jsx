@@ -29,9 +29,9 @@ const FadeInSection = ({ children, id }) => {
   }, [id, hasBeenVisible])
 
   return (
-    <section id={id} className={`fade-in ${hasBeenVisible ? 'visible' : ''}`}>
+    <div id={id} className={`fade-in ${hasBeenVisible ? 'visible' : ''}`}>
       {children}
-    </section>
+    </div>
   )
 }
 
