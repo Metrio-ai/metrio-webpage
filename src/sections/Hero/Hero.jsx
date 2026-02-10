@@ -6,7 +6,9 @@ function Hero () {
   const [showMain, setShowMain] = useState(false)
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isMobile = window.innerWidth <= 768
+    if (prefersReduced || isMobile) {
       setShowMain(true)
       return
     }
@@ -40,7 +42,7 @@ function Hero () {
           <div className="heroCtas">
             <Link to="/contact" className="heroCtaPrimary">
               Cuéntanos tu proyecto
-              <span className="material-icons" aria-hidden="true">arrow_forward</span>
+              <span aria-hidden="true">→</span>
             </Link>
             <a href="#services" className="heroCtaSecondary">
               Ver servicios

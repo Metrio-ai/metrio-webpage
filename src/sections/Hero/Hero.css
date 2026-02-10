@@ -235,6 +235,11 @@
     max-width: none;
   }
 
+  .heroPhaseMain {
+    animation: none;
+    opacity: 1;
+  }
+
   .heroFeatures {
     gap: var(--space-3);
   }
