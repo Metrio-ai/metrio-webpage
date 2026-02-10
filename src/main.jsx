@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createHashRouter, RouterProvider, Navigate } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import './styles/index.css'
 import App from './App.jsx'
 import Layout from './components/Layout'
@@ -9,7 +9,7 @@ import BlogPost from './sections/Blog/BlogPost.jsx'
 import ContactPage from './sections/Contact/ContactPage.jsx'
 import ServicesPage from './sections/Services/ServicesPage.jsx'
 import FaqPage from './sections/Faq/FaqPage.jsx'
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: '/casos-exito',
     element: (
