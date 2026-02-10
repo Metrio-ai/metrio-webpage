@@ -22,7 +22,7 @@ function PostCard ({ slug, title, description, author, date, image, imageAlt }) 
         <div className="postCardImageWrap">
           <img
             src={imgSrc}
-            alt={imageAlt || ''}
+            alt={imageAlt || title || 'Imagen del artículo'}
             className="postCardImage"
             width={600}
             height={320}
