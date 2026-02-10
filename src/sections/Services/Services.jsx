@@ -47,6 +47,7 @@ const Services = () => {
         <h2 id="services-title" className="servicesTitle">
           Soluciones que impulsan tu negocio
         </h2>
+        <p className="servicesLead">BI, dashboards, transformación digital, leads cualificados y desarrollo de producto. Todo lo que necesitas para crecer con datos.</p>
         <div className="gallery">
           <ImageGallery
             items={images}
@@ -60,7 +61,7 @@ const Services = () => {
           />
         </div>
         <Link to="/services" className="servicesCtaLink">
-          Ver todos los servicios en detalle
+          Ver todos los servicios
           <span className="material-icons" aria-hidden="true">arrow_forward</span>
         </Link>
       </div>

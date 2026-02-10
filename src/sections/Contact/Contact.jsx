@@ -11,7 +11,7 @@ const Contact = () => {
             ¿Qué proyecto tienes en mente?
           </h2>
           <p className="contactLead">
-            Cuéntanos tu idea y te respondemos con una propuesta a medida. Ya sea estrategia de datos, dashboards, desarrollo de producto o transformación digital, una primera conversación nos permite alinear expectativas sin compromiso.
+            Primera conversación sin compromiso. Estrategia de datos, dashboards, desarrollo de producto o transformación digital. Te respondemos con una propuesta a medida.
           </p>
           <p className="contactFaqLink">
             <Link to="/faq">Preguntas frecuentes</Link>

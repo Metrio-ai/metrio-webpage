@@ -43,6 +43,7 @@ function BlogPost () {
         headline: post.title,
         description: post.description,
         image: imageUrl,
+        inLanguage: 'es-ES',
         author: { '@type': 'Organization', name: post.author },
         publisher: { '@type': 'Organization', name: 'Metrio Consulting', logo: { '@type': 'ImageObject', url: 'https://metrio.es/metrioLogo.svg' } },
         datePublished: post.date,

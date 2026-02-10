@@ -38,9 +38,7 @@ function About () {
           Tecnología con criterio
         </h2>
         <p className="aboutDescription">
-          En Metrio creamos soluciones a medida que transforman tus datos en
-          decisiones inteligentes. Combinamos experiencia, tecnología avanzada
-          y comunicación cercana para llevar tu negocio al siguiente nivel.
+          Soluciones a medida que transforman tus datos en decisiones. Experiencia, tecnología y comunicación cercana para llevar tu negocio al siguiente nivel.
         </p>
         <div className="aboutTechIcons" role="list">
           {techIcons.map((icon, index) => (
@@ -53,10 +51,7 @@ function About () {
         </div>
         <div className="aboutDivider" aria-hidden="true" />
         <p className="aboutDescription">
-          Seleccionamos las herramientas que nos permiten ofrecer soluciones
-          innovadoras, fiables y escalables: desde lenguajes robustos hasta
-          plataformas de almacenamiento y procesamiento, con resultados
-          sobresalientes en cada proyecto.
+          Herramientas innovadoras, fiables y escalables. Resultados sobresalientes en cada proyecto.
         </p>
         <div className="aboutTechIcons" role="list">
           {toolIcons.map((icon, index) => (

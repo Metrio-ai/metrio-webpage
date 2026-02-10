@@ -1,8 +1,20 @@
+import { useEffect, useState } from 'react'
 import Layout from '../../components/Layout'
+import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../../data/seo'
 import './Contact.css'
-import { useState } from 'react'
 
 const ContactPage = () => {
+  useEffect(() => {
+    document.title = 'Contacto | Metrio Consulting – Consultoría tecnológica y BI'
+    const meta = document.querySelector('meta[name="description"]')
+    if (meta) meta.setAttribute('content', 'Contacta con Metrio Consulting. Proyectos de datos, Business Intelligence, Power BI y desarrollo de producto. Valencia, España. Respuesta en menos de 48h.')
+    return () => {
+      document.title = DEFAULT_TITLE
+      const d = document.querySelector('meta[name="description"]')
+      if (d) d.setAttribute('content', DEFAULT_DESCRIPTION)
+    }
+  }, [])
+
   const [formData, setFormData] = useState({
     companyName: '',
     contactName: '',
