@@ -38,7 +38,7 @@ function Stats () {
         <header className="statsHeader">
           <p className="statsLabel">Cifras</p>
           <h2 className="statsTitle">Resultados que hablan por sí solos</h2>
-          <p className="statsLead">Transparencia ante todo. Estas son las cifras que nos avalan: proyectos con impacto, clientes que repiten y soluciones que funcionan en el día a día.</p>
+          <p className="statsLead">Cifras que avalan nuestra trayectoria: proyectos con impacto, clientes que repiten y soluciones que funcionan.</p>
         </header>
         <div className="statsGrid">
           {STATS.map((stat) => (

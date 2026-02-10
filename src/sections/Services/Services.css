@@ -26,8 +26,16 @@
   font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
   font-weight: var(--font-bold);
   color: var(--color-text-strong);
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-4);
   line-height: var(--leading-tight);
+}
+
+.servicesLead {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 48ch;
+  margin: 0 auto var(--space-6);
+  line-height: var(--leading-snug);
 }
 
 .gallery {

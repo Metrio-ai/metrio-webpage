@@ -120,7 +120,7 @@ function HowItWorks () {
             Un proceso claro, sin sorpresas
           </h2>
           <p className="howItWorksLead">
-            En Metrio seguimos siempre los mismos pasos: transparencia, entregas iterativas y resultados que puedas medir. El camino depende de si eres empresa, startup o tienes un proyecto concreto.
+            Transparencia, entregas iterativas y resultados medibles. Adaptamos el camino a tu perfil.
           </p>
         </header>
 
