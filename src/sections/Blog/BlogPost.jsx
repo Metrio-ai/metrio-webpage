@@ -25,7 +25,7 @@ function BlogPost () {
       const twDesc = document.querySelector('meta[name="twitter:description"]')
       const twImage = document.querySelector('meta[name="twitter:image"]')
       const baseUrl = 'https://metrio.es'
-      const postUrl = `${baseUrl}/#/blog/${post.slug}`
+      const postUrl = `${baseUrl}/blog/${post.slug}`
       const imageUrl = post.image.startsWith('http') ? post.image : `${baseUrl}${post.image.startsWith('/') ? '' : '/'}${post.image}`
       if (ogTitle) ogTitle.setAttribute('content', `${post.title} | Metrio Consulting`)
       if (ogDesc) ogDesc.setAttribute('content', post.description)
