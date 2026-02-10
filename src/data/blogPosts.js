@@ -108,13 +108,140 @@ Aquí va **por qué es importante medir lo que importa** y cómo definir KPIs qu
 - **Pocos y claros**: mejor 5 indicadores que todo el mundo conoce que 50 que nadie mira.
 
 En Metrio te ayudamos a definir qué medir, cómo visualizarlo y cómo integrarlo en el día a día con dashboards y reportes que la gente use. Si quieres pasar de “tengo muchos datos” a “tomo mejores decisiones”, hablamos.`
+  },
+  {
+    slug: 'automatizacion-reportes-power-bi-python',
+    title: 'Automatización de reportes con Power BI y Python: menos trabajo manual, más valor',
+    description: 'Automatizar reportes con Power BI y Python elimina horas de trabajo repetitivo y reduce errores. Te contamos cómo y por qué merece la pena.',
+    author: 'Metrio Consulting',
+    date: '2025-02-15',
+    timestamp: '20250215',
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=80',
+    imageAlt: 'Código y dashboard: automatización de reportes con Python y BI',
+    content: `¿Tu equipo pierde horas cada semana copiando datos, actualizando Excel y reenviando el mismo informe? **La automatización de reportes con Power BI y Python** permite que los datos se actualicen solos y que los informes lleguen a quien toque, sin intervención manual.
+
+En este artículo te explicamos **cómo automatizar reportes** y qué ventajas tiene combinar Power BI con Python.
+
+## Por qué automatizar reportes
+
+- **Ahorro de tiempo**: lo que hoy son horas de trabajo manual se convierte en procesos que se ejecutan solos.
+- **Menos errores**: al eliminar copiar-pegar y fórmulas frágiles, los números son más fiables.
+- **Información siempre actualizada**: dashboards y reportes que se refrescan con la frecuencia que definas.
+
+Power BI permite conectar fuentes muy diversas y Python añade lógica personalizada, limpieza de datos o modelos más avanzados. En Metrio diseñamos pipelines de datos y reportes automatizados adaptados a tu negocio.`
+  },
+  {
+    slug: 'elegir-stack-tecnologica-producto-digital',
+    title: 'Cómo elegir la stack tecnológica para tu producto digital',
+    description: 'Elegir bien la stack tecnológica marca la diferencia entre escalar con cabeza o quedarte atrapado. Criterios prácticos para decidir con acierto.',
+    author: 'Metrio Consulting',
+    date: '2025-02-18',
+    timestamp: '20250218',
+    image: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=1200&q=80',
+    imageAlt: 'Desarrollo de producto y tecnologías modernas',
+    content: `La **stack tecnológica** (lenguajes, bases de datos, frameworks) define hasta dónde puede crecer tu producto y qué coste tendrá mantenerlo. Elegir "lo que está de moda" sin criterio suele acabar en deuda técnica y equipos frustrados.
+
+Te damos **criterios prácticos para elegir la stack tecnológica** de tu producto digital.
+
+## Qué tener en cuenta al elegir tecnología
+
+- **Objetivos del producto**: qué debe hacer ahora y en 1–2 años; rendimiento, integraciones, volumen de datos.
+- **Equipo y talento**: tecnologías con buena comunidad y perfiles alcanzables en el mercado.
+- **Mantenimiento y coste**: licencias, hosting, tiempo de evolución y corrección de fallos.
+
+No existe la stack perfecta para todos: depende del sector, el tamaño del equipo y la ambición del producto. En Metrio te ayudamos a definir la arquitectura y la tecnología que mejor encajan con tu proyecto y tu capacidad.`
+  },
+  {
+    slug: 'calidad-datos-datos-limpios-importan',
+    title: 'Calidad de datos: por qué los datos limpios importan (y cómo conseguirlos)',
+    description: 'Sin datos limpios y fiables, el mejor BI o la mejor IA fallan. Te explicamos por qué la calidad de datos es la base de todo y cómo mejorarla.',
+    author: 'Metrio Consulting',
+    date: '2025-02-20',
+    timestamp: '20250220',
+    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80',
+    imageAlt: 'Calidad de datos y limpieza para análisis y BI',
+    content: `Tener muchos datos no sirve de nada si están duplicados, incompletos o contradictorios. **La calidad de datos** es lo que permite que tus dashboards, reportes y decisiones sean fiables. Sin ella, el Business Intelligence y la analítica avanzada se apoyan en arena.
+
+Aquí va **por qué los datos limpios importan** y cómo dar los primeros pasos.
+
+## Beneficios de trabajar con datos limpios
+
+- **Decisiones fiables**: mismas reglas de negocio, sin versiones distintas de "la verdad".
+- **Menos retrabajo**: reportes que cuadran, integraciones que no fallan por formatos raros.
+- **Base para IA y ML**: los modelos aprenden de lo que les das; datos sucios = resultados inútiles.
+
+La calidad se trabaja con procesos (quién captura qué, cómo se valida), normas (definiciones compartidas) y, cuando hace falta, herramientas de limpieza y deduplicación. En Metrio te ayudamos a auditar tus datos y a definir un plan de calidad realista.`
   }
 ]
 
+/** Casos de éxito – Historias narradas (mismo formato que artículos del blog) */
+const casosExitoAsPosts = [
+  {
+    slug: 'caso-mailing-apertura-80',
+    title: 'De un 34% a más del 80% de apertura en campañas de email',
+    description: 'Cuando las listas compradas ya no daban más de sí. Tasa de apertura superior al 80% de forma consistente.',
+    author: 'Metrio Consulting',
+    date: '2024-11-20',
+    timestamp: '20241120',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80',
+    imageAlt: 'Campañas de email y prospección B2B',
+    category: 'caso-exito',
+    content: `Una empresa de servicios B2B llevaba años enviando campañas con listas de correo compradas o heredadas. Los números eran discretos: alrededor de un 34% de apertura y conversiones que no acababan de justificar el esfuerzo del equipo de marketing.
+
+Nos contactaron con una pregunta directa: "¿Se puede hacer algo con nuestro mailing o tenemos que asumir que así es como funciona?"
+
+Lo primero fue entender a quién estaban enviando. Descubrimos que una parte importante de los contactos estaba desactualizada, mal segmentada o simplemente no encajaba con el perfil de cliente ideal. No era un problema solo de mensaje: era un problema de base.
+
+Trabajamos con ellos en tres frentes: definición del perfil de cliente ideal, construcción de una base de datos accionable (investigación y validación, no compra de listas) y diseño de mensajes y secuencias alineados con cada segmento. Sin fórmulas mágicas: criterio, datos y pruebas.
+
+**El resultado** no fue solo "un poco mejor". La tasa de apertura pasó a superar de forma consistente el 80%, y las conversiones a reuniones y cierres aumentaron de manera clara. El equipo dejó de disparar a ciegas y empezó a trabajar con leads que de verdad podían convertir.`
+  },
+  {
+    slug: 'caso-datos-desestructurados-dashboard',
+    title: 'De datos desestructurados a una única fuente de verdad',
+    description: 'Exceles que no cuadraban, fuentes dispersas y decisiones a destiempo. Dashboards en tiempo real y reportes automatizados.',
+    author: 'Metrio Consulting',
+    date: '2024-10-15',
+    timestamp: '20241015',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
+    imageAlt: 'Dashboard de datos y Business Intelligence',
+    category: 'caso-exito',
+    content: `En una empresa industrial, cada departamento tenía su propio Excel, sus propias fuentes y sus propias "versiones de la verdad". Ventas miraba unas cifras, operaciones otras, y dirección recibía reportes que a menudo no coincidían. Reuniones que se alargaban intentando cuadrar números en lugar de tomar decisiones.
+
+El reto no era solo técnico: era de confianza y de proceso. Había que poner orden sin paralizar el día a día.
+
+Comenzamos por un diagnóstico claro: qué datos existían, dónde vivían, quién los usaba y para qué. A partir de ahí definimos un modelo de datos común y priorizamos las fuentes y los indicadores que realmente movían el negocio. No intentamos arreglarlo todo el primer mes: fuimos fase a fase, con entregas que el equipo podía usar desde el principio.
+
+Implementamos un modelo unificado y dashboards en Power BI que se alimentaban de esas fuentes. Los reportes que antes tardaban días en elaborarse pasaron a estar actualizados de forma automática. Misma definición de ventas, de pedidos, de plazos; misma fuente para todos.
+
+**Hoy** esa empresa toma decisiones con datos que cuadran y que todo el mundo entiende. Los Exceles no desaparecieron de la noche a la mañana, pero dejaron de ser el único refugio: hay una fuente de verdad y un camino claro para seguir creciendo con datos.`
+  },
+  {
+    slug: 'caso-decisiones-ciegas-a-kpis',
+    title: 'De decisiones a ciegas a indicadores que guían el día a día',
+    description: 'Cuando "lo que siempre hemos hecho" ya no alcanza. KPIs claros, reportes automatizados y reuniones centradas en actuar.',
+    author: 'Metrio Consulting',
+    date: '2024-09-10',
+    timestamp: '20240910',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80',
+    imageAlt: 'KPIs y toma de decisiones basada en datos',
+    category: 'caso-exito',
+    content: `Una empresa de distribución tenía volumen de negocio, equipo y ganas de crecer, pero las decisiones importantes se tomaban muchas veces por intuición o por lo que "siempre se había hecho". No faltaban datos en bruto: lo que faltaba era estructura, indicadores claros y tiempo para interpretarlos sin perderse en hojas de cálculo.
+
+La dirección quería dejar de depender de un par de personas que "sabían dónde mirar" y que todo el equipo pudiera ver lo mismo y actuar en consecuencia.
+
+Con ellos trabajamos en definir qué debían medir realmente: qué KPIs respondían a "¿estamos cumpliendo objetivo?" y qué reportes necesitaba cada nivel. A partir de ahí montamos un sistema de reportes automatizados y dashboards que se actualizaban solos, con alertas cuando algo se desviaba de lo esperado.
+
+**El cambio** no fue solo de herramientas. Las reuniones pasaron de "¿quién tiene el último Excel?" a "según el dashboard, esto es lo que está pasando; actuemos aquí". Menos tiempo buscando números y más tiempo tomando decisiones. La empresa sigue creciendo, pero ahora con criterio apoyado en datos que todo el mundo comparte y entiende.`
+  }
+]
+
+const allPosts = [...blogPosts, ...casosExitoAsPosts]
+
 export const getPosts = () => {
-  return blogPosts.slice().sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''))
+  return allPosts.slice().sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''))
 }
 
 export const getPostBySlug = (slug) => {
-  return blogPosts.find((p) => p.slug === slug) || null
+  return allPosts.find((p) => p.slug === slug) || null
 }

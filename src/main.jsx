@@ -1,14 +1,23 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createHashRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider, Navigate } from 'react-router-dom'
 import './styles/index.css'
 import App from './App.jsx'
+import Layout from './components/Layout'
 import Blog from './sections/Blog/Blog.jsx'
 import BlogPost from './sections/Blog/BlogPost.jsx'
 import ContactPage from './sections/Contact/ContactPage.jsx'
 import ServicesPage from './sections/Services/ServicesPage.jsx'
-
+import FaqPage from './sections/Faq/FaqPage.jsx'
 const router = createHashRouter([
+  {
+    path: '/casos-exito',
+    element: (
+      <Layout>
+        <Navigate to="/blog" replace />
+      </Layout>
+    )
+  },
   {
     path: '/',
     element: <App />
@@ -28,6 +37,10 @@ const router = createHashRouter([
   {
     path: '/contact',
     element: <ContactPage />
+  },
+  {
+    path: '/faq',
+    element: <FaqPage />
   }
 ])
 

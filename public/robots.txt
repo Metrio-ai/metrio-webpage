@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+Allow: /#/
+Allow: /#/blog
+Allow: /#/blog/
+Allow: /#/services
+Allow: /#/contact
+Allow: /#/faq
 
+# Sitemap para indexación
 Sitemap: https://metrio.es/sitemap.xml

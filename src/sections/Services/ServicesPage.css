@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Services Page – Página de servicios detallada
+   Services Page – Página de servicios detallada + animaciones
    ========================================================================== */
 
 .servicesPage {
@@ -10,6 +10,69 @@
 
 .servicesPage main {
   flex: 1;
+}
+
+/* ---- Keyframes ---- */
+@keyframes servicesFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes servicesGlowPulse {
+  0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.85; transform: translateX(-50%) scale(1.02); }
+}
+
+@keyframes servicesCardShine {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes servicesIconPop {
+  from { transform: scale(0.9); opacity: 0.6; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes servicesKeywordIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes servicesCtaFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .servicesPageHeroLabel--animate,
+  .servicesPageHeroTitle--animate,
+  .servicesPageHeroLead--animate,
+  .serviceCard--animate,
+  .serviceCardKeywords li span,
+  .servicesPageCta--animate {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+  .servicesPageHeroGlow { animation: none !important; }
 }
 
 /* Hero de la página */
@@ -35,6 +98,7 @@
     transparent 70%
   );
   pointer-events: none;
+  animation: servicesGlowPulse 8s ease-in-out infinite;
 }
 
 .servicesPageHeroContent {
@@ -53,6 +117,12 @@
   margin-bottom: var(--space-4);
 }
 
+.servicesPageHeroLabel--animate {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: servicesFadeUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+}
+
 .servicesPageHeroTitle {
   font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
   font-weight: var(--font-bold);
@@ -62,10 +132,22 @@
   letter-spacing: -0.02em;
 }
 
+.servicesPageHeroTitle--animate {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: servicesFadeUp 0.75s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+}
+
 .servicesPageHeroLead {
   font-size: var(--text-lg);
   color: var(--color-text-muted);
   line-height: var(--leading-snug);
+}
+
+.servicesPageHeroLead--animate {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: servicesFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards;
 }
 
 /* Lista de servicios */
@@ -87,6 +169,12 @@
   transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth), transform var(--transition-smooth);
 }
 
+.serviceCard--animate {
+  opacity: 0;
+  transform: translateY(32px);
+  animation: servicesFadeUp 0.65s cubic-bezier(0.4, 0, 0.2, 1) var(--card-delay, 0.4s) forwards;
+}
+
 .serviceCard::before {
   content: "";
   position: absolute;
@@ -104,13 +192,28 @@
 }
 
 .serviceCard:hover {
-  border-color: rgba(6, 182, 212, 0.25);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
-  transform: translateY(-2px);
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 0 16px 56px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(6, 182, 212, 0.08);
+  transform: translateY(-4px);
 }
 
 .serviceCard:hover::before {
   opacity: 1;
+}
+
+.serviceCard:hover .serviceCardIcon {
+  transform: scale(1.08);
+  box-shadow: 0 0 24px rgba(6, 182, 212, 0.25);
+}
+
+.serviceCard:hover .serviceCardNumber {
+  color: var(--color-accent);
+  opacity: 1;
+}
+
+.serviceCard:hover .serviceCardKeywords li span {
+  border-color: rgba(6, 182, 212, 0.3);
+  color: var(--color-text);
 }
 
 .serviceCardNumber {
@@ -121,6 +224,7 @@
   font-weight: var(--font-bold);
   color: var(--color-accent-muted);
   letter-spacing: -0.02em;
+  transition: color var(--transition-smooth), opacity var(--transition-smooth);
 }
 
 .serviceCardIcon {
@@ -132,6 +236,7 @@
   background: var(--color-accent-muted);
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-5);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .serviceCardIcon .material-icons {
@@ -178,6 +283,13 @@
   background: var(--color-bg);
   border-radius: 999px;
   border: 1px solid var(--color-border);
+  transition: border-color var(--transition-base), color var(--transition-base), transform var(--transition-fast);
+  animation: servicesKeywordIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) var(--keyword-delay, 0.6s) both;
+}
+
+.serviceCard:hover .serviceCardKeywords li span:hover {
+  transform: scale(1.05);
+  border-color: var(--color-accent-muted);
 }
 
 /* CTA final */
@@ -190,6 +302,18 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   overflow: hidden;
+  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.servicesPageCta--animate {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: servicesCtaFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+}
+
+.servicesPageCta:hover {
+  border-color: rgba(6, 182, 212, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 .servicesPageCtaGlow {
@@ -238,12 +362,18 @@
 
 .servicesPageCtaBtn:hover {
   background: var(--color-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(6, 182, 212, 0.45);
 }
 
-.servicesPageCtaBtn .material-icons {
+.servicesPageCtaBtn:hover .servicesPageCtaBtnIcon {
+  transform: translateX(4px);
+}
+
+.servicesPageCtaBtn .material-icons,
+.servicesPageCtaBtnIcon {
   font-size: 1.25rem;
+  transition: transform var(--transition-fast);
 }
 
 @media (max-width: 768px) {

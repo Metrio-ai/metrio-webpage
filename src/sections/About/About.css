@@ -120,6 +120,10 @@
 }
 
 @media (max-width: 768px) {
+  .aboutContainer {
+    padding: var(--section-padding-y) var(--space-4);
+  }
+
   .aboutTechIcons {
     gap: var(--space-4);
     margin-bottom: var(--space-8);
@@ -133,6 +137,15 @@
   .tooltip {
     white-space: normal;
     max-width: 140px;
-    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutDescription {
+    font-size: var(--text-base);
+  }
+
+  .techIconContainer {
+    min-width: 72px;
   }
 }

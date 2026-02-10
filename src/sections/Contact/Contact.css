@@ -38,7 +38,22 @@
 .contactSubheader + .contactLead {
   font-size: var(--text-lg);
   color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.contactFaqLink {
   margin-bottom: var(--space-8);
+  font-size: var(--text-sm);
+}
+
+.contactFaqLink a {
+  color: var(--color-accent);
+  font-weight: var(--font-medium);
+  transition: color var(--transition-base);
+}
+
+.contactFaqLink a:hover {
+  color: var(--color-accent-hover);
 }
 
 .contactBtn {
@@ -46,6 +61,7 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-4) var(--space-8);
+  min-height: 48px;
   font-size: var(--text-base);
   font-weight: var(--font-semibold);
   background: var(--color-accent);
@@ -73,27 +89,85 @@
 
 .contactFormContainer {
   flex: 1;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12) var(--space-16);
+  align-items: start;
   justify-content: center;
-  align-items: center;
-  padding: var(--space-12) var(--section-padding-x);
+  padding: var(--space-10) var(--section-padding-x) var(--space-12);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.contactPageIntro {
+  text-align: left;
+  padding-right: var(--space-4);
+  position: sticky;
+  top: calc(4rem + var(--space-4));
+}
+
+.contactFormHeader {
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+  font-weight: var(--font-bold);
+  color: var(--color-text-strong);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+
+.contactPageLead {
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.contactPageText {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: var(--space-4);
+}
+
+.contactPageText:last-of-type {
+  margin-bottom: 0;
+}
+
+.contactPageEmail {
+  color: var(--color-accent);
+  font-weight: var(--font-medium);
+  transition: color var(--transition-base);
+}
+
+.contactPageEmail:hover {
+  color: var(--color-accent-hover);
+}
+
+.contactFormWrap {
+  min-width: 0;
 }
 
 .contactForm {
   width: 100%;
-  max-width: 520px;
+  max-width: 440px;
+  margin-left: auto;
   background: var(--color-bg-card);
   padding: var(--space-10);
   border-radius: var(--radius-xl);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-lg);
+  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
-.contactFormHeader {
-  font-size: var(--text-2xl);
+.contactForm:hover {
+  border-color: rgba(6, 182, 212, 0.2);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+.contactFormSubheaderTitle {
+  font-size: var(--text-xl);
   font-weight: var(--font-bold);
   color: var(--color-text-strong);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
 }
 
 .contactFormSubheader {
@@ -168,7 +242,32 @@
   outline-offset: 2px;
 }
 
+@media (max-width: 960px) {
+  .contactFormContainer {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contactPageIntro {
+    text-align: center;
+    padding-right: 0;
+    position: static;
+  }
+
+  .contactForm {
+    margin-left: 0;
+    max-width: none;
+  }
+}
+
 @media (max-width: 768px) {
+  .contactFormContainer {
+    padding: var(--space-8) var(--space-4);
+  }
+
   .contactForm {
     padding: var(--space-8);
   }
