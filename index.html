@@ -11,7 +11,8 @@
   <link rel="icon" type="image/svg+xml" href="./metrioLogo.svg" />
   <link rel="apple-touch-icon" href="./metrioLogo.svg" />
 
-  <!-- Preconnect para recursos externos (rendimiento + SEO) -->
+  <!-- Preconnect y dns-prefetch (rendimiento + Core Web Vitals) -->
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
@@ -59,7 +60,6 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Metrio Consulting - Consultoría tecnológica y desarrollo de producto" />
   <meta property="og:locale" content="es_ES" />
-  <meta property="og:locale:alternate" content="es_ES" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -84,6 +84,14 @@
         "logo": { "@type": "ImageObject", "url": "https://metrio.es/metrioLogo.svg" },
         "description": "Consultoría tecnológica especializada en diseño, desarrollo y evolución de soluciones digitales, datos e inteligencia de negocio. Valencia, España.",
         "foundingDate": "2024",
+        "address": { "@type": "PostalAddress", "addressLocality": "Valencia", "postalCode": "46005", "addressCountry": "ES" },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "url": "https://metrio.es/#/contact",
+          "contactType": "customer service",
+          "availableLanguage": "Spanish",
+          "areaServed": "ES"
+        },
         "sameAs": [
           "https://github.com/Metrio-ai",
           "https://www.linkedin.com/company/metrio-consulting/"
@@ -98,8 +106,21 @@
         "publisher": { "@id": "https://metrio.es/#organization" },
         "inLanguage": "es-ES",
         "potentialAction": [
-          { "@type": "ReadAction", "target": "https://metrio.es/#/blog" }
+          { "@type": "ReadAction", "target": "https://metrio.es/#/blog" },
+          { "@type": "ReadAction", "target": "https://metrio.es/#/services" },
+          { "@type": "ReadAction", "target": "https://metrio.es/#/contact" },
+          { "@type": "ReadAction", "target": "https://metrio.es/#/faq" }
         ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://metrio.es/#webpage",
+        "url": "https://metrio.es/",
+        "name": "Metrio Consulting | Consultoría tecnológica, BI y desarrollo de producto en España",
+        "description": "Consultoría tecnológica en España: Business Intelligence, Power BI, desarrollo de producto y transformación digital. Dashboards, reportes automatizados. Valencia.",
+        "isPartOf": { "@id": "https://metrio.es/#website" },
+        "about": { "@id": "https://metrio.es/#organization" },
+        "inLanguage": "es-ES"
       },
       {
         "@type": "ProfessionalService",
@@ -109,7 +130,7 @@
         "url": "https://metrio.es",
         "areaServed": { "@type": "Country", "name": "España" },
         "address": { "@type": "PostalAddress", "addressLocality": "Valencia", "postalCode": "46005", "addressCountry": "ES" },
-        "serviceType": ["Consultoría tecnológica", "Desarrollo de producto", "Business Intelligence", "Transformación digital", "Power BI", "Dashboards", "Reportes automatizados", "Leads cualificados"]
+        "serviceType": ["Consultoría tecnológica", "Desarrollo de producto", "Business Intelligence", "Transformación digital", "Power BI", "Dashboards", "Reportes automatizados", "Leads cualificados", "Estrategia de datos", "KPIs"]
       }
     ]
   }
@@ -118,7 +139,7 @@
 <body>
   <div id="root"></div>
   <noscript>
-    <p><strong>Metrio Consulting</strong> – Consultoría tecnológica, BI y desarrollo de producto en España. <a href="https://metrio.es/">Visitar web</a> | <a href="https://metrio.es/#/contact">Contacto</a> | <a href="https://metrio.es/#/blog">Blog</a></p>
+    <p><strong>Metrio Consulting</strong> – Consultoría tecnológica, BI y desarrollo de producto en España. <a href="https://metrio.es/">Inicio</a> | <a href="https://metrio.es/#/services">Servicios</a> | <a href="https://metrio.es/#/blog">Blog</a> | <a href="https://metrio.es/#/faq">FAQ</a> | <a href="https://metrio.es/#/contact">Contacto</a></p>
   </noscript>
   <script type="module" src="/src/main.jsx"></script>
 </body>
