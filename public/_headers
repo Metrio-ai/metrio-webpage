@@ -1,0 +1,10 @@
+# Caché larga para assets con hash (Vite)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML sin caché para siempre servir la última versión
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate

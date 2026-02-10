@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
-import { Link as ScrollLink } from 'react-scroll'
 
 function Header () {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false)
@@ -21,6 +20,7 @@ function Header () {
           alt="Metrio Consulting"
           width="120"
           height="40"
+          fetchPriority="high"
         />
       </Link>
 
@@ -31,27 +31,21 @@ function Header () {
         <ul style={{ listStyle: 'none', display: 'flex', alignItems: 'center', gap: 'inherit', margin: 0, padding: 0 }}>
           <li className="menu-item">
             {isHomePage ? (
-              <ScrollLink to="top" smooth duration={500} onClick={toggleBurgerMenu}>
-                Inicio
-              </ScrollLink>
+              <a href="#top" onClick={toggleBurgerMenu}>Inicio</a>
             ) : (
               <Link to="/" onClick={toggleBurgerMenu}>Inicio</Link>
             )}
           </li>
           <li className="menu-item">
             {isHomePage ? (
-              <ScrollLink to="about" smooth duration={500} onClick={toggleBurgerMenu}>
-                Sobre nosotros
-              </ScrollLink>
+              <a href="#about" onClick={toggleBurgerMenu}>Sobre nosotros</a>
             ) : (
               <Link to="/" onClick={toggleBurgerMenu}>Sobre nosotros</Link>
             )}
           </li>
           <li className="menu-item">
             {isHomePage ? (
-              <ScrollLink to="como-funciona" smooth duration={500} onClick={toggleBurgerMenu}>
-                Cómo trabajamos
-              </ScrollLink>
+              <a href="#como-funciona" onClick={toggleBurgerMenu}>Cómo trabajamos</a>
             ) : (
               <Link to="/" onClick={toggleBurgerMenu}>Cómo trabajamos</Link>
             )}

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import './Hero.css'
 import { Link } from 'react-router-dom'
-import { Link as ScrollLink } from 'react-scroll'
 
 function Hero () {
   const [showMain, setShowMain] = useState(false)
@@ -43,9 +42,9 @@ function Hero () {
               Cuéntanos tu proyecto
               <span className="material-icons" aria-hidden="true">arrow_forward</span>
             </Link>
-            <ScrollLink to="services" smooth duration={500} className="heroCtaSecondary">
+            <a href="#services" className="heroCtaSecondary">
               Ver servicios
-            </ScrollLink>
+            </a>
           </div>
         </div>
       )}

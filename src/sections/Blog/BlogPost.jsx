@@ -101,10 +101,11 @@ function BlogPost () {
           <header className="postHeader">
             <img
               src={imageSrc}
-              alt={post.imageAlt || ''}
+              alt={post.imageAlt || post.title || 'Imagen del artículo'}
               className="postHeroImage"
               width={1200}
               height={600}
+              fetchPriority="high"
             />
             <div className="postHeaderContent">
               <h1 className="postTitle">{post.title}</h1>
