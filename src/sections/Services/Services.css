@@ -105,7 +105,23 @@
 }
 
 @media (max-width: 768px) {
+  .servicesContainer {
+    padding: var(--section-padding-y) var(--space-4);
+  }
+
   .gallery .image-gallery-slide img {
     height: 280px;
+  }
+
+  .servicesCtaLink {
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--text-sm);
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery .image-gallery-slide img {
+    height: 220px;
   }
 }

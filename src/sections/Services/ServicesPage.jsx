@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
+import Layout from '../../components/Layout'
+import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../../data/seo'
 import './ServicesPage.css'
 
 const SERVICES_SEO = {
@@ -79,24 +79,24 @@ function ServicesPage () {
     jsonLdRef.current = script
 
     return () => {
-      document.title = 'Metrio Consulting | Consultoría tecnológica y desarrollo de producto'
-      if (metaDesc) metaDesc.setAttribute('content', 'Metrio Consulting: consultoría tecnológica en España. Diseño, desarrollo y evolución de soluciones digitales, datos e IA. Tecnología, producto y criterio.')
+      document.title = DEFAULT_TITLE
+      const d = document.querySelector('meta[name="description"]')
+      if (d) d.setAttribute('content', DEFAULT_DESCRIPTION)
       if (jsonLdRef.current?.parentNode) jsonLdRef.current.remove()
     }
   }, [])
 
   return (
-    <div className="servicesPage">
-      <Header />
+    <Layout className="servicesPage">
       <main>
         <header className="servicesPageHero">
           <div className="servicesPageHeroGlow" aria-hidden="true" />
           <div className="servicesPageHeroContent">
-            <p className="servicesPageHeroLabel">Servicios</p>
-            <h1 className="servicesPageHeroTitle">
+            <p className="servicesPageHeroLabel servicesPageHeroLabel--animate">Servicios</p>
+            <h1 className="servicesPageHeroTitle servicesPageHeroTitle--animate">
               Soluciones que impulsan tu negocio
             </h1>
-            <p className="servicesPageHeroLead">
+            <p className="servicesPageHeroLead servicesPageHeroLead--animate">
               Consultoría tecnológica, datos, producto y generación de leads cualificados.
               Desde 2024 ayudamos a empresas a conectar, analizar e impulsar con tecnología y criterio.
             </p>
@@ -108,7 +108,8 @@ function ServicesPage () {
             <article
               key={service.id}
               id={service.id}
-              className="serviceCard"
+              className="serviceCard serviceCard--animate"
+              style={{ '--card-delay': `${0.35 + index * 0.1}s` }}
               aria-labelledby={`service-title-${service.id}`}
             >
               <div className="serviceCardNumber" aria-hidden="true">
@@ -123,15 +124,17 @@ function ServicesPage () {
               <p className="serviceCardSubtitle">{service.subtitle}</p>
               <p className="serviceCardDescription">{service.description}</p>
               <ul className="serviceCardKeywords" aria-label="Palabras clave">
-                {service.keywords.map((kw) => (
-                  <li key={kw}><span>{kw}</span></li>
+                {service.keywords.map((kw, kwIndex) => (
+                  <li key={kw} style={{ '--keyword-delay': `${0.5 + index * 0.1 + kwIndex * 0.03}s` }}>
+                    <span>{kw}</span>
+                  </li>
                 ))}
               </ul>
             </article>
           ))}
         </div>
 
-        <section className="servicesPageCta" aria-labelledby="cta-title">
+        <section className="servicesPageCta servicesPageCta--animate" aria-labelledby="cta-title">
           <div className="servicesPageCtaGlow" aria-hidden="true" />
           <h2 id="cta-title" className="servicesPageCtaTitle">
             ¿Hablamos de tu proyecto?
@@ -141,12 +144,11 @@ function ServicesPage () {
           </p>
           <Link to="/contact" className="servicesPageCtaBtn">
             Contactar
-            <span className="material-icons" aria-hidden="true">arrow_forward</span>
+            <span className="material-icons servicesPageCtaBtnIcon" aria-hidden="true">arrow_forward</span>
           </Link>
         </section>
       </main>
-      <Footer />
-    </div>
+    </Layout>
   )
 }
 

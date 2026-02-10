@@ -136,7 +136,26 @@
     padding: 0 var(--space-6);
   }
 
+  .postBody {
+    font-size: var(--text-base);
+  }
+
   .postHeroImage {
     border-radius: var(--radius-lg);
+  }
+
+  .postBackLink {
+    min-height: 48px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .postArticle {
+    padding: 0 var(--space-4);
+  }
+
+  .postTitle {
+    font-size: var(--text-xl);
   }
 }
