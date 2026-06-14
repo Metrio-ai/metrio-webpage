@@ -1,0 +1,15 @@
+{
+  "name": "Listing Boost",
+  "description": "Plataforma especializada en captación de leads y automatización comercial para empresas inmobiliarias. Diseño de arquitectura de datos, automatización de procesos y optimización de conversión.",
+  "url": "https://www.listingboost.es",
+  "sector": "PropTech",
+  "services": [
+    "Arquitectura de datos",
+    "Automatización",
+    "Business Intelligence",
+    "Integraciones",
+    "Reporting"
+  ],
+  "logoExt": "svg",
+  "featured": true
+}

@@ -1,0 +1,102 @@
+.bookCallActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.bookCallActions--center {
+  justify-content: center;
+}
+
+.bookCallActions--start {
+  justify-content: flex-start;
+}
+
+.bookCallActionsPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: #fff;
+  background: var(--color-cta);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: background var(--transition-base), transform var(--transition-fast);
+}
+
+.bookCallActionsPrimary:hover {
+  background: var(--color-cta-hover);
+  transform: translateY(-1px);
+}
+
+.bookCallActionsPrimary .material-icons {
+  font-size: 20px;
+}
+
+.bookCallActionsSecondary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+.bookCallActionsSecondary:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-muted);
+}
+
+.bookCallActionsScroll {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-muted);
+  transition: color var(--transition-base), gap var(--transition-base);
+}
+
+.bookCallActionsScroll:hover {
+  color: var(--color-accent);
+  gap: var(--space-3);
+}
+
+.bookCallActionsScroll .material-icons {
+  font-size: 20px;
+}
+
+.bookCallActions--hero {
+  gap: var(--space-5);
+}
+
+.bookCallActions--hero .bookCallActionsPrimary {
+  min-height: 52px;
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.bookCallActions--hero .bookCallActionsSecondary {
+  min-height: 52px;
+  padding: var(--space-4) var(--space-7);
+  font-size: var(--text-base);
+  border-radius: var(--radius-lg);
+}
+
+.bookCallActions--hero .bookCallActionsScroll {
+  min-height: 52px;
+  font-size: var(--text-base);
+}

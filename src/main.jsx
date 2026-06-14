@@ -1,15 +1,20 @@
 import { StrictMode, lazy, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
+import '@fontsource-variable/plus-jakarta-sans/wght.css'
 import './styles/index.css'
 import App from './App.jsx'
 import Layout from './components/Layout'
+import { ThemeProvider } from './context/ThemeContext'
 
 const Blog = lazy(() => import('./sections/Blog/Blog.jsx'))
 const BlogPost = lazy(() => import('./sections/Blog/BlogPost.jsx'))
 const ContactPage = lazy(() => import('./sections/Contact/ContactPage.jsx'))
 const ServicesPage = lazy(() => import('./sections/Services/ServicesPage.jsx'))
+const AboutPage = lazy(() => import('./sections/About/AboutPage.jsx'))
+const ClientsPage = lazy(() => import('./sections/Clients/ClientsPage.jsx'))
 const FaqPage = lazy(() => import('./sections/Faq/FaqPage.jsx'))
+const CareersPage = lazy(() => import('./sections/Careers/CareersPage.jsx'))
 
 const PageLoader = () => (
   <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
@@ -41,11 +46,19 @@ const router = createBrowserRouter([
     element: withSuspense(ServicesPage)
   },
   {
+    path: '/sobre-nosotros',
+    element: withSuspense(AboutPage)
+  },
+  {
+    path: '/clientes',
+    element: withSuspense(ClientsPage)
+  },
+  {
     path: '/blog',
     element: withSuspense(Blog)
   },
   {
-    path: 'blog/:slug',
+    path: '/blog/:slug',
     element: withSuspense(BlogPost)
   },
   {
@@ -55,11 +68,17 @@ const router = createBrowserRouter([
   {
     path: '/faq',
     element: withSuspense(FaqPage)
+  },
+  {
+    path: '/trabaja-con-nosotros',
+    element: withSuspense(CareersPage)
   }
 ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>
 )

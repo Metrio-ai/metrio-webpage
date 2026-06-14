@@ -1,7 +1,8 @@
 /**
- * SEO por defecto – mismo título y descripción en toda la web.
- * Usado al restaurar meta al salir de páginas internas.
- * Description &lt; 160 chars para snippet óptimo en Google.
+ * SEO por defecto – optimizado para "consultora tecnológica" y "proyectos de consultoría".
  */
-export const DEFAULT_TITLE = 'Metrio Consulting | Consultoría tecnológica, BI y desarrollo de producto en España'
-export const DEFAULT_DESCRIPTION = 'Consultoría tecnológica en España: Business Intelligence, Power BI, desarrollo de producto y transformación digital. Dashboards, reportes automatizados. Metrio Valencia.'
+export const DEFAULT_TITLE = 'Metrio Consulting | Consultora tecnológica en España — IA, automatización y consultoría'
+export const DEFAULT_DESCRIPTION = 'Consultora tecnológica en Valencia y toda España: proyectos de consultoría en IA, automatización, Business Intelligence y transformación digital. 150+ proyectos ejecutados en producción. Respuesta en 48 h.'
+
+export const SITE_URL = 'https://metrio.es'
+export const ORGANIZATION_NAME = 'Metrio Consulting'

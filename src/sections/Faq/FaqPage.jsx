@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import Layout from '../../components/Layout'
-import { faqItems, getFaqSchema } from '../../data/faq'
+import BookCallActions from '../../components/BookCallActions'
+import ExpandableFaqSection from '../../components/ExpandableFaqSection'
+import { faqItems, getFaqSchema, FAQ_CATEGORIES, getFaqCategory } from '../../data/faq'
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../../data/seo'
 import './FaqPage.css'
 
@@ -12,10 +13,9 @@ function FaqPage () {
     if (metaDesc) {
       metaDesc.setAttribute(
         'content',
-        'Respuestas a las preguntas más habituales sobre Metrio Consulting: servicios de consultoría tecnológica, Business Intelligence, Power BI, transformación digital y desarrollo de producto en España.'
+        'Más de 40 respuestas sobre Metrio Consulting: servicios de consultoría tecnológica, Business Intelligence, Power BI, IA, automatización, transformación digital y desarrollo de producto en España.'
       )
     }
-    // FAQPage schema para Google y asistentes de IA (rich results)
     const script = document.createElement('script')
     script.type = 'application/ld+json'
     script.textContent = JSON.stringify(getFaqSchema())
@@ -34,55 +34,38 @@ function FaqPage () {
     <Layout className="faqPage">
       <main className="faqMain">
         <header className="faqHero">
-          <p className="faqHeroLabel">Preguntas frecuentes</p>
-          <h1 className="faqHeroTitle">
-            Todo lo que necesitas saber sobre Metrio
-          </h1>
-          <p className="faqHeroLead">
-            Respuestas claras sobre nuestros servicios de consultoría tecnológica, Business Intelligence, transformación digital y desarrollo de producto.
-          </p>
+          <div className="faqHeroInner">
+            <p className="faqHeroLabel">Preguntas frecuentes</p>
+            <h1 id="faq-hero-title" className="faqHeroTitle">
+              Todo lo que necesitas saber sobre Metrio
+            </h1>
+            <p className="faqHeroLead">
+              {faqItems.length} respuestas sobre consultoría, IA, automatización, BI y transformación digital.
+              Elige una pregunta a la izquierda y lee la respuesta a la derecha.
+            </p>
+            <div className="faqHeroStats">
+              <span><strong>{faqItems.length}</strong> preguntas</span>
+              <span><strong>5</strong> categorías</span>
+              <span><strong>48 h</strong> respuesta</span>
+            </div>
+          </div>
         </header>
 
-        <section
-          className="faqSection"
-          aria-label="Preguntas frecuentes"
-          itemScope
-          itemType="https://schema.org/FAQPage"
-        >
-          <div className="faqList">
-            {faqItems.map((item, index) => (
-              <article
-                key={item.id}
-                className="faqItem"
-                itemScope
-                itemProp="mainEntity"
-                itemType="https://schema.org/Question"
-              >
-                <h2 className="faqQuestion" id={item.id} itemProp="name">
-                  <span className="faqQuestionNumber" aria-hidden="true">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  {item.question}
-                </h2>
-                <div
-                  className="faqAnswer"
-                  itemScope
-                  itemProp="acceptedAnswer"
-                  itemType="https://schema.org/Answer"
-                >
-                  <p itemProp="text">{item.answer}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+        <ExpandableFaqSection
+          items={faqItems}
+          initialCount={12}
+          numbered
+          variant="premium"
+          labelledBy="faq-hero-title"
+          className="faqPageSection"
+          categories={FAQ_CATEGORIES}
+          getCategory={getFaqCategory}
+          showSearch
+        />
 
         <div className="faqCta">
           <p className="faqCtaText">¿No encuentras lo que buscas?</p>
-          <Link to="/contact" className="faqCtaBtn">
-            Contactar con Metrio
-            <span className="material-icons" aria-hidden="true">arrow_forward</span>
-          </Link>
+          <BookCallActions />
         </div>
       </main>
     </Layout>

@@ -1,24 +1,26 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import SectionImage from '../../components/SectionImage'
+import { SECTION_IMAGES } from '../../data/sectionImages'
+import BookCallActions from '../../components/BookCallActions'
 import './HowItWorks.css'
 
 const PERSONAS = [
   {
     id: 'empresa',
     label: 'Soy empresa',
-    short: 'Para equipos y organizaciones que quieren escalar con datos y producto.',
+    short: 'Para equipos y organizaciones que quieren escalar con datos, IA y producto digital.',
     icon: 'business_center'
   },
   {
     id: 'startup',
     label: 'Soy startup',
-    short: 'Para proyectos en crecimiento que necesitan BI, producto o leads con criterio.',
+    short: 'Para proyectos en crecimiento que necesitan BI, automatización o producto con criterio.',
     icon: 'rocket_launch'
   },
   {
     id: 'proyecto',
     label: 'Tengo un proyecto',
-    short: 'Para profesionales o particulares con una idea concreta que quieren llevar a cabo.',
+    short: 'Para profesionales o equipos con una idea concreta que quieren llevar a producción.',
     icon: 'lightbulb'
   }
 ]
@@ -114,85 +116,106 @@ function HowItWorks () {
       aria-labelledby="how-title"
     >
       <div className="howItWorksInner">
-        <header className="howItWorksHeader">
-          <p className="howItWorksLabel">Cómo trabajamos</p>
-          <h2 id="how-title" className="howItWorksTitle">
-            Un proceso claro, sin sorpresas
-          </h2>
-          <p className="howItWorksLead">
-            Transparencia, entregas iterativas y resultados medibles. Adaptamos el camino a tu perfil.
-          </p>
-        </header>
-
-        <div className="howItWorksPersonas" role="tablist" aria-label="Tipo de cliente">
-          {PERSONAS.map((p) => (
-            <button
-              key={p.id}
-              type="button"
-              role="tab"
-              aria-selected={activePersona === p.id}
-              aria-controls="how-diagram"
-              id={`persona-${p.id}`}
-              className={`howPersonaBtn ${activePersona === p.id ? 'howPersonaBtn--active' : ''}`}
-              onClick={() => setActivePersona(p.id)}
-            >
-              <span className="material-icons howPersonaBtnIcon" aria-hidden="true">
-                {p.icon}
-              </span>
-              {p.label}
-            </button>
-          ))}
+        <div className="howIntroGrid">
+          <div className="howIntroVisual">
+            <SectionImage
+              src={SECTION_IMAGES.howItWorks}
+              alt="Sesión de consultoría tecnológica planificando un proyecto de transformación digital"
+              width={960}
+              height={660}
+              caption="Metodología clara, entregas iterativas y comunicación directa"
+            />
+          </div>
+          <div className="howIntroContent">
+            <p className="howItWorksLabel">Cómo trabajamos</p>
+            <h2 id="how-title" className="howItWorksTitle">
+              Un proceso claro, sin sorpresas
+            </h2>
+            <p className="howItWorksLead">
+              Transparencia, entregas iterativas y resultados medibles. Adaptamos el camino
+              a tu perfil — empresa consolidada, startup o proyecto concreto.
+            </p>
+            <ul className="howIntroPoints">
+              <li><span className="material-icons" aria-hidden="true">check_circle</span> Diagnóstico honesto antes de proponer</li>
+              <li><span className="material-icons" aria-hidden="true">check_circle</span> Quick wins + visión de largo plazo</li>
+              <li><span className="material-icons" aria-hidden="true">check_circle</span> Entregables en producción, no solo slides</li>
+            </ul>
+          </div>
         </div>
 
-        <p
-          id="how-diagram"
-          className="howItWorksPersonaShort"
-          role="tabpanel"
-          aria-labelledby={`persona-${activePersona}`}
-        >
-          {activePersonaData?.short}
-        </p>
+        <div className="howRoadmapBlock">
+          <h3 className="howRoadmapTitle">Tu camino con Metrio</h3>
+          <p className="howRoadmapSubtitle">
+            Elige el perfil que más encaja contigo y sigue el roadmap paso a paso.
+          </p>
 
-        <div
-          className={`howDiagram ${diagramVisible ? 'howDiagram--visible' : ''}`}
-          aria-hidden="false"
-        >
-          <div className="howDiagramLine" aria-hidden="true" />
-          <ol className="howDiagramSteps" itemScope itemType="https://schema.org/HowTo">
-            <meta itemProp="name" content="Proceso de trabajo Metrio Consulting" />
-            {STEPS.map((step, index) => (
-              <li
-                key={step.id}
-                className="howStep"
-                style={{ '--step-order': index }}
-                itemProp="step"
-                itemScope
-                itemType="https://schema.org/HowToStep"
+          <div className="howItWorksPersonas" role="tablist" aria-label="Tipo de cliente">
+            {PERSONAS.map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                role="tab"
+                aria-selected={activePersona === p.id}
+                aria-controls="how-diagram"
+                id={`persona-${p.id}`}
+                className={`howPersonaBtn ${activePersona === p.id ? 'howPersonaBtn--active' : ''}`}
+                onClick={() => setActivePersona(p.id)}
               >
-                <span className="howStepNumber" aria-hidden="true">
-                  {step.number}
+                <span className="material-icons howPersonaBtnIcon" aria-hidden="true">
+                  {p.icon}
                 </span>
-                <span className="howStepIconWrap" aria-hidden="true">
-                  <span className="material-icons howStepIcon">{step.icon}</span>
-                </span>
-                <div className="howStepContent">
-                  <h3 className="howStepTitle" itemProp="name">
-                    {step.title}
-                  </h3>
-                  <p className="howStepDescription" itemProp="text">
-                    {step.description}
-                  </p>
-                </div>
-              </li>
+                {p.label}
+              </button>
             ))}
-          </ol>
+          </div>
+
+          <p
+            id="how-diagram"
+            className="howItWorksPersonaShort"
+            role="tabpanel"
+            aria-labelledby={`persona-${activePersona}`}
+          >
+            {activePersonaData?.short}
+          </p>
+
+          <div
+            className={`howDiagram ${diagramVisible ? 'howDiagram--visible' : ''}`}
+            aria-hidden="false"
+          >
+            <div className="howDiagramLine" aria-hidden="true" />
+            <ol className="howDiagramSteps" itemScope itemType="https://schema.org/HowTo">
+              <meta itemProp="name" content="Proceso de trabajo Metrio Consulting" />
+              {STEPS.map((step, index) => (
+                <li
+                  key={step.id}
+                  className="howStep"
+                  style={{ '--step-order': index }}
+                  itemProp="step"
+                  itemScope
+                  itemType="https://schema.org/HowToStep"
+                >
+                  <span className="howStepNumber" aria-hidden="true">
+                    {step.number}
+                  </span>
+                  <span className="howStepIconWrap" aria-hidden="true">
+                    <span className="material-icons howStepIcon">{step.icon}</span>
+                  </span>
+                  <div className="howStepContent">
+                    <h4 className="howStepTitle" itemProp="name">
+                      {step.title}
+                    </h4>
+                    <p className="howStepDescription" itemProp="text">
+                      {step.description}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
 
         <div className="howItWorksCta">
-          <Link to="/contact" className="howItWorksCtaBtn">
-            Empezar ahora
-            <span className="material-icons" aria-hidden="true">arrow_forward</span>
-          </Link>
+          <BookCallActions align="center" />
         </div>
       </div>
     </section>

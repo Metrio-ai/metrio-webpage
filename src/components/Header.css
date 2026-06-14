@@ -1,0 +1,319 @@
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  font-family: var(--font-sans);
+}
+
+.siteHeader--scrolled .headerMain {
+  box-shadow: var(--shadow-md);
+}
+
+.headerTopbar {
+  background: var(--color-text-strong);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: var(--text-xs);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.headerTopbarInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-2) var(--section-padding-x);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+}
+
+.headerTopbarLink,
+.headerTopbarText {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: rgba(255, 255, 255, 0.88);
+  transition: color var(--transition-base);
+}
+
+.headerTopbarLink:hover {
+  color: #fff;
+}
+
+.headerTopbarLink .material-icons,
+.headerTopbarText .material-icons {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.headerTopbarSep {
+  opacity: 0.35;
+}
+
+.headerTopbarSep--desktop,
+.headerTopbarLink--desktop {
+  display: none;
+}
+
+.headerMain {
+  background: var(--color-header-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border);
+  transition: box-shadow var(--transition-base);
+}
+
+.headerMainInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-4) var(--section-padding-x);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.headerLogoLink {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.headerLogo {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
+.headerNav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.headerNavList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.headerNavLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: var(--space-2) var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+
+.headerNavLink:hover,
+.headerNavLink--active {
+  color: var(--color-accent);
+}
+
+.headerNavLink--active {
+  border-bottom-color: var(--color-accent);
+  font-weight: var(--font-semibold);
+}
+
+.headerNavLink--careers {
+  color: var(--color-text-strong);
+  font-weight: var(--font-semibold);
+}
+
+.headerNavActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.headerThemeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition: border-color var(--transition-base), color var(--transition-base), background var(--transition-base);
+}
+
+.headerThemeToggle:hover {
+  border-color: var(--color-border-strong);
+  color: var(--color-accent);
+  background: var(--color-bg-subtle);
+}
+
+.headerThemeToggle .material-icons {
+  font-size: 20px;
+}
+
+.headerCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-6);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: #fff !important;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+  transition: transform var(--transition-fast), box-shadow var(--transition-base), filter var(--transition-base);
+}
+
+.headerCtaBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  filter: brightness(1.05);
+  color: #fff !important;
+}
+
+.headerMobileActions {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+.headerBurger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-strong);
+}
+
+.headerBurger .material-icons {
+  font-size: 24px;
+}
+
+.headerOverlay {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .headerTopbarSep--desktop,
+  .headerTopbarLink--desktop {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 1100px) {
+  .headerNavList {
+    gap: var(--space-1) var(--space-3);
+  }
+
+  .headerNavLink {
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 900px) {
+  .headerMobileActions {
+    display: flex;
+  }
+
+  .headerNav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 210;
+    width: min(100%, 360px);
+    height: 100dvh;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    padding: calc(72px + env(safe-area-inset-top, 0)) var(--space-6) var(--space-8);
+    background: var(--color-bg-elevated);
+    border-left: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(100%);
+    transition: transform var(--transition-smooth);
+    overflow-y: auto;
+  }
+
+  .headerNav--open {
+    transform: translateX(0);
+  }
+
+  .headerNavList {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    margin-bottom: var(--space-8);
+  }
+
+  .headerNavList li {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .headerNavLink {
+    width: 100%;
+    min-height: 52px;
+    padding: var(--space-3) 0;
+    font-size: var(--text-base);
+    border-bottom: none;
+  }
+
+  .headerNavLink--active {
+    color: var(--color-accent);
+  }
+
+  .headerNavActions {
+    flex-direction: column;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .headerCtaBtn {
+    width: 100%;
+    min-height: 52px;
+    font-size: var(--text-base);
+  }
+
+  .headerOverlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 205;
+    background: rgba(15, 23, 42, 0.45);
+    border: none;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 520px) {
+  .headerTopbarText {
+    font-size: 0.6875rem;
+  }
+
+  .headerMainInner {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .headerLogo {
+    height: 32px;
+  }
+}

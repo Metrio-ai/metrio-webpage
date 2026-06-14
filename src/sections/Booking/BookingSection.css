@@ -1,0 +1,133 @@
+.bookingSection {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border);
+}
+
+.bookingInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 1.25fr) minmax(280px, 0.75fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.bookingCalColumn {
+  order: 1;
+  min-width: 0;
+}
+
+.bookingCalLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.bookingCalLabel .material-icons {
+  font-size: 18px;
+}
+
+.bookingIntro {
+  order: 2;
+  position: sticky;
+  top: calc(5rem + var(--space-4));
+  padding: var(--space-8);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.bookingLead {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.bookingBenefits {
+  list-style: none;
+  margin: 0 0 var(--space-8);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.bookingBenefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  line-height: var(--leading-snug);
+}
+
+.bookingBenefits .material-icons {
+  flex-shrink: 0;
+  font-size: 22px;
+  color: var(--color-accent);
+  margin-top: 1px;
+}
+
+.bookingBenefits a {
+  color: var(--color-accent);
+  font-weight: var(--font-semibold);
+}
+
+.bookingAltLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent);
+  transition: gap var(--transition-base);
+}
+
+.bookingAltLink:hover {
+  gap: var(--space-3);
+}
+
+.bookingAltLink .material-icons {
+  font-size: 18px;
+}
+
+.bookingCal {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .bookingInner {
+    grid-template-columns: 1fr;
+  }
+
+  .bookingCalColumn {
+    order: 1;
+  }
+
+  .bookingIntro {
+    order: 2;
+    position: static;
+    text-align: center;
+  }
+
+  .bookingLead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .bookingBenefits {
+    align-items: center;
+  }
+
+  .bookingBenefits li {
+    max-width: 36ch;
+    text-align: left;
+  }
+}

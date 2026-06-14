@@ -11,7 +11,7 @@ const Contact = () => {
             ¿Qué proyecto tienes en mente?
           </h2>
           <p className="contactLead">
-            Primera conversación sin compromiso. Estrategia de datos, dashboards, desarrollo de producto o transformación digital. Te respondemos con una propuesta a medida.
+            Cuéntanos tu reto. Primera conversación sin compromiso y respuesta en 48 horas.
           </p>
           <p className="contactFaqLink">
             <Link to="/faq">Preguntas frecuentes</Link>

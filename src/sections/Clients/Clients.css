@@ -1,0 +1,70 @@
+.clientsSection {
+  padding: clamp(4rem, 8vw, 6rem) var(--section-padding-x);
+  background: linear-gradient(180deg, var(--color-bg-elevated) 0%, var(--color-bg-subtle) 100%);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.clientsHeader {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.clientsLead {
+  margin: var(--space-4) auto 0;
+  max-width: 56ch;
+}
+
+.clientsInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.clientsCta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+}
+
+.clientsBookLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: #fff;
+  background: var(--color-cta);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-base), transform var(--transition-fast);
+}
+
+.clientsBookLink:hover {
+  background: var(--color-cta-hover);
+  transform: translateY(-1px);
+}
+
+.clientsBookLink .material-icons {
+  font-size: 18px;
+}
+
+.clientsCtaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent);
+  transition: gap var(--transition-base);
+}
+
+.clientsCtaLink:hover {
+  gap: var(--space-3);
+}
+
+.clientsCtaLink .material-icons {
+  font-size: 20px;
+}

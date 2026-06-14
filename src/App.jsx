@@ -1,11 +1,15 @@
 import Layout from './components/Layout'
 import FadeInSection from './components/FadeInSection'
 import About from './sections/About/About'
-import Contact from './sections/Contact/Contact'
+import AiSection from './sections/Ai/AiSection'
+import BookingSection from './sections/Booking/BookingSection'
+import Clients from './sections/Clients/Clients'
 import Hero from './sections/Hero/Hero'
+import HomeFaq from './sections/Faq/HomeFaq'
 import HowItWorks from './sections/HowItWorks/HowItWorks'
 import Services from './sections/Services/Services'
 import Stats from './sections/Stats/Stats'
+import TechStack from './sections/TechStack/TechStack'
 import './styles/App.css'
 
 function App () {
@@ -17,8 +21,12 @@ function App () {
         <About />
         <HowItWorks />
         <Services />
+        <TechStack />
+        <AiSection />
+        <Clients />
+        <HomeFaq />
         <FadeInSection id="contact">
-          <Contact />
+          <BookingSection />
         </FadeInSection>
       </main>
     </Layout>
