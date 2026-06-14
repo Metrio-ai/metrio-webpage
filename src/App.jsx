@@ -1,16 +1,19 @@
+import { lazy } from 'react'
 import Layout from './components/Layout'
+import DeferredSection from './components/DeferredSection'
 import FadeInSection from './components/FadeInSection'
 import About from './sections/About/About'
-import AiSection from './sections/Ai/AiSection'
-import BookingSection from './sections/Booking/BookingSection'
-import Clients from './sections/Clients/Clients'
 import Hero from './sections/Hero/Hero'
-import HomeFaq from './sections/Faq/HomeFaq'
 import HowItWorks from './sections/HowItWorks/HowItWorks'
 import Services from './sections/Services/Services'
 import Stats from './sections/Stats/Stats'
-import TechStack from './sections/TechStack/TechStack'
 import './styles/App.css'
+
+const TechStack = lazy(() => import('./sections/TechStack/TechStack'))
+const AiSection = lazy(() => import('./sections/Ai/AiSection'))
+const Clients = lazy(() => import('./sections/Clients/Clients'))
+const HomeFaq = lazy(() => import('./sections/Faq/HomeFaq'))
+const BookingSection = lazy(() => import('./sections/Booking/BookingSection'))
 
 function App () {
   return (
@@ -21,12 +24,22 @@ function App () {
         <About />
         <HowItWorks />
         <Services />
-        <TechStack />
-        <AiSection />
-        <Clients />
-        <HomeFaq />
+        <DeferredSection minHeight={280}>
+          <TechStack />
+        </DeferredSection>
+        <DeferredSection minHeight={240}>
+          <AiSection />
+        </DeferredSection>
+        <DeferredSection minHeight={320}>
+          <Clients />
+        </DeferredSection>
+        <DeferredSection minHeight={200}>
+          <HomeFaq />
+        </DeferredSection>
         <FadeInSection id="contact">
-          <BookingSection />
+          <DeferredSection minHeight={360}>
+            <BookingSection />
+          </DeferredSection>
         </FadeInSection>
       </main>
     </Layout>

@@ -1,7 +1,6 @@
 import { StrictMode, lazy, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
-import '@fontsource-variable/plus-jakarta-sans/wght.css'
 import './styles/index.css'
 import App from './App.jsx'
 import Layout from './components/Layout'

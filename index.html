@@ -17,11 +17,23 @@
   <link rel="icon" type="image/svg+xml" href="./metrioLogo.svg" />
   <link rel="apple-touch-icon" href="./metrioLogo.svg" />
 
-  <link rel="preconnect" href="https://app.cal.com" crossorigin />
+  <link rel="preload" href="./fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <style>
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-display: swap;
+      font-weight: 200 800;
+      src: url('./fonts/plus-jakarta-sans-latin.woff2') format('woff2-variations');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
+
   <link rel="dns-prefetch" href="https://app.cal.com" />
 
-  <!-- Hero LCP – imagen local optimizada -->
-  <link rel="preload" as="image" href="./hero/consultoria.webp" type="image/webp" fetchpriority="high" />
+  <!-- Hero LCP – responsive -->
+  <link rel="preload" as="image" href="./hero/consultoria-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 768px)" />
+  <link rel="preload" as="image" href="./hero/consultoria.webp" type="image/webp" fetchpriority="high" media="(min-width: 769px)" />
 
   <!-- Material Icons – carga diferida (no bloquea render) -->
   <link
@@ -252,8 +264,89 @@
   </script>
   <link rel="alternate" type="text/plain" href="https://metrio.es/llms.txt" title="Metrio Consulting — contexto para IA" />
   <link rel="alternate" type="text/plain" href="https://metrio.es/ai.txt" title="Metrio Consulting — resumen para IA" />
+  <style id="hero-critical">
+    #hero-static .heroContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: clamp(580px, 84vh, 820px);
+      position: relative;
+      padding: clamp(3.5rem, 7vw, 6rem) 1.25rem;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    }
+    #hero-static .heroBgPicture { position: absolute; inset: 0; z-index: 0; }
+    #hero-static .heroBgImg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center 25%; opacity: 0.18;
+    }
+    [data-theme="dark"] #hero-static .heroBgImg { opacity: 0.22; }
+    #hero-static .heroOverlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(100deg, rgba(248,249,251,0.96) 0%, rgba(248,249,251,0.88) 55%, rgba(248,249,251,0.72) 100%);
+    }
+    [data-theme="dark"] #hero-static .heroOverlay {
+      background: linear-gradient(100deg, rgba(12,14,20,0.93) 0%, rgba(12,14,20,0.86) 55%, rgba(12,14,20,0.78) 100%);
+    }
+    #hero-static .heroInner { position: relative; z-index: 2; width: 100%; max-width: 72rem; margin: 0 auto; }
+    #hero-static .heroContent { display: flex; flex-direction: column; align-items: flex-start; max-width: 680px; }
+    #hero-static .heroEyebrow {
+      font-size: 0.875rem; font-weight: 600; color: #1e3a5f; text-transform: uppercase;
+      letter-spacing: 0.12em; margin-bottom: 1rem;
+    }
+    [data-theme="dark"] #hero-static .heroEyebrow { color: #7ba3d4; }
+    #hero-static .heroDisplay {
+      font-size: clamp(1.875rem, 4vw, 3rem); font-weight: 700; line-height: 1.2;
+      color: #0f172a; letter-spacing: -0.02em; margin: 0 0 1rem;
+    }
+    [data-theme="dark"] #hero-static .heroDisplay { color: #f1f5f9; }
+    #hero-static .heroSubtext { font-size: 1.125rem; color: #475569; line-height: 1.375; margin: 0; max-width: 42ch; }
+    [data-theme="dark"] #hero-static .heroSubtext { color: #94a3b8; }
+    @media (max-width: 768px) {
+      #hero-static .heroContainer { min-height: auto; padding: 4rem 1.25rem; }
+      #hero-static .heroContent { align-items: center; text-align: center; max-width: none; }
+      #hero-static .heroSubtext { max-width: none; }
+    }
+  </style>
 </head>
 <body>
+  <div id="hero-static">
+    <section class="heroContainer" aria-labelledby="hero-static-heading">
+      <picture class="heroBgPicture">
+        <source media="(max-width: 768px)" srcset="./hero/consultoria-mobile.webp" type="image/webp" />
+        <img
+          class="heroBgImg"
+          src="./hero/consultoria.webp"
+          alt=""
+          width="960"
+          height="640"
+          fetchpriority="high"
+          decoding="sync"
+        />
+      </picture>
+      <div class="heroOverlay" aria-hidden="true"></div>
+      <div class="heroInner">
+        <div class="heroContent">
+          <p class="heroEyebrow">Metrio Consulting · Valencia, España</p>
+          <h1 id="hero-static-heading" class="heroDisplay">
+            Transforma tus datos en <strong>decisiones con impacto</strong>
+          </h1>
+          <p class="heroSubtext">
+            Consultora tecnológica en España: proyectos de consultoría en dashboards,
+            IA, automatización y transformación digital. Respuesta en 48&nbsp;h.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      if (window.matchMedia('(min-width: 769px)').matches) {
+        document.getElementById('hero-static')?.remove()
+      }
+    })()
+  </script>
   <div id="root"></div>
   <noscript>
     <h1>Metrio Consulting — Consultora tecnológica en Valencia, España</h1>

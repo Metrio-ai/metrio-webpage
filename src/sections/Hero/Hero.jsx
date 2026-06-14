@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Hero.css'
 
-const HERO_IMAGE = `${import.meta.env.BASE_URL}hero/consultoria.webp`
+const BASE = import.meta.env.BASE_URL
+const HERO_IMAGE_DESKTOP = `${BASE}hero/consultoria.webp`
+const HERO_IMAGE_MOBILE = `${BASE}hero/consultoria-mobile.webp`
 
 const EXPERTISE = [
   {
@@ -26,8 +28,13 @@ function Hero () {
   const [introFading, setIntroFading] = useState(false)
 
   useEffect(() => {
+    document.getElementById('hero-static')?.remove()
+  }, [])
+
+  useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) return undefined
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    if (prefersReduced || isMobile) return undefined
     setShowIntro(true)
     const fadeTimer = setTimeout(() => setIntroFading(true), INTRO_HOLD_MS - 600)
     const hideTimer = setTimeout(() => setShowIntro(false), INTRO_HOLD_MS)
@@ -39,16 +46,19 @@ function Hero () {
 
   return (
     <section className="heroContainer" id="hero" aria-labelledby="hero-heading">
-      <img
-        className="heroBgImg"
-        src={HERO_IMAGE}
-        alt=""
-        width={960}
-        height={640}
-        fetchPriority="high"
-        decoding="async"
-        aria-hidden="true"
-      />
+      <picture className="heroBgPicture">
+        <source media="(max-width: 768px)" srcSet={HERO_IMAGE_MOBILE} type="image/webp" />
+        <img
+          className="heroBgImg"
+          src={HERO_IMAGE_DESKTOP}
+          alt=""
+          width={960}
+          height={640}
+          fetchPriority="high"
+          decoding="async"
+          aria-hidden="true"
+        />
+      </picture>
       <div className="heroOverlay" aria-hidden="true" />
 
       <div className="heroInner">

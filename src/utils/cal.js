@@ -2,6 +2,17 @@ const CAL_ORIGIN = 'https://app.cal.com'
 const CAL_SCRIPT = 'https://app.cal.com/embed/embed.js'
 export const CAL_LINK = 'santi-corell-7cn8g6/llamada-descubrimiento'
 
+function ensureCalPreconnect () {
+  if (typeof document === 'undefined') return
+  if (document.querySelector('link[data-cal-preconnect]')) return
+  const link = document.createElement('link')
+  link.rel = 'preconnect'
+  link.href = CAL_ORIGIN
+  link.crossOrigin = 'anonymous'
+  link.dataset.calPreconnect = 'true'
+  document.head.appendChild(link)
+}
+
 function bootstrapCalLoader () {
   if (typeof window === 'undefined' || window.Cal) return
 
@@ -41,6 +52,7 @@ export function loadCal () {
   if (typeof window === 'undefined') return Promise.resolve(null)
   if (window.__calReady) return window.__calReady
 
+  ensureCalPreconnect()
   bootstrapCalLoader()
 
   window.__calReady = new Promise((resolve) => {
