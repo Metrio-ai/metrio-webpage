@@ -63,7 +63,7 @@ function LocationPage () {
           },
           serviceType: page.service.serviceName
         },
-        buildFaqSchema(page.faqs)
+        buildFaqSchema(page.faqs, `${page.url}#faq`)
       ]
     }
 

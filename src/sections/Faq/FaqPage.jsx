@@ -36,7 +36,7 @@ function FaqPage () {
             description: t.description
           }))
         },
-        buildFaqSchema(faqHubPreview)
+        buildFaqSchema(faqHubPreview, 'https://metrio.es/faq#faq')
       ]
     }
     const script = document.createElement('script')

@@ -54,7 +54,7 @@ function ClientsPage () {
             }))
           }
         },
-        buildFaqSchema(clientsFaqs)
+        buildFaqSchema(clientsFaqs, 'https://metrio.es/clientes#faq')
       ]
     }
     const script = document.createElement('script')

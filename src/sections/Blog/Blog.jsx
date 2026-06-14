@@ -5,7 +5,7 @@ import { getPosts } from '../../data/blogPosts'
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../../data/seo'
 import Layout from '../../components/Layout'
 import BookCallActions from '../../components/BookCallActions'
-import ExpandableFaqSection, { buildFaqSchema } from '../../components/ExpandableFaqSection'
+import ExpandableFaqSection, { buildFaqSchemaJsonLd } from '../../components/ExpandableFaqSection'
 import { blogFaqs } from '../../data/faqs/blog'
 import './Blog.css'
 
@@ -26,7 +26,7 @@ function Blog () {
     if (metaDesc) metaDesc.setAttribute('content', 'Artículos sobre estrategia de datos, Business Intelligence, Power BI, KPIs, transformación digital, leads cualificados y desarrollo de producto. Metrio Consulting.')
     const script = document.createElement('script')
     script.type = 'application/ld+json'
-    script.textContent = JSON.stringify(buildFaqSchema(blogFaqs))
+    script.textContent = JSON.stringify(buildFaqSchemaJsonLd(blogFaqs, 'https://metrio.es/blog#faq'))
     script.id = 'blog-faq-schema'
     document.head.appendChild(script)
     return () => {

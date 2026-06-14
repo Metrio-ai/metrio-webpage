@@ -3,7 +3,7 @@
  */
 
 import { faqHubPreview, FAQ_TOPICS, getTotalFaqCount } from './faqPages.js'
-import { buildFaqSchema } from '../components/ExpandableFaqSection.jsx'
+import { buildFaqSchemaJsonLd } from '../components/ExpandableFaqSection.jsx'
 
 export { FAQ_TOPICS, faqHubPreview, getTotalFaqCount, getFaqTopic, getAllFaqTopicSlugs } from './faqPages.js'
 
@@ -17,5 +17,5 @@ export const FAQ_CATEGORIES = [{ id: 'all', label: 'Todas' }]
 export const faqItems = faqHubPreview
 
 export function getFaqSchema () {
-  return buildFaqSchema(faqHubPreview)
+  return buildFaqSchemaJsonLd(faqHubPreview, 'https://metrio.es/faq#faq')
 }

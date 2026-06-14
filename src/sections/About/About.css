@@ -114,27 +114,57 @@
   .aboutGrid {
     grid-template-columns: 1fr;
   }
-
-  .aboutContent {
-    text-align: center;
-  }
-
-  .aboutTitle {
-    max-width: 20ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .aboutDescription {
-    max-width: 56ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 
 @media (max-width: 768px) {
   .aboutContainer {
     padding: var(--section-padding-y) var(--space-4);
+  }
+
+  .aboutContent {
+    text-align: left;
+  }
+
+  .aboutTitle {
+    font-size: var(--text-2xl);
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .aboutDescription {
+    font-size: var(--text-base);
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .aboutPoints {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    margin-inline: calc(-1 * var(--space-4));
+    padding-inline: var(--space-4);
+    padding-bottom: var(--space-2);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .aboutPoints li {
+    flex: 0 0 min(78vw, 280px);
+    scroll-snap-align: start;
+    padding: var(--space-3);
+  }
+
+  .aboutCtaLink {
+    margin-top: var(--space-5);
   }
 }
 

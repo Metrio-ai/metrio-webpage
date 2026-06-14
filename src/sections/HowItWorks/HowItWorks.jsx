@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import SectionImage from '../../components/SectionImage'
 import { SECTION_IMAGES } from '../../data/sectionImages'
 import BookCallActions from '../../components/BookCallActions'
+import { useIsMobile } from '../../hooks/useMediaQuery'
 import './HowItWorks.css'
 
 const PERSONAS = [
@@ -79,6 +80,7 @@ function getHowToSchema () {
 }
 
 function HowItWorks () {
+  const isMobile = useIsMobile()
   const [activePersona, setActivePersona] = useState('empresa')
   const [diagramVisible, setDiagramVisible] = useState(false)
   const sectionRef = useRef(null)
@@ -117,6 +119,7 @@ function HowItWorks () {
     >
       <div className="howItWorksInner">
         <div className="howIntroGrid">
+          {!isMobile && (
           <div className="howIntroVisual">
             <SectionImage
               src={SECTION_IMAGES.howItWorks}
@@ -126,6 +129,7 @@ function HowItWorks () {
               caption="Metodología clara, entregas iterativas y comunicación directa"
             />
           </div>
+          )}
           <div className="howIntroContent">
             <p className="howItWorksLabel">Cómo trabajamos</p>
             <h2 id="how-title" className="howItWorksTitle">
@@ -183,16 +187,12 @@ function HowItWorks () {
             aria-hidden="false"
           >
             <div className="howDiagramLine" aria-hidden="true" />
-            <ol className="howDiagramSteps" itemScope itemType="https://schema.org/HowTo">
-              <meta itemProp="name" content="Proceso de trabajo Metrio Consulting" />
+            <ol className="howDiagramSteps">
               {STEPS.map((step, index) => (
                 <li
                   key={step.id}
                   className="howStep"
                   style={{ '--step-order': index }}
-                  itemProp="step"
-                  itemScope
-                  itemType="https://schema.org/HowToStep"
                 >
                   <span className="howStepNumber" aria-hidden="true">
                     {step.number}
@@ -201,10 +201,10 @@ function HowItWorks () {
                     <span className="material-icons howStepIcon">{step.icon}</span>
                   </span>
                   <div className="howStepContent">
-                    <h4 className="howStepTitle" itemProp="name">
+                    <h4 className="howStepTitle">
                       {step.title}
                     </h4>
-                    <p className="howStepDescription" itemProp="text">
+                    <p className="howStepDescription">
                       {step.description}
                     </p>
                   </div>

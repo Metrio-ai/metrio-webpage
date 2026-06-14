@@ -1,21 +1,26 @@
 import { Link } from 'react-router-dom'
 import SectionImage from '../../components/SectionImage'
 import { SECTION_IMAGES } from '../../data/sectionImages'
+import { useIsMobile } from '../../hooks/useMediaQuery'
 import './About.css'
 
 function About () {
+  const isMobile = useIsMobile()
+
   return (
     <section className="aboutContainer" id="quiene-somos" aria-labelledby="about-title">
       <div className="aboutGrid">
-        <div className="aboutVisual">
-          <SectionImage
-            src={SECTION_IMAGES.about}
-            alt="Equipo de consultoría tecnológica colaborando en un proyecto de datos e IA"
-            width={960}
-            height={660}
-            caption="Consultores e ingenieros trabajando codo a codo con tu equipo"
-          />
-        </div>
+        {!isMobile && (
+          <div className="aboutVisual">
+            <SectionImage
+              src={SECTION_IMAGES.about}
+              alt="Equipo de consultoría tecnológica colaborando en un proyecto de datos e IA"
+              width={960}
+              height={660}
+              caption="Consultores e ingenieros trabajando codo a codo con tu equipo"
+            />
+          </div>
+        )}
         <div className="aboutContent">
           <p className="aboutHeader">Quiénes somos</p>
           <h2 id="about-title" className="aboutTitle">
