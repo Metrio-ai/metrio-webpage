@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useLocation, Link, NavLink } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
-import { CONTACT_BOOK, CAREERS_PATH, METRIO_EMAIL } from '../constants/contact'
+import { CONTACT_BOOK, METRIO_EMAIL } from '../constants/contact'
+import { MAIN_NAV } from '../data/navigation'
+import { HeaderNavLink } from './HeaderNavDropdown'
+import './HeaderNavDropdown.css'
 import './Header.css'
-
-const NAV_LINKS = [
-  { to: '/sobre-nosotros', label: 'Nosotros', homeHash: '#about' },
-  { to: '/services', label: 'Servicios', homeHash: '#services' },
-  { to: '/clientes', label: 'Clientes', homeHash: '#clientes' },
-  { to: '/blog', label: 'Blog' }
-]
 
 function Header () {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false)
@@ -79,26 +75,14 @@ function Header () {
             aria-label="Navegación principal"
           >
             <ul className="headerNavList">
-              {NAV_LINKS.map(({ to, label, homeHash }) => (
-                <li key={to}>
-                  {isHomePage && homeHash ? (
-                    <a href={homeHash} className="headerNavLink" onClick={closeMenu}>{label}</a>
-                  ) : (
-                    <NavLink to={to} className={({ isActive }) => `headerNavLink${isActive ? ' headerNavLink--active' : ''}`} onClick={closeMenu}>
-                      {label}
-                    </NavLink>
-                  )}
-                </li>
+              {MAIN_NAV.map((item) => (
+                <HeaderNavLink
+                  key={item.label}
+                  item={item}
+                  isHomePage={isHomePage}
+                  onNavigate={closeMenu}
+                />
               ))}
-              <li>
-                <NavLink
-                  to={CAREERS_PATH}
-                  className={({ isActive }) => `headerNavLink headerNavLink--careers${isActive ? ' headerNavLink--active' : ''}`}
-                  onClick={closeMenu}
-                >
-                  Trabaja con nosotros
-                </NavLink>
-              </li>
             </ul>
 
             <div className="headerNavActions">

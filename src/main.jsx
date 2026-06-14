@@ -6,6 +6,7 @@ import './styles/index.css'
 import App from './App.jsx'
 import Layout from './components/Layout'
 import { ThemeProvider } from './context/ThemeContext'
+import { LOCATION_SERVICE_TYPES } from './data/locationPages.js'
 
 const Blog = lazy(() => import('./sections/Blog/Blog.jsx'))
 const BlogPost = lazy(() => import('./sections/Blog/BlogPost.jsx'))
@@ -14,7 +15,10 @@ const ServicesPage = lazy(() => import('./sections/Services/ServicesPage.jsx'))
 const AboutPage = lazy(() => import('./sections/About/AboutPage.jsx'))
 const ClientsPage = lazy(() => import('./sections/Clients/ClientsPage.jsx'))
 const FaqPage = lazy(() => import('./sections/Faq/FaqPage.jsx'))
+const FaqTopicPage = lazy(() => import('./sections/Faq/FaqTopicPage.jsx'))
 const CareersPage = lazy(() => import('./sections/Careers/CareersPage.jsx'))
+const LocationHubPage = lazy(() => import('./sections/Locations/LocationHubPage.jsx'))
+const LocationPage = lazy(() => import('./sections/Locations/LocationPage.jsx'))
 
 const PageLoader = () => (
   <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
@@ -70,9 +74,17 @@ const router = createBrowserRouter([
     element: withSuspense(FaqPage)
   },
   {
+    path: '/faq/:slug',
+    element: withSuspense(FaqTopicPage)
+  },
+  {
     path: '/trabaja-con-nosotros',
     element: withSuspense(CareersPage)
-  }
+  },
+  ...Object.keys(LOCATION_SERVICE_TYPES).flatMap((slug) => [
+    { path: `/${slug}`, element: withSuspense(LocationHubPage) },
+    { path: `/${slug}/:citySlug`, element: withSuspense(LocationPage) }
+  ])
 ])
 
 createRoot(document.getElementById('root')).render(

@@ -17,52 +17,102 @@ const ABOUT_SEO = {
     'consultora tecnológica Valencia, consultoría IA España, transformación digital Valencia, emprendedores tecnología, automatización empresas, business intelligence España'
 }
 
-const MILESTONES = [
+const HERO_BADGES = [
+  { icon: 'location_on', label: 'Valencia, España' },
+  { icon: 'language', label: 'España e internacional' },
+  { icon: 'verified', label: '150+ proyectos' }
+]
+
+const STATS = [
+  { value: '5+', label: 'Años en datos, IA y automatización' },
+  { value: '150+', label: 'Proyectos entregados en producción' },
+  { value: '48 h', label: 'Respuesta a nuevas consultas' },
+  { value: '100%', label: 'Enfoque en ejecución, no en slides' }
+]
+
+const TIMELINE = [
   {
+    step: '01',
     year: 'Origen',
-    title: 'De la idea al primer proyecto',
-    text: 'Nacimos con una convicción clara: la tecnología solo vale si llega a producción y genera impacto real. Empezamos como emprendedores resolviendo problemas concretos de datos, automatización e ingeniería para empresas que necesitaban resultados, no presentaciones.'
+    title: 'De la idea al primer proyecto real',
+    text: 'Nacimos con una convicción: la tecnología solo vale si llega a producción. Empezamos resolviendo problemas concretos de datos, automatización e ingeniería — sin presentaciones interminables.'
   },
   {
+    step: '02',
     year: 'Crecimiento',
-    title: 'De Valencia al resto de España',
-    text: 'Desde Valencia fuimos ampliando clientes por toda España: pymes, scale-ups y equipos de dirección que buscaban un partner que entendiera negocio y código. Trabajo remoto, reuniones cuando hace falta y entregas iterativas.'
+    title: 'De Valencia a toda España',
+    text: 'Fuimos ampliando clientes: pymes, scale-ups y dirección que buscaba un partner que entendiera negocio y código. Remoto por defecto, presencial cuando aporta.'
   },
   {
+    step: '03',
     year: 'Hoy',
-    title: 'España e internacional, siempre ejecutando',
-    text: 'Hoy llevamos proyectos en España y en mercados internacionales: agentes de IA, dashboards, automatizaciones y producto digital. Seguimos siendo un equipo joven, ágil y con mentalidad de fundadores: ownership, velocidad y cero humo.'
+    title: 'Consultora que ejecuta, en ES e internacional',
+    text: 'Agentes de IA, dashboards, automatizaciones y producto digital desplegados y en uso. Equipo joven, ágil, con mentalidad de fundadores: ownership, velocidad y cero humo.'
   }
 ]
+
+const COMPARE = {
+  them: [
+    'Informes de 80 diapositivas',
+    'Account manager que filtra todo',
+    'Roadmaps de seis meses sin entrega',
+    'Promesas de IA sin despliegue',
+    'Facturación por horas sin KPIs'
+  ],
+  us: [
+    'Entregables en producción cada pocas semanas',
+    'Hablas con quien implementa',
+    'Quick wins medibles desde el mes 1',
+    'IA integrada en tus procesos reales',
+    'Impacto acordado antes de empezar'
+  ]
+}
 
 const VALUES = [
   {
     icon: 'rocket_launch',
     title: 'Espíritu emprendedor',
-    text: 'Pensamos como quien construye negocio: priorizamos, iteramos y medimos. No somos una consultora de informes eternos.'
+    text: 'Priorizamos, iteramos y medimos como quien construye negocio. Decimos “aún no compensa” cuando es verdad.'
   },
   {
     icon: 'engineering',
     title: 'Ejecutamos en producción',
-    text: 'IA, automatización, BI y software desplegado y en uso. Diagnóstico, diseño, desarrollo y acompañamiento hasta que funciona.'
+    text: 'IA, automatización, BI y software desplegado. Diagnóstico → diseño → código → acompañamiento hasta que funciona.'
   },
   {
     icon: 'public',
     title: 'Valencia, alcance global',
-    text: 'Sede en Valencia con proyectos en toda España y clientes internacionales. Español e inglés, remoto o presencial según el proyecto.'
+    text: 'Base en Valencia, proyectos en toda España y clientes internacionales. Español e inglés.'
   },
   {
     icon: 'handshake',
     title: 'Codo a codo contigo',
-    text: 'Trabajamos con dirección, operaciones, datos y tecnología. Comunicación directa, respuesta en 48 h y transparencia en cada entrega.'
+    text: 'Con dirección, operaciones, datos y tech. Comunicación directa, respuesta en 48 h, transparencia en cada hito.'
   }
 ]
 
-const STATS = [
-  { value: '5+', label: 'Años llevando proyectos de datos, IA y automatización' },
-  { value: '150+', label: 'Proyectos entregados con impacto medible' },
-  { value: 'ES + INT', label: 'Clientes en España y mercados internacionales' },
-  { value: '48 h', label: 'Tiempo de respuesta habitual a nuevas consultas' }
+const PROFILES = [
+  {
+    icon: 'corporate_fare',
+    title: 'Empresa consolidada',
+    text: 'Modernizar procesos, centralizar datos, implementar IA con gobernanza y ROI claro — sin paralizar la operación.'
+  },
+  {
+    icon: 'trending_up',
+    title: 'Startup en crecimiento',
+    text: 'MVP, automatización para escalar sin contratar de más, BI para inversores y agentes internos para equipos pequeños.'
+  },
+  {
+    icon: 'flag',
+    title: 'Proyecto concreto',
+    text: 'Un dashboard, un agente, una integración o un flujo automatizado con alcance cerrado y fecha de entrega.'
+  }
+]
+
+const PILLARS = [
+  { icon: 'search', title: 'Diagnóstico honesto', text: 'Entendemos el reto antes de proponer tecnología.' },
+  { icon: 'route', title: 'Roadmap accionable', text: 'Priorizamos quick wins y entregas iterativas.' },
+  { icon: 'monitoring', title: 'Impacto medible', text: 'KPIs acordados: tiempo, calidad, adopción o negocio.' }
 ]
 
 function AboutPage () {
@@ -96,7 +146,7 @@ function AboutPage () {
           about: { '@id': 'https://metrio.es/#organization' },
           speakable: {
             '@type': 'SpeakableSpecification',
-            cssSelector: ['.aboutPageHeroTitle', '.aboutPageHeroLead', '.aboutPageStoryLead']
+            cssSelector: ['.aboutPageHeroTitle', '.aboutPageHeroLead', '.aboutPageManifestoQuote']
           }
         },
         {
@@ -141,31 +191,39 @@ function AboutPage () {
     <Layout className="aboutPage">
       <main>
         <header className="aboutPageHero">
-          <div className="aboutPageHeroSplit">
-            <div className="aboutPageHeroVisual">
-              <SectionImage
-                src={SECTION_IMAGES.aboutPageHero}
-                alt="Proceso de consultoría: diagnóstico, ejecución y resultados medibles"
-                width={960}
-                height={660}
-                priority
-              />
-            </div>
-            <div className="aboutPageHeroContent">
-              <p className="sectionLabel">Sobre nosotros</p>
-              <h1 className="aboutPageHeroTitle">
-                Consultores e ingenieros con espíritu emprendedor desde Valencia
-              </h1>
-              <p className="aboutPageHeroLead">
-                Más de cinco años llevando proyectos de IA, automatización, datos y transformación
-                digital en España e internacional. Ejecutamos de principio a fin — no solo recomendamos.
-              </p>
-              <BookCallActions
-                align="start"
-                variant="hero"
-                scrollTarget="#about-story-title"
-                scrollLabel="Nuestra historia"
-              />
+          <div className="aboutPageHeroBg" aria-hidden="true" />
+          <div className="aboutPageHeroInner">
+            <div className="aboutPageHeroGrid">
+              <div className="aboutPageHeroContent">
+                <p className="sectionLabel">Sobre nosotros</p>
+                <h1 className="aboutPageHeroTitle">
+                  La consultora tecnológica que <em>ejecuta</em>, no la que presenta
+                </h1>
+                <p className="aboutPageHeroLead">
+                  Consultores e ingenieros con espíritu emprendedor desde Valencia.
+                  Más de cinco años y 150+ proyectos de IA, automatización, BI y transformación
+                  digital en España e internacional.
+                </p>
+                <ul className="aboutPageHeroBadges">
+                  {HERO_BADGES.map((b) => (
+                    <li key={b.label}>
+                      <span className="material-icons" aria-hidden="true">{b.icon}</span>
+                      {b.label}
+                    </li>
+                  ))}
+                </ul>
+                <BookCallActions align="start" variant="hero" />
+              </div>
+              <div className="aboutPageHeroVisual">
+                <SectionImage
+                  src={SECTION_IMAGES.aboutPageHero}
+                  alt="Consultores e ingenieros de Metrio desarrollando soluciones de IA, datos y automatización"
+                  width={960}
+                  height={660}
+                  priority
+                  caption="El mismo equipo desde el diagnóstico hasta producción"
+                />
+              </div>
             </div>
           </div>
         </header>
@@ -181,23 +239,114 @@ function AboutPage () {
           </div>
         </section>
 
+        <section className="aboutPageManifesto" aria-labelledby="about-manifesto-title">
+          <div className="aboutPageManifestoInner">
+            <p className="sectionLabel">Nuestra creencia</p>
+            <h2 id="about-manifesto-title" className="aboutPageManifestoTitle">
+              Las empresas no necesitan más slides
+            </h2>
+            <blockquote className="aboutPageManifestoQuote">
+              Necesitan soluciones que funcionen el lunes por la mañana. Por eso Metrio existe:
+              consultoría tecnológica con código, datos e IA desplegados — con métricas, no con humo.
+            </blockquote>
+            <div className="aboutPagePillars">
+              {PILLARS.map((p) => (
+                <article key={p.title} className="aboutPagePillar">
+                  <span className="material-icons aboutPagePillarIcon" aria-hidden="true">{p.icon}</span>
+                  <h3 className="aboutPagePillarTitle">{p.title}</h3>
+                  <p className="aboutPagePillarText">{p.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="aboutPageStory" aria-labelledby="about-story-title">
           <div className="aboutPageStoryInner">
-            <p className="sectionLabel">Nuestra historia</p>
-            <h2 id="about-story-title" className="aboutPageStoryTitle">
-              De emprendedores que construyen, no de consultores que presentan
+            <div className="aboutPageStoryHeader">
+              <div>
+                <p className="sectionLabel">Nuestra historia</p>
+                <h2 id="about-story-title" className="aboutPageStoryTitle">
+                  De emprendedores que construyen
+                </h2>
+                <p className="aboutPageStoryLead">
+                  Metrio nació en Valencia con una idea simple: unir asesoría estratégica y
+                  ejecución técnica en el mismo equipo. Sin capas, sin burocracia, sin promesas vacías.
+                </p>
+              </div>
+              <SectionImage
+                src={SECTION_IMAGES.aboutPageStory}
+                alt="Equipo de consultoría planificando un proyecto de transformación digital"
+                width={640}
+                height={440}
+                className="aboutPageStoryImg"
+              />
+            </div>
+            <ol className="aboutPageTimeline">
+              {TIMELINE.map((item) => (
+                <li key={item.step} className="aboutPageTimelineItem">
+                  <div className="aboutPageTimelineMarker">
+                    <span className="aboutPageTimelineStep">{item.step}</span>
+                  </div>
+                  <article className="aboutPageTimelineCard">
+                    <p className="aboutPageTimelineYear">{item.year}</p>
+                    <h3 className="aboutPageTimelineTitle">{item.title}</h3>
+                    <p className="aboutPageTimelineText">{item.text}</p>
+                  </article>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="aboutPageCompare" aria-labelledby="about-compare-title">
+          <div className="aboutPageCompareInner">
+            <h2 id="about-compare-title" className="aboutPageCompareTitle">
+              Metrio vs. la consultora tradicional
             </h2>
-            <p className="aboutPageStoryLead">
-              Metrio nació en Valencia con una idea simple: las empresas no necesitan más slides,
-              necesitan soluciones que funcionen. Somos un equipo joven con mentalidad de fundadores —
-              curiosos, exigentes y obsesionados con entregar valor real en cada proyecto.
+            <p className="aboutPageCompareLead">
+              No competimos en tamaño ni en plantillas PowerPoint. Competimos en resultados.
             </p>
-            <div className="aboutPageTimeline">
-              {MILESTONES.map((item) => (
-                <article key={item.year} className="aboutPageMilestone">
-                  <p className="aboutPageMilestoneYear">{item.year}</p>
-                  <h3 className="aboutPageMilestoneTitle">{item.title}</h3>
-                  <p className="aboutPageMilestoneText">{item.text}</p>
+            <div className="aboutPageCompareGrid">
+              <article className="aboutPageCompareCol aboutPageCompareCol--them">
+                <h3 className="aboutPageCompareColTitle">Consultora tradicional</h3>
+                <ul>
+                  {COMPARE.them.map((item) => (
+                    <li key={item}>
+                      <span className="material-icons" aria-hidden="true">close</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+              <article className="aboutPageCompareCol aboutPageCompareCol--us">
+                <h3 className="aboutPageCompareColTitle">Metrio Consulting</h3>
+                <ul>
+                  {COMPARE.us.map((item) => (
+                    <li key={item}>
+                      <span className="material-icons" aria-hidden="true">check_circle</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="aboutPageProfiles" aria-labelledby="about-profiles-title">
+          <div className="aboutPageProfilesInner">
+            <h2 id="about-profiles-title" className="aboutPageProfilesTitle">
+              Con quién trabajamos
+            </h2>
+            <div className="aboutPageProfilesGrid">
+              {PROFILES.map((profile) => (
+                <article key={profile.title} className="aboutPageProfileCard">
+                  <span className="material-icons aboutPageProfileIcon" aria-hidden="true">
+                    {profile.icon}
+                  </span>
+                  <h3 className="aboutPageProfileTitle">{profile.title}</h3>
+                  <p className="aboutPageProfileText">{profile.text}</p>
                 </article>
               ))}
             </div>
@@ -223,6 +372,33 @@ function AboutPage () {
           </div>
         </section>
 
+        <section className="aboutPageValencia" aria-labelledby="about-valencia-title">
+          <div className="aboutPageValenciaInner">
+            <div className="aboutPageValenciaContent">
+              <p className="sectionLabel">Valencia</p>
+              <h2 id="about-valencia-title" className="aboutPageValenciaTitle">
+                Nuestra base, vuestro alcance
+              </h2>
+              <p className="aboutPageValenciaText">
+                Valencia es nuestro hogar: ecosistema emprendedor, talento tech y calidad de vida.
+                Desde aquí servimos a toda España y clientes internacionales en remoto, con presencial
+                puntual cuando el proyecto lo pide.
+              </p>
+              <Link to="/clientes" className="aboutPageValenciaLink">
+                Ver clientes y casos
+                <span className="material-icons" aria-hidden="true">arrow_forward</span>
+              </Link>
+            </div>
+            <SectionImage
+              src={SECTION_IMAGES.aboutPageValencia}
+              alt="Proceso de consultoría y transformación digital desde Valencia"
+              width={720}
+              height={480}
+              className="aboutPageValenciaImg"
+            />
+          </div>
+        </section>
+
         <ExpandableFaqSection
           title="Preguntas frecuentes sobre Metrio Consulting"
           titleId="about-faq-title"
@@ -232,18 +408,22 @@ function AboutPage () {
         />
 
         <section className="aboutPageCta" aria-labelledby="about-cta-title">
-          <h2 id="about-cta-title" className="aboutPageCtaTitle">
-            ¿Quieres conocernos en una llamada?
-          </h2>
-          <p className="aboutPageCtaLead">
-            Cuéntanos tu reto. Primera conversación sin compromiso, respuesta en 48 horas.
-          </p>
-          <BookCallActions />
-          <p className="aboutPageCtaLinks">
-            <Link to="/services">Ver servicios</Link>
-            <span aria-hidden="true">·</span>
-            <Link to="/clientes">Nuestros clientes</Link>
-          </p>
+          <div className="aboutPageCtaInner">
+            <h2 id="about-cta-title" className="aboutPageCtaTitle">
+              ¿Quieres conocernos en una llamada?
+            </h2>
+            <p className="aboutPageCtaLead">
+              Cuéntanos tu reto. Primera conversación sin compromiso, respuesta en 48 horas.
+            </p>
+            <BookCallActions />
+            <p className="aboutPageCtaLinks">
+              <Link to="/services">Ver servicios</Link>
+              <span aria-hidden="true">·</span>
+              <Link to="/trabaja-con-nosotros">Trabaja con nosotros</Link>
+              <span aria-hidden="true">·</span>
+              <Link to="/clientes">Nuestros clientes</Link>
+            </p>
+          </div>
         </section>
       </main>
     </Layout>

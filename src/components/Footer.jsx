@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { METRIO_EMAIL, CONTACT_BOOK, CAREERS_PATH } from '../constants/contact'
+import { SPANISH_CITIES } from '../data/locationPages'
 import './Footer.css'
+
+const FOOTER_QUICK_CITIES = ['madrid', 'barcelona', 'valencia', 'sevilla', 'bilbao']
 
 const FOOTER_COLUMNS = [
   {
@@ -106,6 +109,69 @@ function Footer () {
           </div>
         </div>
       </div>
+
+      <details className="footerLocations">
+        <summary className="footerLocationsSummary">
+          <span className="footerLocationsSummaryText">
+            Consultora de IA y tecnología por ciudad en España
+          </span>
+          <span className="footerLocationsSummaryHint">Ver ciudades</span>
+          <span className="material-icons footerLocationsSummaryIcon" aria-hidden="true">expand_more</span>
+        </summary>
+        <div className="footerLocationsInner">
+          <p className="footerLocationsLead">
+            Proyectos en remoto y presencial puntual — base en Valencia, clientes en toda España.
+          </p>
+          <ul className="footerLocationsQuick">
+            {SPANISH_CITIES.filter((c) => FOOTER_QUICK_CITIES.includes(c.slug)).map((city) => (
+              <li key={`quick-${city.slug}`}>
+                <Link to={`/consultora-ia/${city.slug}`}>IA en {city.name}</Link>
+              </li>
+            ))}
+            <li>
+              <Link to="/consultora-ia" className="footerLocationsMore">Todas las ciudades</Link>
+            </li>
+          </ul>
+          <div className="footerLocationsGroups">
+            <div className="footerLocationsGroup">
+              <h3 className="footerLocationsGroupTitle">
+                <Link to="/consultora-ia">Consultora de IA</Link>
+              </h3>
+              <ul className="footerLocationsList">
+                {SPANISH_CITIES.map((city) => (
+                  <li key={`ia-${city.slug}`}>
+                    <Link to={`/consultora-ia/${city.slug}`}>IA en {city.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="footerLocationsGroup">
+              <h3 className="footerLocationsGroupTitle">
+                <Link to="/consultora-tecnologica">Consultora tecnológica</Link>
+              </h3>
+              <ul className="footerLocationsList">
+                {SPANISH_CITIES.map((city) => (
+                  <li key={`tech-${city.slug}`}>
+                    <Link to={`/consultora-tecnologica/${city.slug}`}>{city.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="footerLocationsGroup">
+              <h3 className="footerLocationsGroupTitle">
+                <Link to="/automatizacion-empresas">Automatización</Link>
+              </h3>
+              <ul className="footerLocationsList">
+                {SPANISH_CITIES.map((city) => (
+                  <li key={`auto-${city.slug}`}>
+                    <Link to={`/automatizacion-empresas/${city.slug}`}>{city.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
 
       <div className="footerBottom">
         <div className="footerBottomInner">

@@ -321,18 +321,28 @@ function writeModule (name, exportName, items) {
 }
 
 mkdirSync(outDir, { recursive: true })
-writeModule('services', 'servicesFaqs', servicesFaqs)
-writeModule('about', 'aboutFaqs', aboutFaqs)
-writeModule('contact', 'contactFaqs', contactFaqs)
-writeModule('clients', 'clientsFaqs', clientsFaqs)
-writeModule('blog', 'blogFaqs', blogFaqs)
-writeModule('home', 'homeFaqs', homeFaqs)
-writeModule('general', 'generalFaqs', generalFaqs)
 
-// Update faq.js re-export
-const faqJs = `/**\n * Preguntas frecuentes – Metrio Consulting.\n * Re-exporta generalFaqs para compatibilidad.\n */\n\nexport { generalFaqs as faqItems } from './faqs/general.js'\nexport { buildFaqSchema } from '../../components/ExpandableFaqSection.jsx'\n\nexport function getFaqSchema () {\n  const { generalFaqs } = require('./faqs/general.js')\n  return buildFaqSchema(generalFaqs)\n}\n`
-// Use ESM properly
-const faqJsEsm = `/**\n * Preguntas frecuentes – Metrio Consulting.\n */\n\nimport { generalFaqs } from './faqs/general.js'\nimport { buildFaqSchema } from '../components/ExpandableFaqSection.jsx'\n\nexport const faqItems = generalFaqs\n\nexport function getFaqSchema () {\n  return buildFaqSchema(faqItems)\n}\n`
-writeFileSync(join(__dirname, '../src/data/faq.js'), faqJsEsm)
+function runWrite () {
+  writeModule('services', 'servicesFaqs', servicesFaqs)
+  writeModule('about', 'aboutFaqs', aboutFaqs)
+  writeModule('contact', 'contactFaqs', contactFaqs)
+  writeModule('clients', 'clientsFaqs', clientsFaqs)
+  writeModule('blog', 'blogFaqs', blogFaqs)
+  writeModule('home', 'homeFaqs', homeFaqs)
+  writeModule('general', 'generalFaqs', generalFaqs)
+  console.log('Done.')
+}
 
-console.log('Done.')
+export {
+  servicesFaqs,
+  aboutFaqs,
+  contactFaqs,
+  clientsFaqs,
+  blogFaqs,
+  homeFaqs,
+  generalFaqs
+}
+
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  runWrite()
+}

@@ -19,15 +19,22 @@ const EXPERTISE = [
   }
 ]
 
+const INTRO_HOLD_MS = 5600
+
 function Hero () {
   const [showIntro, setShowIntro] = useState(false)
+  const [introFading, setIntroFading] = useState(false)
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReduced) return undefined
     setShowIntro(true)
-    const timer = setTimeout(() => setShowIntro(false), 900)
-    return () => clearTimeout(timer)
+    const fadeTimer = setTimeout(() => setIntroFading(true), INTRO_HOLD_MS - 600)
+    const hideTimer = setTimeout(() => setShowIntro(false), INTRO_HOLD_MS)
+    return () => {
+      clearTimeout(fadeTimer)
+      clearTimeout(hideTimer)
+    }
   }, [])
 
   return (
@@ -46,7 +53,10 @@ function Hero () {
 
       <div className="heroInner">
         {showIntro && (
-          <div className="heroPhaseKeywords heroPhaseKeywords--overlay" aria-hidden="true">
+          <div
+            className={`heroPhaseKeywords heroPhaseKeywords--overlay ${introFading ? 'heroPhaseKeywords--fadeOut' : ''}`}
+            aria-hidden="true"
+          >
             <span className="heroKeyword conectar">Conectar</span>
             <span className="heroKeyword digitalizar">Digitalizar</span>
             <span className="heroKeyword impulsar">Impulsar</span>

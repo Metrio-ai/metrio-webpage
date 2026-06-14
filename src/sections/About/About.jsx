@@ -5,7 +5,7 @@ import './About.css'
 
 function About () {
   return (
-    <section className="aboutContainer" id="about" aria-labelledby="about-title">
+    <section className="aboutContainer" id="quiene-somos" aria-labelledby="about-title">
       <div className="aboutGrid">
         <div className="aboutVisual">
           <SectionImage
@@ -17,9 +17,9 @@ function About () {
           />
         </div>
         <div className="aboutContent">
-          <p className="aboutHeader">Sobre nosotros</p>
+          <p className="aboutHeader">Quiénes somos</p>
           <h2 id="about-title" className="aboutTitle">
-            Asesoría tecnológica que ejecuta, no solo recomienda
+            Consultora tecnológica que ejecuta, no solo recomienda
           </h2>
           <p className="aboutDescription">
             Somos una consultora tecnológica: consultores e ingenieros que acompañan
@@ -51,7 +51,7 @@ function About () {
             </li>
           </ul>
           <Link to="/sobre-nosotros" className="aboutCtaLink">
-            Saber más
+            Sobre nosotros
             <span className="material-icons" aria-hidden="true">arrow_forward</span>
           </Link>
         </div>
