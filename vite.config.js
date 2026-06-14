@@ -10,11 +10,19 @@ export default defineConfig({
     modulePreload: { polyfill: false },
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom'],
-          'vendor-router': ['react-router-dom'],
-          'vendor-markdown': ['react-markdown', 'remark-gfm'],
-          'vendor-gallery': ['react-image-gallery']
+        manualChunks (id) {
+          if (id.includes('node_modules/react-markdown') || id.includes('node_modules/remark-gfm')) {
+            return 'vendor-markdown'
+          }
+          if (
+            id.includes('node_modules/react-dom') ||
+            id.includes('node_modules/react/jsx-runtime') ||
+            id.includes('node_modules/react/index.js')
+          ) {
+            return 'vendor-react'
+          }
+          if (id.includes('node_modules/react-router-dom')) return 'vendor-router'
+          if (id.includes('react-image-gallery')) return 'vendor-gallery'
         }
       }
     }
