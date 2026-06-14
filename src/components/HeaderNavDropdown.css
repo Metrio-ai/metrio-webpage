@@ -6,8 +6,9 @@
   display: inline-flex;
   align-items: center;
   gap: 2px;
-  min-height: 40px;
-  padding: var(--space-2) var(--space-1);
+  min-height: 44px;
+  min-width: 44px;
+  padding: var(--space-2) var(--space-2);
   font-size: var(--text-sm);
   font-family: inherit;
   font-weight: var(--font-medium);
@@ -15,8 +16,9 @@
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: color var(--transition-base), border-color var(--transition-base);
+  transition: color var(--transition-base), border-color var(--transition-base), background var(--transition-base);
 }
 
 .headerNavDropdownTrigger:hover,
@@ -28,6 +30,11 @@
 .headerNavDropdown--active .headerNavDropdownTrigger {
   border-bottom-color: var(--color-accent);
   font-weight: var(--font-semibold);
+}
+
+.headerNavDropdownTrigger:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .headerNavDropdownChevron {
@@ -44,17 +51,17 @@
   top: calc(100% + var(--space-2));
   left: 50%;
   transform: translateX(-50%);
-  min-width: 240px;
+  min-width: 260px;
   padding: var(--space-2);
   background: var(--color-bg-elevated);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
+  z-index: 220;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity var(--transition-base), visibility var(--transition-base);
-  z-index: 220;
 }
 
 .headerNavDropdown--open .headerNavDropdownPanel {
@@ -63,9 +70,17 @@
   pointer-events: auto;
 }
 
+.headerNavDropdownList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .headerNavDropdownLink {
-  display: block;
-  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
   color: var(--color-text);
@@ -78,7 +93,12 @@
   color: var(--color-accent);
 }
 
-@media (min-width: 901px) {
+.headerNavDropdownLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+@media (min-width: 1180px) {
   .headerNavDropdown:hover .headerNavDropdownPanel {
     opacity: 1;
     visibility: visible;
@@ -90,7 +110,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1179px) {
   .headerNavDropdown {
     width: 100%;
     border-bottom: 1px solid var(--color-border);
@@ -99,7 +119,7 @@
   .headerNavDropdownTrigger {
     width: 100%;
     justify-content: space-between;
-    min-height: 52px;
+    min-height: 48px;
     padding: var(--space-3) 0;
     font-size: var(--text-base);
     border-bottom: none;
@@ -109,7 +129,7 @@
     position: static;
     transform: none;
     min-width: 0;
-    padding: 0 0 var(--space-3);
+    padding: 0 0 var(--space-2);
     background: transparent;
     border: none;
     border-radius: 0;
@@ -123,14 +143,20 @@
   }
 
   .headerNavDropdown--open .headerNavDropdownPanel {
-    max-height: 480px;
+    max-height: 520px;
     pointer-events: auto;
   }
 
   .headerNavDropdownLink {
-    padding: var(--space-3) var(--space-4);
+    min-height: 48px;
     padding-left: var(--space-2);
     font-size: var(--text-base);
     color: var(--color-text-muted);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headerNavDropdownChevron {
+    transition: none;
   }
 }

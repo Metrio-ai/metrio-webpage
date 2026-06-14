@@ -51,15 +51,17 @@ const Services = () => (
     </div>
 
     <div className="servicesBody">
-      <div className="servicesGrid" role="list">
+      <ul className="servicesGrid">
         {HIGHLIGHTS.map((item) => (
-          <article key={item.title} className="servicesCard" role="listitem">
-            <span className="servicesCardIcon material-icons" aria-hidden="true">{item.icon}</span>
-            <h3 className="servicesCardTitle">{item.title}</h3>
-            <p className="servicesCardText">{item.text}</p>
-          </article>
+          <li key={item.title}>
+            <article className="servicesCard">
+              <span className="servicesCardIcon material-icons" aria-hidden="true">{item.icon}</span>
+              <h3 className="servicesCardTitle">{item.title}</h3>
+              <p className="servicesCardText">{item.text}</p>
+            </article>
+          </li>
         ))}
-      </div>
+      </ul>
       <Link to="/services" className="servicesCtaLink">
         Ver todos los servicios
         <span className="material-icons" aria-hidden="true">arrow_forward</span>

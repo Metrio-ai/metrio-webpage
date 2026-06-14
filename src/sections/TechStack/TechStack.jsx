@@ -77,24 +77,26 @@ function TechStack () {
           </div>
         </div>
 
-        <div className="techStackGrid" role="list">
+        <ul className="techStackGrid">
           {CATEGORIES.map((cat) => (
-            <article key={cat.id} className="techStackCard" role="listitem">
-              <header className="techStackCardHeader">
-                <h3 className="techStackCardTitle">{cat.label}</h3>
-                <p className="techStackCardDesc">{cat.desc}</p>
-              </header>
-              <ul className="techStackTools" aria-label={cat.label}>
-                {cat.tools.map((tool) => (
-                  <li key={tool.name} className="techStackTool">
-                    <img src={tool.src} alt={tool.alt} width="36" height="36" loading="lazy" decoding="async" />
-                    <span>{tool.name}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
+            <li key={cat.id}>
+              <article className="techStackCard">
+                <header className="techStackCardHeader">
+                  <h3 className="techStackCardTitle">{cat.label}</h3>
+                  <p className="techStackCardDesc">{cat.desc}</p>
+                </header>
+                <ul className="techStackTools" aria-label={cat.label}>
+                  {cat.tools.map((tool) => (
+                    <li key={tool.name} className="techStackTool">
+                      <img src={tool.src} alt="" width="36" height="36" loading="lazy" decoding="async" />
+                      <span>{tool.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )

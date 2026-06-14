@@ -24,17 +24,17 @@ export const MAIN_NAV = [
     type: 'dropdown',
     label: 'Recursos',
     to: '/faq',
-    matchPaths: ['/faq'],
+    matchPaths: ['/faq', CAREERS_PATH],
     items: [
       { to: '/faq', label: 'Preguntas frecuentes' },
       { to: '/faq/inteligencia-artificial', label: 'FAQ sobre IA' },
       { to: '/faq/automatizacion-procesos', label: 'FAQ automatización' },
       { to: '/faq/business-intelligence', label: 'FAQ Business Intelligence' },
-      { to: '/blog?filter=casos-exito', label: 'Casos de éxito' }
+      { to: '/blog?filter=casos-exito', label: 'Casos de éxito' },
+      { to: CAREERS_PATH, label: 'Trabaja con nosotros' }
     ]
   },
-  { type: 'link', to: '/contact', label: 'Contacto' },
-  { type: 'link', to: CAREERS_PATH, label: 'Trabaja con nosotros' }
+  { type: 'link', to: '/contact', label: 'Contacto' }
 ]
 
 export function isNavItemActive (item, pathname) {

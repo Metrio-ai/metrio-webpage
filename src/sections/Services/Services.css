@@ -58,6 +58,13 @@
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-6);
   text-align: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.servicesGrid > li {
+  list-style: none;
 }
 
 .servicesCard {

@@ -74,7 +74,7 @@ function ClientsCarousel ({ clients, onSelect }) {
           <span className="material-icons" aria-hidden="true">chevron_left</span>
         </button>
 
-        <div className="clientsCarouselTrack" role="list" aria-live="polite">
+        <div className="clientsCarouselTrack" aria-live="polite">
           {visibleIndices.map((index) => {
             const client = clients[index]
             const isActive = index === activeIndex
@@ -82,7 +82,6 @@ function ClientsCarousel ({ clients, onSelect }) {
               <button
                 key={client.slug}
                 type="button"
-                role="listitem"
                 className={`clientsCarouselCard ${isActive ? 'clientsCarouselCard--active' : ''}`}
                 onClick={() => {
                   setActiveIndex(index)

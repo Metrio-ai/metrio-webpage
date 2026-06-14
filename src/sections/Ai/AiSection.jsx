@@ -49,9 +49,9 @@ function AiSection () {
         </div>
       </div>
 
-      <ul className="aiList" role="list">
+      <ul className="aiList">
         {CAPABILITIES.map((item, i) => (
-          <li key={item.title} className="aiItem" role="listitem">
+          <li key={item.title} className="aiItem">
             <span className="aiItemIndex" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <div>
               <h3 className="aiItemTitle">{item.title}</h3>

@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { isNavItemActive } from '../data/navigation'
 import './HeaderNavDropdown.css'
 
-function HeaderNavDropdown ({ item, isHomePage, onNavigate }) {
+function HeaderNavDropdown ({ item, onNavigate }) {
   const [open, setOpen] = useState(false)
   const panelId = useId()
   const rootRef = useRef(null)
@@ -47,23 +47,22 @@ function HeaderNavDropdown ({ item, isHomePage, onNavigate }) {
         className="headerNavDropdownTrigger"
         aria-expanded={open}
         aria-controls={panelId}
+        aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
       >
         {item.label}
         <span className="material-icons headerNavDropdownChevron" aria-hidden="true">expand_more</span>
       </button>
-      <div id={panelId} className="headerNavDropdownPanel" role="menu">
-        {item.items.map((sub) => (
-          <Link
-            key={sub.to}
-            to={sub.to}
-            className="headerNavDropdownLink"
-            role="menuitem"
-            onClick={close}
-          >
-            {sub.label}
-          </Link>
-        ))}
+      <div id={panelId} className="headerNavDropdownPanel">
+        <ul className="headerNavDropdownList">
+          {item.items.map((sub) => (
+            <li key={sub.to}>
+              <Link to={sub.to} className="headerNavDropdownLink" onClick={close}>
+                {sub.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </li>
   )
@@ -71,7 +70,7 @@ function HeaderNavDropdown ({ item, isHomePage, onNavigate }) {
 
 export function HeaderNavLink ({ item, isHomePage, onNavigate }) {
   if (item.type === 'dropdown') {
-    return <HeaderNavDropdown item={item} isHomePage={isHomePage} onNavigate={onNavigate} />
+    return <HeaderNavDropdown item={item} onNavigate={onNavigate} />
   }
 
   if (isHomePage && item.homeHash) {

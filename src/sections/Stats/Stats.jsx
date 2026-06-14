@@ -80,11 +80,13 @@ function Stats () {
           <h2 className="statsTitle">Trayectoria en cifras</h2>
         </div>
 
-        <div className="statsBand" role="list">
+        <ul className="statsBand">
           {STATS.map((stat) => (
-            <StatCell key={stat.label} stat={stat} active={active} />
+            <li key={stat.label}>
+              <StatCell stat={stat} active={active} />
+            </li>
           ))}
-        </div>
+        </ul>
 
         <p className="statsFootnote">
           Ritmo de entrega constante. Cada número es un proyecto cerrado, no una estimación.

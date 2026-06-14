@@ -37,6 +37,13 @@
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 1px solid var(--color-stats-border);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.statsBand > li {
+  list-style: none;
 }
 
 .statCell {
@@ -45,7 +52,8 @@
   border-right: 1px solid var(--color-stats-divider);
 }
 
-.statCell:last-child {
+.statCell:last-child,
+.statsBand > li:last-child .statCell {
   border-right: none;
 }
 

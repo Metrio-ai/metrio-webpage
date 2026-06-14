@@ -7,9 +7,15 @@ import { HeaderNavLink } from './HeaderNavDropdown'
 import './HeaderNavDropdown.css'
 import './Header.css'
 
+const NAV_ID = 'primary-navigation'
+const DESKTOP_NAV_MQ = '(min-width: 1180px)'
+
 function Header () {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isDesktopNav, setIsDesktopNav] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(DESKTOP_NAV_MQ).matches
+  )
   const location = useLocation()
   const { theme, toggleTheme } = useTheme()
   const isHomePage = location.pathname === '/'
@@ -22,6 +28,17 @@ function Header () {
   }, [])
 
   useEffect(() => {
+    const mq = window.matchMedia(DESKTOP_NAV_MQ)
+    const onChange = () => {
+      setIsDesktopNav(mq.matches)
+      if (mq.matches) setIsBurgerOpen(false)
+    }
+    onChange()
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
+  useEffect(() => {
     setIsBurgerOpen(false)
   }, [location.pathname])
 
@@ -30,10 +47,25 @@ function Header () {
     return () => { document.body.style.overflow = '' }
   }, [isBurgerOpen])
 
+  useEffect(() => {
+    if (!isBurgerOpen) return undefined
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setIsBurgerOpen(false)
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [isBurgerOpen])
+
   const closeMenu = () => setIsBurgerOpen(false)
+  const themeLabel = theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'
+  const hideMobileNav = !isDesktopNav && !isBurgerOpen
 
   return (
-    <header className={`siteHeader ${scrolled ? 'siteHeader--scrolled' : ''}`} role="banner">
+    <header className={`siteHeader ${scrolled ? 'siteHeader--scrolled' : ''}`}>
+      <a href="#main-content" className="skipLink">
+        Saltar al contenido principal
+      </a>
+
       <div className="headerTopbar">
         <div className="headerTopbarInner">
           <a href={`mailto:${METRIO_EMAIL}`} className="headerTopbarLink">
@@ -51,6 +83,7 @@ function Header () {
             className="headerTopbarLink headerTopbarLink--desktop"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Metrio Consulting en LinkedIn (abre en nueva pestaña)"
           >
             LinkedIn
           </a>
@@ -59,20 +92,24 @@ function Header () {
 
       <div className="headerMain">
         <div className="headerMainInner">
-          <Link to="/" className="headerLogoLink" aria-label="Metrio Consulting - Inicio" onClick={closeMenu}>
+          <Link to="/" className="headerLogoLink" onClick={closeMenu}>
             <img
               className="headerLogo"
               src={`${import.meta.env.BASE_URL}metrioLogo.svg`}
-              alt="Metrio Consulting"
+              alt="Metrio Consulting — Inicio"
               width="132"
               height="44"
               fetchPriority="high"
+              decoding="async"
             />
           </Link>
 
           <nav
+            id={NAV_ID}
             className={`headerNav ${isBurgerOpen ? 'headerNav--open' : ''}`}
             aria-label="Navegación principal"
+            aria-hidden={hideMobileNav || undefined}
+            {...(hideMobileNav ? { inert: '' } : {})}
           >
             <ul className="headerNavList">
               {MAIN_NAV.map((item) => (
@@ -90,7 +127,7 @@ function Header () {
                 type="button"
                 className="headerThemeToggle"
                 onClick={toggleTheme}
-                aria-label={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
+                aria-label={themeLabel}
               >
                 <span className="material-icons" aria-hidden="true">
                   {theme === 'light' ? 'dark_mode' : 'light_mode'}
@@ -107,7 +144,7 @@ function Header () {
               type="button"
               className="headerThemeToggle"
               onClick={toggleTheme}
-              aria-label={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
+              aria-label={themeLabel}
             >
               <span className="material-icons" aria-hidden="true">
                 {theme === 'light' ? 'dark_mode' : 'light_mode'}
@@ -118,7 +155,8 @@ function Header () {
               className="headerBurger"
               onClick={() => setIsBurgerOpen(!isBurgerOpen)}
               aria-expanded={isBurgerOpen}
-              aria-label={isBurgerOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-controls={NAV_ID}
+              aria-label={isBurgerOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
             >
               <span className="material-icons" aria-hidden="true">
                 {isBurgerOpen ? 'close' : 'menu'}
@@ -132,7 +170,7 @@ function Header () {
         <button
           type="button"
           className="headerOverlay"
-          aria-label="Cerrar menú"
+          aria-label="Cerrar menú de navegación"
           onClick={closeMenu}
         />
       )}
