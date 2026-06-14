@@ -4,6 +4,9 @@ import PostCard from './PostCard'
 import { getPosts } from '../../data/blogPosts'
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../../data/seo'
 import Layout from '../../components/Layout'
+import BookCallActions from '../../components/BookCallActions'
+import ExpandableFaqSection, { buildFaqSchema } from '../../components/ExpandableFaqSection'
+import { blogFaqs } from '../../data/faqs/blog'
 import './Blog.css'
 
 function Blog () {
@@ -21,10 +24,17 @@ function Blog () {
     document.title = 'Blog | Metrio Consulting – Estrategia de datos, BI, KPIs y transformación digital'
     const metaDesc = document.querySelector('meta[name="description"]')
     if (metaDesc) metaDesc.setAttribute('content', 'Artículos sobre estrategia de datos, Business Intelligence, Power BI, KPIs, transformación digital, leads cualificados y desarrollo de producto. Metrio Consulting.')
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.textContent = JSON.stringify(buildFaqSchema(blogFaqs))
+    script.id = 'blog-faq-schema'
+    document.head.appendChild(script)
     return () => {
       document.title = DEFAULT_TITLE
       const d = document.querySelector('meta[name="description"]')
       if (d) d.setAttribute('content', DEFAULT_DESCRIPTION)
+      const schema = document.getElementById('blog-faq-schema')
+      if (schema) schema.remove()
     }
   }, [])
   const postsPerPage = 3
@@ -108,6 +118,20 @@ function Blog () {
             </button>
           </nav>
         )}
+
+        <ExpandableFaqSection
+          title="Preguntas frecuentes sobre el blog de Metrio"
+          titleId="blog-faq-title"
+          items={blogFaqs}
+          initialCount={8}
+          className="expandableFaq--subtle"
+        />
+
+        <section className="blogCta" aria-labelledby="blog-cta-title">
+          <h2 id="blog-cta-title" className="blogCtaTitle">¿Quieres aplicar esto en tu empresa?</h2>
+          <p className="blogCtaLead">Reserva una llamada de descubrimiento de 30 min o escríbenos tu caso.</p>
+          <BookCallActions />
+        </section>
 
         <div className="blogBack">
           <Link to="/" className="blogBackLink">

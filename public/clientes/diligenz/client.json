@@ -1,0 +1,15 @@
+{
+  "name": "Diligenz",
+  "description": "Marketplace líder en España para comprar, vender y valorar empresas. Plataforma de referencia en M&A, valoración de pymes y due diligence que conecta vendedores con inversores verificados.",
+  "url": "https://diligenz.es",
+  "sector": "LegalTech / M&A",
+  "services": [
+    "IA",
+    "Automatización",
+    "Data Analytics",
+    "Compliance",
+    "Desarrollo de producto"
+  ],
+  "logoExt": "png",
+  "featured": true
+}

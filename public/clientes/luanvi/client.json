@@ -1,0 +1,15 @@
+{
+  "name": "Luanvi",
+  "description": "Una de las marcas deportivas más reconocidas de España, con más de 50 años de trayectoria en el diseño y fabricación de equipamiento para clubes, federaciones y competiciones nacionales e internacionales.",
+  "url": "https://luanvi.com",
+  "sector": "Deporte",
+  "services": [
+    "Business Intelligence",
+    "Automatización",
+    "Estrategia de datos",
+    "IA",
+    "Transformación digital"
+  ],
+  "logoExt": "jpg",
+  "featured": true
+}

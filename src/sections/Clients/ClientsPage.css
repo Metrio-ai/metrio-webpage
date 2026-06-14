@@ -1,0 +1,75 @@
+.clientsPageHero {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 4.5rem) var(--section-padding-x) var(--space-10);
+  text-align: center;
+}
+
+.clientsPageTitle {
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-weight: var(--font-bold);
+  color: var(--color-text-strong);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+
+.clientsPageLead {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin: 0 auto;
+  line-height: var(--leading-snug);
+}
+
+.clientsPageLead code {
+  font-size: var(--text-sm);
+  background: var(--color-bg-subtle);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+}
+
+.clientsPageLoading,
+.clientsPageEmpty {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--space-16) var(--section-padding-x);
+}
+
+.clientsPageGrid {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-x) var(--section-padding-y);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-5);
+}
+
+.clientsPageCta {
+  text-align: center;
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border);
+}
+
+.clientsPageCtaTitle {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text-strong);
+  margin-bottom: var(--space-3);
+}
+
+.clientsPageCtaLead {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+
+.clientsPageCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.clientsPageCtaBtn .material-icons {
+  font-size: 20px;
+}

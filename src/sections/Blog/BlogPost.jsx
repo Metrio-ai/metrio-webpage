@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm'
 import { getPostBySlug } from '../../data/blogPosts'
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../../data/seo'
 import Layout from '../../components/Layout'
+import BookCallActions from '../../components/BookCallActions'
 import './BlogPost.css'
 
 function BlogPost () {
@@ -58,11 +59,11 @@ function BlogPost () {
         if (d) d.setAttribute('content', DEFAULT_DESCRIPTION)
         if (ogTitle) ogTitle.setAttribute('content', DEFAULT_TITLE)
         if (ogDesc) ogDesc.setAttribute('content', DEFAULT_DESCRIPTION)
-        if (ogImage) ogImage.setAttribute('content', 'https://metrio.es/og-image.png')
+        if (ogImage) ogImage.setAttribute('content', 'https://metrio.es/og-image.webp')
         if (ogUrl) ogUrl.setAttribute('content', 'https://metrio.es/')
         if (twTitle) twTitle.setAttribute('content', DEFAULT_TITLE)
         if (twDesc) twDesc.setAttribute('content', DEFAULT_DESCRIPTION)
-        if (twImage) twImage.setAttribute('content', 'https://metrio.es/og-image.png')
+        if (twImage) twImage.setAttribute('content', 'https://metrio.es/og-image.webp')
         const ld = document.getElementById('blog-post-ld')
         if (ld) ld.remove()
       }
@@ -120,6 +121,11 @@ function BlogPost () {
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
           </div>
           <footer className="postFooter">
+            <section className="postCta" aria-labelledby="post-cta-title">
+              <h2 id="post-cta-title" className="postCtaTitle">¿Te interesa llevarlo a tu negocio?</h2>
+              <p className="postCtaLead">Agenda una llamada con nosotros o cuéntanos tu proyecto por email.</p>
+              <BookCallActions />
+            </section>
             <Link to="/blog" className="postBackLink">
               <span className="material-icons" aria-hidden="true">arrow_back</span>
               Volver al blog

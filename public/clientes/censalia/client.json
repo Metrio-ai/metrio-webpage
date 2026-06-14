@@ -1,0 +1,9 @@
+{
+  "name": "Censalia",
+  "description": "Plataforma de inteligencia empresarial especializada en la monitorización de sociedades, cambios corporativos y oportunidades de negocio. Facilita el acceso a información estratégica para empresas, inversores y profesionales.",
+  "url": "https://censalia.es",
+  "sector": "Business Intelligence",
+  "services": ["IA", "Data Analytics", "Automatización"],
+  "logoExt": "svg",
+  "featured": true
+}

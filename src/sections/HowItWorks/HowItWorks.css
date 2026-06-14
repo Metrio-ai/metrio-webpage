@@ -14,7 +14,88 @@
   margin: 0 auto;
 }
 
-/* Header */
+.howIntroGrid {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(300px, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.howIntroVisual {
+  order: 1;
+}
+
+.howIntroContent {
+  order: 2;
+  text-align: left;
+}
+
+.howIntroContent .howItWorksLabel {
+  text-align: left;
+}
+
+.howIntroContent .howItWorksTitle {
+  text-align: left;
+}
+
+.howIntroContent .howItWorksLead {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
+.howIntroPoints {
+  list-style: none;
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.howIntroPoints li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  line-height: var(--leading-snug);
+}
+
+.howIntroPoints .material-icons {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: var(--color-accent);
+  margin-top: 1px;
+}
+
+.howRoadmapBlock {
+  padding: clamp(2rem, 4vw, 3rem);
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.howRoadmapTitle {
+  font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+  font-weight: var(--font-bold);
+  color: var(--color-text-strong);
+  text-align: center;
+  margin-bottom: var(--space-2);
+}
+
+.howRoadmapSubtitle {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: var(--space-8);
+  max-width: 48ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header (legacy – kept for spacing refs) */
 .howItWorksHeader {
   text-align: center;
   margin-bottom: var(--space-8);
@@ -43,7 +124,12 @@
   color: var(--color-text-muted);
   line-height: var(--leading-snug);
   max-width: 52ch;
-  margin: 0 auto;
+  margin: 0 auto var(--space-6);
+}
+
+.howItWorksVisual {
+  max-width: 880px;
+  margin: var(--space-8) auto 0;
 }
 
 /* Botones persona */
@@ -285,6 +371,25 @@
 @media (max-width: 768px) {
   .howItWorks {
     padding: var(--section-padding-y) var(--space-4);
+  }
+
+  .howIntroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .howIntroContent,
+  .howIntroContent .howItWorksLabel,
+  .howIntroContent .howItWorksTitle,
+  .howIntroContent .howItWorksLead {
+    text-align: center;
+  }
+
+  .howIntroPoints {
+    align-items: center;
+  }
+
+  .howIntroPoints li {
+    max-width: 36ch;
   }
 
   .howItWorksPersonas {

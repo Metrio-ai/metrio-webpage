@@ -1,0 +1,117 @@
+.aiSection {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.aiInner {
+  max-width: var(--container-max);
+  margin: 0 auto var(--space-10);
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(300px, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.aiVisual {
+  order: 1;
+}
+
+.aiIntro {
+  order: 2;
+  position: static;
+  text-align: left;
+}
+
+.aiLead {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.aiLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent);
+  transition: gap var(--transition-base);
+}
+
+.aiLink:hover {
+  gap: var(--space-3);
+}
+
+.aiLink .material-icons {
+  font-size: 20px;
+}
+
+.aiBookCall {
+  margin-top: var(--space-6);
+}
+
+.aiList {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: var(--container-max);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.aiItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.aiItemIndex {
+  flex-shrink: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.aiItemTitle {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-strong);
+  margin-bottom: var(--space-2);
+}
+
+.aiItemText {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-snug);
+}
+
+@media (max-width: 900px) {
+  .aiInner {
+    grid-template-columns: 1fr;
+  }
+
+  .aiIntro {
+    text-align: center;
+  }
+
+  .aiBookCall {
+    justify-content: center;
+  }
+
+  .aiList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .aiList {
+    grid-template-columns: 1fr;
+  }
+}

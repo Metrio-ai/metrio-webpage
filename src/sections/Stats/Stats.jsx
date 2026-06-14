@@ -1,60 +1,96 @@
+import { useEffect, useRef, useState } from 'react'
 import './Stats.css'
 
 const STATS = [
-  {
-    value: 150,
-    suffix: '+',
-    label: 'Proyectos entregados',
-    short: 'Con impacto medible y resultados que perduran.',
-    icon: 'folder_special'
-  },
-  {
-    value: 100,
-    suffix: '+',
-    label: 'Clientes satisfechos',
-    short: 'Empresas que confían en nosotros para crecer con datos y producto.',
-    icon: 'groups'
-  },
-  {
-    value: 40,
-    suffix: '+',
-    label: 'Aplicaciones y dashboards',
-    short: 'Productos en producción, reportes automatizados y BI que se usa.',
-    icon: 'apps'
-  },
-  {
-    value: 90,
-    suffix: '%',
-    label: 'De nuestros clientes repiten',
-    short: 'Confianza y resultados que generan fidelidad.',
-    icon: 'replay'
-  }
+  { value: 150, suffix: '+', label: 'Proyectos entregados' },
+  { value: 100, suffix: '+', label: 'Clientes satisfechos' },
+  { value: 40, suffix: '+', label: 'Apps y dashboards en producción' },
+  { value: 90, suffix: '%', label: 'Clientes que repiten' }
 ]
 
-function Stats () {
+function useCountUp (target, active, duration = 1400) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!active) return
+    let start = null
+    let frame
+
+    const step = (ts) => {
+      if (!start) start = ts
+      const progress = Math.min((ts - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setCount(Math.round(eased * target))
+      if (progress < 1) frame = requestAnimationFrame(step)
+    }
+
+    frame = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(frame)
+  }, [target, active, duration])
+
+  return count
+}
+
+function StatCell ({ stat, active }) {
+  const count = useCountUp(stat.value, active)
   return (
-    <section className="statsSection" id="stats" aria-label="Cifras de Metrio">
+    <div className="statCell">
+      <p className="statValue" aria-label={`${stat.value}${stat.suffix} ${stat.label}`}>
+        <span className="statNumber">{count}</span>
+        <span className="statSuffix">{stat.suffix}</span>
+      </p>
+      <p className="statLabel">{stat.label}</p>
+    </div>
+  )
+}
+
+function Stats () {
+  const sectionRef = useRef(null)
+  const [active, setActive] = useState(false)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const rect = el.getBoundingClientRect()
+    if (reduced || rect.top < window.innerHeight * 0.9) {
+      setActive(true)
+      if (reduced) return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setActive(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.35 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <section className="statsSection" id="stats" ref={sectionRef} aria-label="Trayectoria de Metrio">
       <div className="statsInner">
-        <header className="statsHeader">
-          <p className="statsLabel">Cifras</p>
-          <h2 className="statsTitle">Resultados que hablan por sí solos</h2>
-          <p className="statsLead">Cifras que avalan nuestra trayectoria: proyectos con impacto, clientes que repiten y soluciones que funcionan.</p>
-        </header>
-        <div className="statsGrid">
-          {STATS.map((stat) => (
-            <article key={stat.label} className="statItem">
-              <span className="statIconWrap" aria-hidden="true">
-                <span className="material-icons statIcon">{stat.icon}</span>
-              </span>
-              <p className="statValue">
-                <span className="statNumber">{stat.value}</span>
-                <span className="statSuffix">{stat.suffix}</span>
-              </p>
-              <h3 className="statLabel">{stat.label}</h3>
-              <p className="statShort">{stat.short}</p>
-            </article>
-          ))}
+        <div className="statsTop">
+          <p className="statsEyebrow">Desde 2024</p>
+          <h2 className="statsTitle">Trayectoria en cifras</h2>
         </div>
+
+        <ul className="statsBand">
+          {STATS.map((stat) => (
+            <li key={stat.label}>
+              <StatCell stat={stat} active={active} />
+            </li>
+          ))}
+        </ul>
+
+        <p className="statsFootnote">
+          Ritmo de entrega constante. Cada número es un proyecto cerrado, no una estimación.
+        </p>
       </div>
     </section>
   )

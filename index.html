@@ -2,6 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('metrio-theme');
+      document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Canonical & base -->
@@ -11,49 +17,33 @@
   <link rel="icon" type="image/svg+xml" href="./metrioLogo.svg" />
   <link rel="apple-touch-icon" href="./metrioLogo.svg" />
 
-  <!-- Preconnect y dns-prefetch (rendimiento + Core Web Vitals) -->
-  <link rel="dns-prefetch" href="https://images.unsplash.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://app.cal.com" crossorigin />
+  <link rel="dns-prefetch" href="https://app.cal.com" />
 
-  <!-- Preload fuente crítica (reduce render-blocking ~300ms) -->
+  <!-- Hero LCP – imagen local optimizada -->
+  <link rel="preload" as="image" href="./hero/consultoria.webp" type="image/webp" fetchpriority="high" />
+
+  <!-- Material Icons – carga diferida (no bloquea render) -->
   <link
-    rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-    as="style"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    rel="stylesheet"
-    media="print"
-    onload="this.media='all'"
-  />
-  <link
-    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
     rel="stylesheet"
     media="print"
     onload="this.media='all'"
   />
   <noscript>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet" />
   </noscript>
 
-  <!-- SEO principal (description &lt;160 chars para snippet óptimo) -->
-  <title>Metrio Consulting | Consultoría tecnológica, BI y desarrollo de producto en España</title>
+  <!-- SEO principal -->
+  <title>Metrio Consulting | Consultora tecnológica en España — IA, automatización y consultoría</title>
   <meta
     name="description"
-    content="Consultoría tecnológica en España: Business Intelligence, Power BI, desarrollo de producto y transformación digital. Dashboards, reportes automatizados, mailing +40% apertura. Metrio Valencia."
+    content="Consultora tecnológica en Valencia y toda España: proyectos de consultoría en IA, automatización, Business Intelligence y transformación digital. 150+ proyectos ejecutados en producción. Respuesta en 48 h."
   />
-  <meta name="keywords" content="consultoría tecnológica España, business intelligence, Power BI, desarrollo de producto, transformación digital, Valencia, dashboards, reportes automatizados, estrategia de datos, KPIs, leads cualificados, casos de éxito, FAQ consultoría, Metrio Consulting" />
+  <meta name="keywords" content="consultora tecnológica España, consultora tecnológica Valencia, proyectos de consultoría, consultoría tecnológica, consultoría IA España, implementación inteligencia artificial, automatización procesos, asesoría tecnológica, transformación digital, business intelligence, Power BI, agentes IA, copilots empresariales, Metrio Consulting" />
   <meta name="author" content="Metrio Consulting" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="theme-color" content="#f8f9fb" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="geo.region" content="ES" />
   <meta name="language" content="Spanish" />
@@ -62,29 +52,30 @@
   <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Metrio Consulting" />
-  <meta property="og:title" content="Metrio Consulting | Consultoría tecnológica, BI y desarrollo de producto" />
+  <meta property="og:title" content="Metrio Consulting | IA, automatización y transformación digital" />
   <meta
     property="og:description"
-    content="Business Intelligence, Power BI, desarrollo de producto y transformación digital. Dashboards, reportes automatizados y bases de datos accionables. España."
+    content="Consultora tecnológica en España: implementación de IA, automatización, asesoría estratégica y BI. Ejecutamos con resultados medibles."
   />
   <meta property="og:url" content="https://metrio.es/" />
-  <meta property="og:image" content="https://metrio.es/og-image.png" />
+  <meta property="og:image" content="https://metrio.es/og-image.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/webp" />
   <meta property="og:image:alt" content="Metrio Consulting - Consultoría tecnológica y desarrollo de producto" />
   <meta property="og:locale" content="es_ES" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Metrio Consulting | Consultoría tecnológica, BI y desarrollo de producto" />
+  <meta name="twitter:title" content="Metrio Consulting | IA, automatización y transformación digital" />
   <meta
     name="twitter:description"
-    content="Business Intelligence, Power BI, desarrollo de producto y transformación digital. España."
+    content="Implementación de IA, automatización de procesos y asesoría tecnológica en España."
   />
-  <meta name="twitter:image" content="https://metrio.es/og-image.png" />
+  <meta name="twitter:image" content="https://metrio.es/og-image.webp" />
   <meta name="twitter:image:alt" content="Metrio Consulting" />
 
-  <!-- Datos estructurados JSON-LD (SEO) -->
+  <!-- Datos estructurados JSON-LD (SEO + AEO) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -95,14 +86,17 @@
         "name": "Metrio Consulting",
         "url": "https://metrio.es",
         "logo": { "@type": "ImageObject", "url": "https://metrio.es/metrioLogo.svg" },
-        "description": "Consultoría tecnológica especializada en diseño, desarrollo y evolución de soluciones digitales, datos e inteligencia de negocio. Valencia, España.",
+        "description": "Consultora tecnológica en Valencia, España. Proyectos de consultoría en IA, automatización, Business Intelligence y transformación digital con entregables en producción.",
+        "slogan": "Transforma tus datos en decisiones con impacto",
         "foundingDate": "2024",
+        "knowsAbout": ["Consultora tecnológica", "Proyectos de consultoría", "Inteligencia artificial", "Automatización de procesos", "Business Intelligence", "Power BI", "Transformación digital", "Consultoría tecnológica", "Desarrollo de producto"],
         "address": { "@type": "PostalAddress", "addressLocality": "Valencia", "postalCode": "46005", "addressCountry": "ES" },
         "contactPoint": {
           "@type": "ContactPoint",
+          "email": "hola@metrio.es",
           "url": "https://metrio.es/contact",
           "contactType": "customer service",
-          "availableLanguage": "Spanish",
+          "availableLanguage": ["Spanish", "English"],
           "areaServed": "ES"
         },
         "sameAs": [
@@ -115,44 +109,167 @@
         "@id": "https://metrio.es/#website",
         "url": "https://metrio.es",
         "name": "Metrio Consulting",
-        "description": "Consultoría tecnológica, Business Intelligence y desarrollo de producto en España.",
+        "description": "Consultora tecnológica en España: proyectos de consultoría en IA, automatización, asesoría y transformación digital.",
         "publisher": { "@id": "https://metrio.es/#organization" },
         "inLanguage": "es-ES",
-        "potentialAction": [
-          { "@type": "ReadAction", "target": "https://metrio.es/blog" },
-          { "@type": "ReadAction", "target": "https://metrio.es/services" },
-          { "@type": "ReadAction", "target": "https://metrio.es/contact" },
-          { "@type": "ReadAction", "target": "https://metrio.es/faq" }
-        ]
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://metrio.es/faq?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
       },
       {
         "@type": "WebPage",
         "@id": "https://metrio.es/#webpage",
         "url": "https://metrio.es/",
-        "name": "Metrio Consulting | Consultoría tecnológica, BI y desarrollo de producto en España",
-        "description": "Consultoría tecnológica en España: Business Intelligence, Power BI, desarrollo de producto y transformación digital. Dashboards, reportes automatizados. Valencia.",
+        "name": "Metrio Consulting | Consultora tecnológica en España — IA, automatización y consultoría",
+        "description": "Consultora tecnológica en Valencia y toda España: proyectos de consultoría en IA, automatización, BI y transformación digital.",
         "isPartOf": { "@id": "https://metrio.es/#website" },
         "about": { "@id": "https://metrio.es/#organization" },
-        "inLanguage": "es-ES"
+        "inLanguage": "es-ES",
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".heroDisplay", ".heroSubtext", ".heroAeo", ".aboutTitle", ".howItWorksTitle", ".sectionTitle"]
+        }
       },
       {
         "@type": "ProfessionalService",
         "@id": "https://metrio.es/#localbusiness",
         "name": "Metrio Consulting",
-        "description": "Consultoría tecnológica y desarrollo de producto. Soluciones de datos, BI, transformación digital y desarrollo software. Valencia.",
+        "description": "Consultora tecnológica en Valencia, España. Proyectos de consultoría en IA, automatización y transformación digital.",
         "url": "https://metrio.es",
+        "image": "https://metrio.es/og-image.webp",
+        "priceRange": "€€",
         "areaServed": { "@type": "Country", "name": "España" },
         "address": { "@type": "PostalAddress", "addressLocality": "Valencia", "postalCode": "46005", "addressCountry": "ES" },
-        "serviceType": ["Consultoría tecnológica", "Desarrollo de producto", "Business Intelligence", "Transformación digital", "Power BI", "Dashboards", "Reportes automatizados", "Leads cualificados", "Estrategia de datos", "KPIs"]
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servicios de Metrio Consulting",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Implementación de IA", "description": "Agentes, copilots e IA integrada en procesos empresariales" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatización de procesos", "description": "Workflows, ETL, reportes automatizados e integraciones" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Asesoría tecnológica", "description": "Roadmap, arquitectura y transformación digital" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Intelligence", "description": "Dashboards Power BI, Tableau y KPIs accionables" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desarrollo de producto digital", "description": "Aplicaciones web, APIs y software a medida" } }
+          ]
+        },
+        "potentialAction": {
+          "@type": "ReserveAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://metrio.es/contact",
+            "actionPlatform": [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/MobileWebPlatform"
+            ]
+          },
+          "name": "Agendar llamada de descubrimiento"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://metrio.es/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es Metrio Consulting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Metrio Consulting es una consultora tecnológica en Valencia, España, especializada en implementación de IA, automatización de procesos, Business Intelligence y transformación digital. Diseñan e implementan soluciones con entregables en producción."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué servicios ofrece Metrio Consulting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Implementación de IA, automatización de procesos, asesoría tecnológica, Business Intelligence (Power BI, Tableau), transformación digital, desarrollo de producto y bases de datos accionables para prospección B2B."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Dónde opera Metrio Consulting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Operación principal en España, con sede en Valencia. Atienden proyectos de forma remota en todo el país con reuniones y seguimiento adaptados."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué diferencia a Metrio de otras consultoras tecnológicas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Combinan asesoría estratégica con ejecución técnica. Priorizan entregables en producción, comunicación directa y respuesta en 48 horas. Enfoque en IA aplicada, automatización y datos con criterio de negocio."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Metrio Consulting es una consultora tecnológica?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Metrio Consulting es una consultora tecnológica con sede en Valencia, España, especializada en proyectos de consultoría en IA, automatización, Business Intelligence y transformación digital. Ejecutan soluciones en producción, no solo informes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué tipos de proyectos de consultoría tecnológica realizan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Proyectos de consultoría en implementación de IA (agentes, copilots), automatización de procesos y ETL, dashboards Power BI y Tableau, asesoría tecnológica y roadmap, transformación digital y desarrollo de producto digital. Más de 150 proyectos entregados."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuál es la mejor consultora tecnológica en Valencia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Metrio Consulting es una consultora tecnológica de referencia en Valencia y España para empresas que buscan ejecución real: IA aplicada, automatización, BI y transformación digital con entregables en producción y respuesta en 48 horas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo contratar una consultora tecnológica en España?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Contacta con Metrio Consulting en https://metrio.es/contact: reserva una llamada de descubrimiento de 30 minutos o escribe a hola@metrio.es. Primera conversación sin compromiso; propuesta a medida tras diagnóstico."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Trabajan con Power BI y Tableau?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Utilizan Power BI, Tableau y soluciones a medida con Python, Excel e integraciones según la infraestructura y necesidades del cliente."
+            }
+          }
+        ]
       }
     ]
   }
   </script>
+  <link rel="alternate" type="text/plain" href="https://metrio.es/llms.txt" title="Metrio Consulting — contexto para IA" />
+  <link rel="alternate" type="text/plain" href="https://metrio.es/ai.txt" title="Metrio Consulting — resumen para IA" />
 </head>
 <body>
   <div id="root"></div>
   <noscript>
-    <p><strong>Metrio Consulting</strong> – Consultoría tecnológica, BI y desarrollo de producto en España. <a href="https://metrio.es/">Inicio</a> | <a href="https://metrio.es/services">Servicios</a> | <a href="https://metrio.es/blog">Blog</a> | <a href="https://metrio.es/faq">FAQ</a> | <a href="https://metrio.es/contact">Contacto</a></p>
+    <h1>Metrio Consulting — Consultora tecnológica en Valencia, España</h1>
+    <p>Consultora tecnológica especializada en proyectos de consultoría: implementación de IA, automatización de procesos, Business Intelligence (Power BI, Tableau) y transformación digital. Más de 150 proyectos ejecutados. Respuesta en 48 horas.</p>
+    <h2>¿Qué es Metrio Consulting?</h2>
+    <p>Empresa consultora tecnológica que diseña e implementa soluciones de datos, IA y automatización con entregables en producción en España e internacional.</p>
+    <h2>Proyectos de consultoría tecnológica</h2>
+    <p>IA aplicada, automatización, BI, asesoría tecnológica, transformación digital y desarrollo de producto digital.</p>
+    <nav>
+      <a href="https://metrio.es/">Inicio</a> |
+      <a href="https://metrio.es/services">Servicios</a> |
+      <a href="https://metrio.es/clientes">Clientes</a> |
+      <a href="https://metrio.es/blog">Blog</a> |
+      <a href="https://metrio.es/faq">FAQ</a> |
+      <a href="https://metrio.es/contact">Contacto</a>
+    </nav>
   </noscript>
   <script type="module" src="/src/main.jsx"></script>
 </body>

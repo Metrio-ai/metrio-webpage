@@ -1,0 +1,9 @@
+{
+  "name": "PureTea",
+  "description": "Marca especializada en tés e infusiones premium, seleccionando variedades de alta calidad procedentes de los principales orígenes productores del mundo. Su catálogo combina tradición, bienestar y una experiencia de consumo enfocada en los amantes del té y los productos naturales.",
+  "url": "https://puretea.es",
+  "sector": "Alimentación",
+  "services": ["E-commerce", "SEO", "Data Analytics", "Automatización", "Growth"],
+  "logoExt": "svg",
+  "featured": true
+}

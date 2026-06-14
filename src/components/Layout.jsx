@@ -21,6 +21,11 @@ function Layout ({ children, className }) {
       document.head.appendChild(link)
     }
     link.setAttribute('href', canonical)
+
+    if (!document.getElementById('main-content')) {
+      const main = document.querySelector('main')
+      if (main) main.id = 'main-content'
+    }
   }, [pathname])
 
   const wrapperClass = className ? `appContainer ${className}` : 'appContainer'

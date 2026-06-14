@@ -11,15 +11,21 @@ const Contact = () => {
             ¿Qué proyecto tienes en mente?
           </h2>
           <p className="contactLead">
-            Primera conversación sin compromiso. Estrategia de datos, dashboards, desarrollo de producto o transformación digital. Te respondemos con una propuesta a medida.
+            Cuéntanos tu reto. Primera conversación sin compromiso y respuesta en 48 horas.
           </p>
           <p className="contactFaqLink">
             <Link to="/faq">Preguntas frecuentes</Link>
           </p>
-          <Link to="/contact" className="contactBtn">
-            Cuéntanos
-            <span className="material-icons" style={{ fontSize: '1.25rem' }} aria-hidden="true">arrow_forward</span>
-          </Link>
+          <div className="contactActions">
+            <Link to="/contact" className="contactBtn">
+              <span className="material-icons" aria-hidden="true">event_available</span>
+              Reservar llamada
+            </Link>
+            <Link to="/contact?tab=escribir" className="contactBtn contactBtn--secondary">
+              <span className="material-icons" aria-hidden="true">mail</span>
+              Escribirnos
+            </Link>
+          </div>
         </div>
       </div>
     </section>
