@@ -80,6 +80,51 @@
   font-weight: var(--font-semibold);
 }
 
+.bookingActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.bookingPrimaryBtn,
+.bookingSecondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  border-radius: var(--radius-lg);
+  transition: background var(--transition-base), color var(--transition-base), transform var(--transition-fast);
+}
+
+.bookingPrimaryBtn {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.bookingPrimaryBtn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.bookingSecondaryBtn {
+  background: transparent;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+}
+
+.bookingSecondaryBtn:hover {
+  background: rgba(6, 182, 212, 0.08);
+}
+
+.bookingPrimaryBtn .material-icons,
+.bookingSecondaryBtn .material-icons {
+  font-size: 18px;
+}
+
 .bookingAltLink {
   display: inline-flex;
   align-items: center;
@@ -129,5 +174,9 @@
   .bookingBenefits li {
     max-width: 36ch;
     text-align: left;
+  }
+
+  .bookingActions {
+    justify-content: center;
   }
 }

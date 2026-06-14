@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import Layout from '../../components/Layout'
 import CalEmbed from '../../components/CalEmbed'
 import ExpandableFaqSection, { buildFaqSchema } from '../../components/ExpandableFaqSection'
 import { contactFaqs } from '../../data/faqs/contact'
-import { METRIO_EMAIL, CONTACT_WRITE } from '../../constants/contact'
-import { submitContactForm, openMailtoFallback } from '../../utils/submitContact'
+import { METRIO_EMAIL } from '../../constants/contact'
+import { submitContactForm } from '../../utils/submitContact'
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../../data/seo'
 import './Contact.css'
 
+const TOPIC_OPTIONS = [
+  'Implementación de IA',
+  'Automatización de procesos',
+  'Business Intelligence',
+  'Transformación digital',
+  'Otro'
+]
+
 const ContactPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const activeTab = searchParams.get('tab') === 'escribir' ? 'write' : 'call'
+  const [searchParams] = useSearchParams()
 
   useEffect(() => {
     document.title = 'Contacto | Metrio Consulting – Agenda una llamada o escríbenos'
@@ -19,7 +26,7 @@ const ContactPage = () => {
     if (meta) {
       meta.setAttribute(
         'content',
-        'Contacta con Metrio Consulting: reserva una llamada de descubrimiento online o escríbenos. Consultoría IA, automatización y BI. Valencia, España. Respuesta en 48h.'
+        'Contacta con Metrio Consulting: reserva una llamada de 30 min gratis o escríbenos. Respuesta en 48 h. IA, automatización y BI desde Valencia, España.'
       )
     }
     const script = document.createElement('script')
@@ -31,37 +38,47 @@ const ContactPage = () => {
       document.title = DEFAULT_TITLE
       const d = document.querySelector('meta[name="description"]')
       if (d) d.setAttribute('content', DEFAULT_DESCRIPTION)
-      const schema = document.getElementById('contact-faq-schema')
-      if (schema) schema.remove()
+      document.getElementById('contact-faq-schema')?.remove()
     }
   }, [])
+
+  useEffect(() => {
+    if (searchParams.get('tab') !== 'escribir') return
+    const el = document.getElementById('escribirnos')
+    if (!el) return
+    requestAnimationFrame(() => {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }, [searchParams])
 
   const [formData, setFormData] = useState({
     companyName: '',
     contactName: '',
     email: '',
-    subject: '',
+    topic: TOPIC_OPTIONS[0],
+    customTopic: '',
     message: ''
   })
   const [formStatus, setFormStatus] = useState('idle')
   const [formError, setFormError] = useState('')
-
-  const setTab = (tab) => {
-    if (tab === 'write') {
-      setSearchParams({ tab: 'escribir' }, { replace: true })
-    } else {
-      setSearchParams({}, { replace: true })
-    }
-  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
+  const handleTopic = (topic) => {
+    setFormData((prev) => ({ ...prev, topic }))
+  }
+
+  const resolvedSubject =
+    formData.topic === 'Otro' && formData.customTopic.trim()
+      ? formData.customTopic.trim()
+      : formData.topic
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const { companyName, contactName, email, subject, message } = formData
+    const { companyName, contactName, email, message } = formData
     setFormStatus('sending')
     setFormError('')
 
@@ -70,151 +87,107 @@ const ContactPage = () => {
         name: contactName,
         email,
         company: companyName,
-        subject,
+        subject: resolvedSubject,
         message,
         formType: 'contacto'
       })
       setFormStatus('success')
-      setFormData({ companyName: '', contactName: '', email: '', subject: '', message: '' })
+      setFormData({
+        companyName: '',
+        contactName: '',
+        email: '',
+        topic: TOPIC_OPTIONS[0],
+        customTopic: '',
+        message: ''
+      })
     } catch {
       setFormStatus('error')
-      setFormError('No pudimos enviar el mensaje automáticamente. Abriendo tu cliente de correo…')
-      openMailtoFallback({
-        subject,
-        body: `Hola, soy ${contactName} (${email}) de ${companyName}.\n\n${message}`
-      })
+      setFormError(
+        `No se pudo enviar ahora mismo. Escríbenos directamente a ${METRIO_EMAIL} o reserva una llamada en el calendario.`
+      )
     }
   }
 
   return (
     <Layout className="contactPage">
-      <main>
+      <main id="main-content">
         <header className="contactPageHero">
           <p className="sectionLabel">Contacto</p>
-          <h1 className="contactPageHeroTitle">Hablemos de tu proyecto</h1>
+          <h1 className="contactPageHeroTitle">Reserva llamada o escríbenos</h1>
           <p className="contactPageHeroLead">
-            Elige tu horario abajo o escríbenos. Respondemos en menos de 48&nbsp;h laborables.
+            Elige lo que te venga mejor: videollamada de 30&nbsp;min sin compromiso o mensaje directo.
+            Respondemos en menos de 48&nbsp;h laborables.
           </p>
+          <div className="contactQuickActions">
+            <a href="#reservar-llamada" className="contactQuickBtn contactQuickBtn--primary">
+              <span className="material-icons" aria-hidden="true">event_available</span>
+              Reservar llamada · 30 min
+            </a>
+            <a href="#escribirnos" className="contactQuickBtn contactQuickBtn--secondary">
+              <span className="material-icons" aria-hidden="true">mail</span>
+              Enviar mensaje
+            </a>
+            <a href={`mailto:${METRIO_EMAIL}`} className="contactQuickBtn contactQuickBtn--ghost">
+              <span className="material-icons" aria-hidden="true">alternate_email</span>
+              {METRIO_EMAIL}
+            </a>
+          </div>
         </header>
 
-        <section className="contactMain" aria-label="Opciones de contacto">
-          <div className="contactTabs" role="tablist" aria-label="Forma de contacto">
-            <button
-              type="button"
-              role="tab"
-              id="contact-tab-call"
-              aria-selected={activeTab === 'call'}
-              aria-controls="contact-panel-call"
-              className={`contactTab ${activeTab === 'call' ? 'contactTab--active' : ''}`}
-              onClick={() => setTab('call')}
-            >
-              <span className="material-icons" aria-hidden="true">event_available</span>
-              Reservar llamada
-            </button>
-            <button
-              type="button"
-              role="tab"
-              id="contact-tab-write"
-              aria-selected={activeTab === 'write'}
-              aria-controls="contact-panel-write"
-              className={`contactTab ${activeTab === 'write' ? 'contactTab--active' : ''}`}
-              onClick={() => setTab('write')}
-            >
-              <span className="material-icons" aria-hidden="true">mail</span>
-              Escribirnos
-            </button>
+        <section className="contactSplit" aria-label="Reservar llamada y formulario de contacto">
+          <div id="reservar-llamada" className="contactBlock contactBlock--call">
+            <div className="contactBlockHeader">
+              <h2 className="contactBlockTitle">
+                <span className="material-icons" aria-hidden="true">videocam</span>
+                Reservar llamada
+              </h2>
+              <p className="contactBlockLead">
+                Gratis · 30 min · Google Meet o Zoom · Sin compromiso
+              </p>
+            </div>
+            <div className="contactBookingBlock contactBookingBlock--compact">
+              <div className="contactCalColumn">
+                <CalEmbed
+                  className="contactPageCal"
+                  hideEventTypeDetails
+                  layout="column"
+                  minHeight={480}
+                  label="Agendar llamada de descubrimiento con Metrio Consulting"
+                />
+              </div>
+              <aside className="contactBookingIntro contactBookingIntro--compact">
+                <ul className="contactBookingList">
+                  <li><span className="material-icons" aria-hidden="true">schedule</span> Horarios en tiempo real</li>
+                  <li><span className="material-icons" aria-hidden="true">psychology</span> IA, automatización y BI</li>
+                  <li><span className="material-icons" aria-hidden="true">verified</span> Primera conversación sin compromiso</li>
+                </ul>
+              </aside>
+            </div>
           </div>
 
-          {activeTab === 'call' && (
-            <div
-              id="contact-panel-call"
-              role="tabpanel"
-              aria-labelledby="contact-tab-call"
-              className="contactPanel contactPanel--call"
-            >
-              <div className="contactBookingBlock">
-                <div className="contactCalColumn">
-                  <p className="contactCalLabel">
-                    <span className="material-icons" aria-hidden="true">calendar_month</span>
-                    Elige fecha y hora
-                  </p>
-                  <CalEmbed
-                    className="contactPageCal"
-                    hideEventTypeDetails
-                    layout="column"
-                    minHeight={520}
-                    label="Agendar llamada de descubrimiento con Metrio Consulting"
-                  />
-                </div>
-                <aside className="contactBookingIntro">
-                  <h2 className="contactBookingTitle">Llamada de descubrimiento · 30 min</h2>
-                  <p className="contactBookingText">
-                    Cuéntanos tu reto en una videollamada. Te explicamos cómo podemos ayudarte
-                    con IA, automatización, datos o transformación digital. Sin compromiso.
-                  </p>
-                  <ul className="contactBookingList">
-                    <li><span className="material-icons" aria-hidden="true">schedule</span> Horarios en tiempo real</li>
-                    <li><span className="material-icons" aria-hidden="true">videocam</span> Google Meet o Zoom</li>
-                    <li><span className="material-icons" aria-hidden="true">language</span> Remoto — toda España</li>
-                    <li><span className="material-icons" aria-hidden="true">verified</span> Respuesta en 48 h si escribes</li>
-                  </ul>
-                  <div className="contactWhatWeDo">
-                    <h3 className="contactWhatWeDoTitle">Qué analizamos contigo</h3>
-                    <ul className="contactWhatWeDoList">
-                      <li>IA aplicada y automatización de procesos</li>
-                      <li>Dashboards, KPIs y Business Intelligence</li>
-                      <li>Roadmap tecnológico y priorización</li>
-                    </ul>
-                  </div>
-                  <p className="contactPanelAlt contactPanelAlt--left">
-                    ¿Prefieres email?{' '}
-                    <Link to={CONTACT_WRITE} className="contactPanelAltLink">
-                      Escribirnos
-                    </Link>
-                  </p>
-                </aside>
-              </div>
+          <div id="escribirnos" className="contactBlock contactBlock--write">
+            <div className="contactBlockHeader">
+              <h2 className="contactBlockTitle">
+                <span className="material-icons" aria-hidden="true">mail</span>
+                Escribirnos
+              </h2>
+              <p className="contactBlockLead">
+                Solo lo esencial. También puedes escribir a{' '}
+                <a href={`mailto:${METRIO_EMAIL}`} className="contactPageEmail">{METRIO_EMAIL}</a>.
+              </p>
             </div>
-          )}
 
-          {activeTab === 'write' && (
-            <div
-              id="contact-panel-write"
-              role="tabpanel"
-              aria-labelledby="contact-tab-write"
-              className="contactPanel contactPanel--write"
-            >
-              <div className="contactFormSectionHeader">
-                <h2 className="contactFormSectionTitle">Prefieres escribirnos</h2>
-                <p className="contactFormSectionLead">
-                  Usa el formulario o escribe directamente a{' '}
-                  <a href={`mailto:${METRIO_EMAIL}`} className="contactPageEmail">{METRIO_EMAIL}</a>.
-                  Trataremos tu consulta de forma confidencial.
-                </p>
-              </div>
-              <form className="contactForm contactForm--page" onSubmit={handleSubmit} noValidate>
+            <form className="contactForm contactForm--page" onSubmit={handleSubmit} noValidate>
+              <div className="contactFormRow">
                 <div className="formGroup">
-                  <label htmlFor="companyName">Nombre de la empresa</label>
-                  <input
-                    type="text"
-                    id="companyName"
-                    name="companyName"
-                    value={formData.companyName}
-                    onChange={handleChange}
-                    placeholder="Tu empresa"
-                    required
-                    autoComplete="organization"
-                  />
-                </div>
-                <div className="formGroup">
-                  <label htmlFor="contactName">Nombre de contacto</label>
+                  <label htmlFor="contactName">Tu nombre</label>
                   <input
                     type="text"
                     id="contactName"
                     name="contactName"
                     value={formData.contactName}
                     onChange={handleChange}
-                    placeholder="Tu nombre"
+                    placeholder="Nombre y apellidos"
                     required
                     autoComplete="name"
                   />
@@ -233,52 +206,84 @@ const ContactPage = () => {
                     inputMode="email"
                   />
                 </div>
+              </div>
+
+              <div className="formGroup">
+                <label htmlFor="companyName">Empresa <span className="formOptional">(opcional)</span></label>
+                <input
+                  type="text"
+                  id="companyName"
+                  name="companyName"
+                  value={formData.companyName}
+                  onChange={handleChange}
+                  placeholder="Nombre de la empresa"
+                  autoComplete="organization"
+                />
+              </div>
+
+              <fieldset className="formGroup formGroup--topics">
+                <legend>¿En qué te podemos ayudar?</legend>
+                <div className="contactTopicChips">
+                  {TOPIC_OPTIONS.map((topic) => (
+                    <button
+                      key={topic}
+                      type="button"
+                      className={`contactTopicChip${formData.topic === topic ? ' contactTopicChip--active' : ''}`}
+                      aria-pressed={formData.topic === topic}
+                      onClick={() => handleTopic(topic)}
+                    >
+                      {topic}
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
+
+              {formData.topic === 'Otro' && (
                 <div className="formGroup">
-                  <label htmlFor="subject">Asunto</label>
+                  <label htmlFor="customTopic">Cuéntanos el tema</label>
                   <input
                     type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
+                    id="customTopic"
+                    name="customTopic"
+                    value={formData.customTopic}
                     onChange={handleChange}
-                    placeholder="Asunto del mensaje"
-                    required
+                    placeholder="Ej. integración con ERP"
                   />
                 </div>
-                <div className="formGroup">
-                  <label htmlFor="message">Mensaje</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Describe brevemente qué proyecto necesitas llevar a cabo."
-                    rows={5}
-                    required
-                  />
+              )}
+
+              <div className="formGroup">
+                <label htmlFor="message">Mensaje</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Cuéntanos brevemente tu reto o proyecto."
+                  rows={4}
+                  required
+                />
+              </div>
+
+              {formStatus === 'success' && (
+                <div className="formStatus formStatus--success" role="status">
+                  <strong>Mensaje enviado.</strong> Te respondemos en menos de 48&nbsp;h laborables.
+                  {' '}
+                  <a href="#reservar-llamada">¿Prefieres hablar ya? Reserva una llamada</a>.
                 </div>
-                {formStatus === 'success' && (
-                  <p className="formStatus formStatus--success" role="status">
-                    Mensaje enviado. Te responderemos en menos de 48&nbsp;h laborables.
-                  </p>
-                )}
-                {formStatus === 'error' && formError && (
-                  <p className="formStatus formStatus--error" role="alert">
-                    {formError}
-                  </p>
-                )}
-                <button type="submit" className="formButton" disabled={formStatus === 'sending'}>
-                  {formStatus === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
-                </button>
-              </form>
-              <p className="contactPanelAlt">
-                ¿Prefieres hablar antes?{' '}
-                <button type="button" className="contactPanelAltLink contactPanelAltBtn" onClick={() => setTab('call')}>
-                  Reserva una llamada de 30 min
-                </button>
-              </p>
-            </div>
-          )}
+              )}
+              {formStatus === 'error' && formError && (
+                <div className="formStatus formStatus--error" role="alert">
+                  {formError}{' '}
+                  <a href={`mailto:${METRIO_EMAIL}`}>Enviar email</a>
+                </div>
+              )}
+
+              <button type="submit" className="formButton" disabled={formStatus === 'sending'}>
+                {formStatus === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
+              </button>
+            </form>
+          </div>
         </section>
 
         <ExpandableFaqSection

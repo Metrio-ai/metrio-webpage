@@ -16,10 +16,16 @@ const Contact = () => {
           <p className="contactFaqLink">
             <Link to="/faq">Preguntas frecuentes</Link>
           </p>
-          <Link to="/contact" className="contactBtn">
-            Cuéntanos
-            <span className="material-icons" style={{ fontSize: '1.25rem' }} aria-hidden="true">arrow_forward</span>
-          </Link>
+          <div className="contactActions">
+            <Link to="/contact" className="contactBtn">
+              <span className="material-icons" aria-hidden="true">event_available</span>
+              Reservar llamada
+            </Link>
+            <Link to="/contact?tab=escribir" className="contactBtn contactBtn--secondary">
+              <span className="material-icons" aria-hidden="true">mail</span>
+              Escribirnos
+            </Link>
+          </div>
         </div>
       </div>
     </section>

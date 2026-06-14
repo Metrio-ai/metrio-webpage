@@ -48,10 +48,16 @@ function BookingSection () {
               <a href="mailto:hola@metrio.es">hola@metrio.es</a>
             </li>
           </ul>
-          <Link to="/contact" className="bookingAltLink">
-            Ver formulario de contacto
-            <span className="material-icons" aria-hidden="true">arrow_forward</span>
-          </Link>
+          <div className="bookingActions">
+            <Link to="/contact" className="bookingPrimaryBtn">
+              <span className="material-icons" aria-hidden="true">event_available</span>
+              Reservar llamada
+            </Link>
+            <Link to="/contact?tab=escribir" className="bookingSecondaryBtn">
+              <span className="material-icons" aria-hidden="true">mail</span>
+              Escribirnos
+            </Link>
+          </div>
         </aside>
       </div>
     </section>
