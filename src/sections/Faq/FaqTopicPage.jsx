@@ -29,7 +29,7 @@ function FaqTopicPage () {
             { '@type': 'ListItem', position: 3, name: topic.label, item: `https://metrio.es/faq/${topic.slug}` }
           ]
         },
-        buildFaqSchema(topic.items)
+        buildFaqSchema(topic.items, `https://metrio.es/faq/${topic.slug}#faq`)
       ]
     }
 

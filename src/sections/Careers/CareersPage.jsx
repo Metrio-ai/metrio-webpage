@@ -90,7 +90,7 @@ function CareersPage () {
           ]
         },
         ...openPositions.map(getJobPostingSchema),
-        buildFaqSchema(CAREERS_FAQ)
+        buildFaqSchema(CAREERS_FAQ, 'https://metrio.es/trabaja-con-nosotros#faq')
       ]
     }
     const script = document.createElement('script')

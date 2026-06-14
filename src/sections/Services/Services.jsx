@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import SectionImage from '../../components/SectionImage'
 import { SECTION_IMAGES } from '../../data/sectionImages'
 import BookCallActions from '../../components/BookCallActions'
+import { useIsMobile } from '../../hooks/useMediaQuery'
 import './Services.css'
 
 const HIGHLIGHTS = [
@@ -27,9 +28,13 @@ const HIGHLIGHTS = [
   }
 ]
 
-const Services = () => (
+const Services = () => {
+  const isMobile = useIsMobile()
+
+  return (
   <section className="servicesContainer" id="services" aria-labelledby="services-title">
     <div className="servicesSplit">
+      {!isMobile && (
       <div className="servicesVisual">
         <SectionImage
           src={SECTION_IMAGES.services}
@@ -39,6 +44,7 @@ const Services = () => (
           caption="Datos, dashboards y automatización al servicio de tus decisiones"
         />
       </div>
+      )}
       <div className="servicesContent">
         <p className="servicesHeader">Servicios</p>
         <h2 id="services-title" className="servicesTitle">
@@ -69,6 +75,7 @@ const Services = () => (
       <BookCallActions className="servicesBookCall" />
     </div>
   </section>
-)
+  )
+}
 
 export default Services

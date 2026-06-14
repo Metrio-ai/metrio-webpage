@@ -131,10 +131,7 @@ function ServicesPage () {
             }
           }))
         },
-        {
-          '@type': 'FAQPage',
-          mainEntity: buildFaqSchema(servicesFaqs).mainEntity
-        }
+        buildFaqSchema(servicesFaqs, 'https://metrio.es/servicios#faq')
       ]
     }
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import Layout from '../../components/Layout'
 import CalEmbed from '../../components/CalEmbed'
-import ExpandableFaqSection, { buildFaqSchema } from '../../components/ExpandableFaqSection'
+import ExpandableFaqSection, { buildFaqSchemaJsonLd } from '../../components/ExpandableFaqSection'
 import { contactFaqs } from '../../data/faqs/contact'
 import { METRIO_EMAIL } from '../../constants/contact'
 import { submitContactForm } from '../../utils/submitContact'
@@ -31,7 +31,7 @@ const ContactPage = () => {
     }
     const script = document.createElement('script')
     script.type = 'application/ld+json'
-    script.textContent = JSON.stringify(buildFaqSchema(contactFaqs))
+    script.textContent = JSON.stringify(buildFaqSchemaJsonLd(contactFaqs, 'https://metrio.es/contact#faq'))
     script.id = 'contact-faq-schema'
     document.head.appendChild(script)
     return () => {

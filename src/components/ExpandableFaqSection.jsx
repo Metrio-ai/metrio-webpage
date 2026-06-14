@@ -1,18 +1,32 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './ExpandableFaqSection.css'
 
-export function buildFaqSchema (items) {
+export function buildFaqMainEntity (items) {
+  return items.map((item) => ({
+    '@type': 'Question',
+    name: item.question || item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer || item.a
+    }
+  }))
+}
+
+/** Nodo FAQPage para @graph (sin @context) */
+export function buildFaqSchema (items, pageId) {
+  const node = {
+    '@type': 'FAQPage',
+    mainEntity: buildFaqMainEntity(items)
+  }
+  if (pageId) node['@id'] = pageId
+  return node
+}
+
+/** JSON-LD autónomo para insertar en <script> */
+export function buildFaqSchemaJsonLd (items, pageId) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: items.map((item) => ({
-      '@type': 'Question',
-      name: item.question || item.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer || item.a
-      }
-    }))
+    ...buildFaqSchema(items, pageId)
   }
 }
 
@@ -110,8 +124,6 @@ function ExpandableFaqSection ({
     <section
       className={`expandableFaq expandableFaq--${variant} ${className}`.trim()}
       aria-labelledby={sectionLabelId}
-      itemScope
-      itemType="https://schema.org/FAQPage"
     >
       {title && (
         <h2 id={titleId} className="expandableFaqTitle">
@@ -184,16 +196,13 @@ function ExpandableFaqSection ({
                       className={`expandableFaqQuestion ${isActive ? 'expandableFaqQuestion--active' : ''}`}
                       onClick={() => selectQuestion(key, index)}
                       onKeyDown={(e) => onKeyDown(e, index, key)}
-                      itemScope
-                      itemProp="mainEntity"
-                      itemType="https://schema.org/Question"
                     >
                       {numbered && (
                         <span className="expandableFaqNumber" aria-hidden="true">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                       )}
-                      <span className="expandableFaqQuestionText" itemProp="name">
+                      <span className="expandableFaqQuestionText">
                         {question}
                       </span>
                       <span className="material-icons expandableFaqQuestionIcon" aria-hidden="true">
@@ -215,21 +224,13 @@ function ExpandableFaqSection ({
                 role="tabpanel"
                 id={`faq-panel-${activeKey}`}
                 aria-labelledby={`faq-tab-${activeKey}`}
-                itemScope
-                itemProp="mainEntity"
-                itemType="https://schema.org/Question"
                 key={activeKey}
               >
-                <h3 className="expandableFaqAnswerTitle" itemProp="name">
+                <h3 className="expandableFaqAnswerTitle">
                   {activeQuestion}
                 </h3>
-                <div
-                  className="expandableFaqAnswerBody"
-                  itemScope
-                  itemProp="acceptedAnswer"
-                  itemType="https://schema.org/Answer"
-                >
-                  <p itemProp="text">{activeAnswer}</p>
+                <div className="expandableFaqAnswerBody">
+                  <p>{activeAnswer}</p>
                 </div>
                 <div className="expandableFaqAnswerMeta">
                   <span className="expandableFaqAnswerCount">
@@ -288,14 +289,6 @@ function ExpandableFaqSection ({
           {visible.length} preguntas · elige otra a la izquierda para cambiar la respuesta
         </p>
       )}
-
-      <ul className="expandableFaqSeoHidden" aria-hidden="true">
-        {items.map((item, index) => (
-          <li key={itemKey(item, index)}>
-            {item.question || item.q}: {item.answer || item.a}
-          </li>
-        ))}
-      </ul>
     </section>
   )
 }

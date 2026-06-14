@@ -258,3 +258,9 @@ img {
   white-space: nowrap;
   border: 0;
 }
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding-y: clamp(2rem, 4vw, 2.75rem);
+  }
+}

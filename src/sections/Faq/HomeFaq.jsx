@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import ExpandableFaqSection, { buildFaqSchema } from '../../components/ExpandableFaqSection'
+import ExpandableFaqSection, { buildFaqSchemaJsonLd } from '../../components/ExpandableFaqSection'
 import { homeFaqs } from '../../data/faqs/home'
 import './HomeFaq.css'
 
@@ -7,7 +7,7 @@ function HomeFaq () {
   useEffect(() => {
     const script = document.createElement('script')
     script.type = 'application/ld+json'
-    script.textContent = JSON.stringify(buildFaqSchema(homeFaqs))
+    script.textContent = JSON.stringify(buildFaqSchemaJsonLd(homeFaqs, 'https://metrio.es/#home-faq'))
     script.id = 'home-faq-schema'
     document.head.appendChild(script)
     return () => {

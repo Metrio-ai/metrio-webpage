@@ -165,10 +165,7 @@ function AboutPage () {
             'Consultoría tecnológica'
           ]
         },
-        {
-          '@type': 'FAQPage',
-          mainEntity: buildFaqSchema(aboutFaqs).mainEntity
-        }
+        buildFaqSchema(aboutFaqs, 'https://metrio.es/sobre-nosotros#faq')
       ]
     }
 
