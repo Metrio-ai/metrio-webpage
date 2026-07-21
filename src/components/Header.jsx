@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 import { CONTACT_BOOK, METRIO_EMAIL } from '../constants/contact'
@@ -7,10 +8,10 @@ import { HeaderNavLink } from './HeaderNavDropdown'
 import './HeaderNavDropdown.css'
 import './Header.css'
 
-const NAV_ID = 'primary-navigation'
-const DESKTOP_NAV_MQ = '(min-width: 1180px)'
+const DESKTOP_NAV_MQ = '(min-width: 1100px)'
 
 function Header () {
+  const navId = useId()
   const [isBurgerOpen, setIsBurgerOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isDesktopNav, setIsDesktopNav] = useState(
@@ -30,8 +31,9 @@ function Header () {
   useEffect(() => {
     const mq = window.matchMedia(DESKTOP_NAV_MQ)
     const onChange = () => {
-      setIsDesktopNav(mq.matches)
-      if (mq.matches) setIsBurgerOpen(false)
+      const desktop = mq.matches
+      setIsDesktopNav(desktop)
+      if (desktop) setIsBurgerOpen(false)
     }
     onChange()
     mq.addEventListener('change', onChange)
@@ -43,8 +45,10 @@ function Header () {
   }, [location.pathname])
 
   useEffect(() => {
-    document.body.style.overflow = isBurgerOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (!isBurgerOpen) return undefined
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
   }, [isBurgerOpen])
 
   useEffect(() => {
@@ -57,11 +61,44 @@ function Header () {
   }, [isBurgerOpen])
 
   const closeMenu = () => setIsBurgerOpen(false)
+  const toggleMenu = () => setIsBurgerOpen((open) => !open)
   const themeLabel = theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'
-  const hideMobileNav = !isDesktopNav && !isBurgerOpen
+
+  const navLinks = (
+    <ul className="headerNavList">
+      {MAIN_NAV.map((item) => (
+        <HeaderNavLink
+          key={item.label}
+          item={item}
+          isHomePage={isHomePage}
+          onNavigate={closeMenu}
+        />
+      ))}
+    </ul>
+  )
+
+  const themeButton = (className = 'headerThemeToggle') => (
+    <button
+      type="button"
+      className={className}
+      onClick={toggleTheme}
+      aria-label={themeLabel}
+    >
+      <span className="material-icons" aria-hidden="true">
+        {theme === 'light' ? 'dark_mode' : 'light_mode'}
+      </span>
+    </button>
+  )
 
   return (
-    <header className={`siteHeader ${scrolled ? 'siteHeader--scrolled' : ''}`}>
+    <header
+      className={[
+        'siteHeader',
+        scrolled ? 'siteHeader--scrolled' : '',
+        isBurgerOpen ? 'siteHeader--menuOpen' : '',
+        isDesktopNav ? 'siteHeader--desktop' : 'siteHeader--mobile'
+      ].filter(Boolean).join(' ')}
+    >
       <a href="#main-content" className="skipLink">
         Saltar al contenido principal
       </a>
@@ -70,17 +107,17 @@ function Header () {
         <div className="headerTopbarInner">
           <a href={`mailto:${METRIO_EMAIL}`} className="headerTopbarLink">
             <span className="material-icons" aria-hidden="true">mail</span>
-            {METRIO_EMAIL}
+            <span className="headerTopbarEmail">{METRIO_EMAIL}</span>
           </a>
           <span className="headerTopbarSep" aria-hidden="true">·</span>
           <span className="headerTopbarText">
             <span className="material-icons" aria-hidden="true">location_on</span>
-            Valencia, España · Remoto e internacional
+            Valencia · Remoto
           </span>
-          <span className="headerTopbarSep headerTopbarSep--desktop" aria-hidden="true">·</span>
+          <span className="headerTopbarSep headerTopbarSep--wide" aria-hidden="true">·</span>
           <a
             href="https://www.linkedin.com/company/metrio-consulting/"
-            className="headerTopbarLink headerTopbarLink--desktop"
+            className="headerTopbarLink headerTopbarLink--wide"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Metrio Consulting en LinkedIn (abre en nueva pestaña)"
@@ -104,75 +141,90 @@ function Header () {
             />
           </Link>
 
-          <nav
-            id={NAV_ID}
-            className={`headerNav ${isBurgerOpen ? 'headerNav--open' : ''}`}
-            aria-label="Navegación principal"
-            aria-hidden={hideMobileNav || undefined}
-            {...(hideMobileNav ? { inert: '' } : {})}
-          >
-            <ul className="headerNavList">
-              {MAIN_NAV.map((item) => (
-                <HeaderNavLink
-                  key={item.label}
-                  item={item}
-                  isHomePage={isHomePage}
-                  onNavigate={closeMenu}
-                />
-              ))}
-            </ul>
+          {isDesktopNav && (
+            <nav className="headerNav headerNav--desktop" aria-label="Navegación principal">
+              {navLinks}
+              <div className="headerNavActions">
+                {themeButton()}
+                <Link to={CONTACT_BOOK} className="headerCtaBtn" onClick={closeMenu}>
+                  Reservar llamada
+                </Link>
+              </div>
+            </nav>
+          )}
 
-            <div className="headerNavActions">
+          {!isDesktopNav && (
+            <div className="headerMobileActions">
+              {themeButton()}
               <button
                 type="button"
-                className="headerThemeToggle"
-                onClick={toggleTheme}
-                aria-label={themeLabel}
+                className="headerBurger"
+                onClick={toggleMenu}
+                aria-expanded={isBurgerOpen}
+                aria-controls={navId}
+                aria-label={isBurgerOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
               >
                 <span className="material-icons" aria-hidden="true">
-                  {theme === 'light' ? 'dark_mode' : 'light_mode'}
+                  {isBurgerOpen ? 'close' : 'menu'}
                 </span>
               </button>
-              <Link to={CONTACT_BOOK} className="headerCtaBtn" onClick={closeMenu}>
-                Reservar llamada
-              </Link>
             </div>
-          </nav>
-
-          <div className="headerMobileActions">
-            <button
-              type="button"
-              className="headerThemeToggle"
-              onClick={toggleTheme}
-              aria-label={themeLabel}
-            >
-              <span className="material-icons" aria-hidden="true">
-                {theme === 'light' ? 'dark_mode' : 'light_mode'}
-              </span>
-            </button>
-            <button
-              type="button"
-              className="headerBurger"
-              onClick={() => setIsBurgerOpen(!isBurgerOpen)}
-              aria-expanded={isBurgerOpen}
-              aria-controls={NAV_ID}
-              aria-label={isBurgerOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
-            >
-              <span className="material-icons" aria-hidden="true">
-                {isBurgerOpen ? 'close' : 'menu'}
-              </span>
-            </button>
-          </div>
+          )}
         </div>
       </div>
 
-      {isBurgerOpen && (
-        <button
-          type="button"
-          className="headerOverlay"
-          aria-label="Cerrar menú de navegación"
-          onClick={closeMenu}
-        />
+      {!isDesktopNav && typeof document !== 'undefined' && createPortal(
+        <>
+          <div
+            className={`headerDrawer${isBurgerOpen ? ' headerDrawer--open' : ''}`}
+            id={navId}
+            role="dialog"
+            aria-modal={isBurgerOpen ? 'true' : undefined}
+            aria-label="Menú de navegación"
+            aria-hidden={!isBurgerOpen}
+            {...(!isBurgerOpen ? { inert: '' } : {})}
+          >
+            <div className="headerDrawerTop">
+              <Link to="/" className="headerLogoLink" onClick={closeMenu}>
+                <img
+                  className="headerLogo"
+                  src={`${import.meta.env.BASE_URL}metrioLogo.svg`}
+                  alt="Metrio Consulting — Inicio"
+                  width="120"
+                  height="40"
+                  decoding="async"
+                />
+              </Link>
+              <button
+                type="button"
+                className="headerBurger"
+                onClick={closeMenu}
+                aria-label="Cerrar menú de navegación"
+              >
+                <span className="material-icons" aria-hidden="true">close</span>
+              </button>
+            </div>
+
+            <nav className="headerNav headerNav--mobile" aria-label="Navegación principal">
+              {navLinks}
+              <div className="headerNavActions">
+                <Link to={CONTACT_BOOK} className="headerCtaBtn" onClick={closeMenu}>
+                  Reservar llamada
+                </Link>
+              </div>
+            </nav>
+          </div>
+
+          {isBurgerOpen && (
+            <button
+              type="button"
+              className="headerOverlay"
+              aria-label="Cerrar menú de navegación"
+              onClick={closeMenu}
+            />
+          )}
+        </>,
+        document.body
       )}
     </header>
   )
