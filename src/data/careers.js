@@ -4,7 +4,7 @@
  */
 
 /** Bump para invalidar chunk CareersPage tras envenenamiento de caché CDN. */
-export const careersChunkRev = 2
+export const careersChunkRev = 3
 
 export const openPositions = [
   {

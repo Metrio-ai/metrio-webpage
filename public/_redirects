@@ -1,4 +1,4 @@
 # SPA: rutas sin archivo → index.html 200 (SEO / crawlers).
-# NO usar rewrite 404 aquí: Cloudflare Pages no soporta status 404 en _redirects.
-# Los assets faltantes se resuelven con public/assets/404.html (404 real en /assets/*).
+# Cloudflare Pages no soporta rewrite 404 en _redirects.
+# Chunks faltantes: public/chunks/404.html → HTTP 404 real bajo /chunks/*.
 /*    /index.html   200
