@@ -76,7 +76,7 @@ function CareersPage () {
     if (meta) {
       meta.setAttribute(
         'content',
-        'Únete a Metrio Consulting: posiciones abiertas en IA, automatización, datos, BI y desarrollo. Remoto e híbrido desde Valencia. Envía tu candidatura a hola@metrio.es.'
+        'Únete a Metrio Consulting: Analista de Datos, Analista de BI y prácticas en análisis de datos. Remoto e híbrido desde Valencia. Candidatura en metrio.es o hola@metrio.es.'
       )
     }
     const graph = {

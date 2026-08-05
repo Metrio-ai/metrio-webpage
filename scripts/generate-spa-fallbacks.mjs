@@ -18,6 +18,7 @@ const indexHtml = readFileSync(indexPath, 'utf8')
 const STATIC_ROUTES = [
   '/sobre-nosotros',
   '/services',
+  '/formacion-empresas',
   '/clientes',
   '/blog',
   '/contact',

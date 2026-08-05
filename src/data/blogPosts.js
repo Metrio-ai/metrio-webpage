@@ -5,6 +5,104 @@
 
 export const blogPosts = [
   {
+    slug: 'formacion-ia-empresas-prioridad-2026',
+    title: 'Por qué la formación en IA para empresas es prioritaria en 2026',
+    description: 'La IA ya está en el día a día. Sin formación, el riesgo es doble: bajo aprovechamiento y incumplimiento. Por qué la AI literacy es una prioridad estratégica.',
+    author: 'Metrio Consulting',
+    date: '2026-05-20',
+    timestamp: '20260520',
+    image: '/blog/implementacion-ia.webp',
+    imageAlt: 'Equipo empresarial formándose en herramientas de inteligencia artificial',
+    content: `La Inteligencia Artificial ya no es un experimento de laboratorio: está en el correo, en el CRM, en las presentaciones y en las automatizaciones. El problema no es “si usamos IA”, sino **cómo la usamos** — y si el equipo está preparado.
+
+En 2026, la formación en IA para empresas deja de ser un “nice to have” y pasa a ser **prioridad de negocio y de cumplimiento**.
+
+## El coste de no formar
+
+- Empleados que pegotean datos sensibles en ChatGPT sin criterio.
+- Productividad desigual: unos aprovechan Copilot; otros lo ignoran o lo usan mal.
+- Dirección sin marco claro de riesgos, supervisión humana ni política interna.
+
+Sin un programa estructurado, la adopción es caótica. Con formación aplicada al negocio, la IA se convierte en **capacidad organizativa**.
+
+## AI literacy: más que un curso de prompts
+
+El Reglamento Europeo de IA (AI Act) pone el foco en que el personal tenga un nivel adecuado de alfabetización en IA. No se trata de memorizar la ley: se trata de **saber usar las herramientas con responsabilidad**, entender límites y documentar lo esencial.
+
+En Metrio no vendemos cursos genéricos. Diseñamos **formación empresarial en IA y cumplimiento del AI Act**: casos prácticos por departamento, certificados y, cuando procede, orientación sobre bonificación vía FUNDAE.
+
+## De la formación a la transformación
+
+La formación bien hecha abre la puerta a implantación real: política interna, automatizaciones iniciales y proyectos de consultoría. Si quieres ver el enfoque completo, visita [Formación para empresas](/formacion-empresas) o [reserva una llamada](/contact).`
+  },
+  {
+    slug: 'ai-act-formacion-personal-empresas',
+    title: 'AI Act: qué obliga a las empresas y por qué formar al personal es clave',
+    description: 'El Reglamento (UE) 2024/1689 introduce obligaciones de AI literacy y uso responsable. Qué implica para tu organización y cómo abordarlo con formación práctica.',
+    author: 'Metrio Consulting',
+    date: '2026-04-08',
+    timestamp: '20260408',
+    image: '/blog/asesoria-tecnologica.webp',
+    imageAlt: 'Cumplimiento normativo y asesoría tecnológica en empresa',
+    content: `El **Reglamento (UE) 2024/1689** — el AI Act — es el marco europeo para sistemas de inteligencia artificial. No todas las obligaciones pesan igual sobre todas las empresas, pero hay un mensaje claro: **el uso de IA exige responsabilidad**, transparencia en ciertos casos y **formación adecuada del personal (AI literacy)**.
+
+## Qué suele importar a una pyme o scale-up
+
+- Que el equipo sepa qué puede y qué no puede introducir en herramientas de IA (datos personales, secretos comerciales, salud, etc.).
+- Supervisión humana en procesos donde la IA ayuda a decidir.
+- Criterios internos: política de uso, buenas prácticas y evidencia de formación.
+
+El AI Act no se resuelve solo con un PDF de compliance. Se resuelve cuando **dirección y empleados** entienden el marco y lo aplican en el trabajo diario.
+
+## Formación útil (no teoría vacía)
+
+Programas que funcionan en empresas reales:
+
+1. **AI Act para directivos** — riesgos, obligaciones y gobierno.
+2. **Uso responsable de ChatGPT / Copilot** — productividad con límites claros.
+3. **Política interna de IA** — reglas simples que se pueden cumplir.
+4. **IA y protección de datos (RGPD)** — el punto ciego más frecuente.
+
+En Metrio combinamos cumplimiento y productividad en packs (Compliance, Productivity, Executive) y en el **Programa de Implantación de IA Empresarial**. Detalle en [formación para empresas](/formacion-empresas).
+
+## Relación con RGPD, NIS2 y ciberseguridad
+
+La IA amplifica riesgos ya conocidos: filtración de datos, phishing con deepfakes, contenido generado sin control de autoría. Formar en AI Act encaja con **RGPD/LOPDGDD**, medidas organizativas de **NIS2** y cultura de seguridad (ISO 27001 / ENS cuando aplique).
+
+Si tu equipo ya usa IA “por libre”, el momento de ordenarlo es ahora — antes de que el riesgo se convierta en incidente.`
+  },
+  {
+    slug: 'formacion-fundae-ia-empresas',
+    title: 'Formación en IA bonificable con FUNDAE: qué conviene saber',
+    description: 'Cómo encaja la formación empresarial en IA con FUNDAE. Orientación clara sin prometer el 100% de bonificación: crédito formativo, requisitos y asesoramiento.',
+    author: 'Metrio Consulting',
+    date: '2026-03-12',
+    timestamp: '20260312',
+    image: '/blog/transformacion-digital-2026.webp',
+    imageAlt: 'Transformación digital y formación continua en empresas',
+    content: `Muchas empresas quieren formar a sus equipos en ChatGPT, Copilot, automatización o AI Act… y preguntan lo mismo: **¿se puede bonificar con FUNDAE?**
+
+La respuesta corta: **en muchos casos sí es posible recuperar total o parcialmente el coste**, siempre que se cumplan los requisitos de la normativa vigente y la empresa disponga de **crédito formativo**. No es automático ni un “100% garantizado”.
+
+## Qué implica en la práctica
+
+- La acción formativa debe encajar en el marco FUNDAE (organización, documentación, tipología).
+- El importe bonificable depende del crédito disponible y del cumplimiento del procedimiento.
+- Conviene planificar con antelación: calendario, destinatarios y evidencias.
+
+En Metrio estamos asociándonos como **entidad organizadora y formadora en FUNDAE** para facilitar este camino a nuestros clientes. Asesoramos sobre opciones y procedimiento aplicable **caso a caso**.
+
+## Formación que también es inversión estratégica
+
+Bonificar no debería ser el único motivo. Un buen programa de IA:
+
+- Reduce riesgos de datos y de uso indebido.
+- Acelera la adopción real de herramientas.
+- Deja evidencia (certificados) útil para auditorías internas y AI literacy.
+
+Si quieres explorar un plan de formación (presencial, online o híbrido) con orientación FUNDAE, escríbenos o [agenda una llamada](/contact). El detalle del servicio está en [Formación para empresas](/formacion-empresas).`
+  },
+  {
     slug: 'por-que-es-importante-estrategia-datos',
     title: 'Por qué es importante tener una estrategia de datos en tu empresa',
     description: 'Una estrategia de datos bien definida permite tomar decisiones basadas en hechos, no en intuición. Te explicamos por qué es el primer paso para crecer con criterio.',

@@ -27,6 +27,7 @@ const urls = [
   entry(`${SITE}/`, '1.0', 'weekly'),
   entry(`${SITE}/sobre-nosotros`, '0.9'),
   entry(`${SITE}/services`, '0.9'),
+  entry(`${SITE}/formacion-empresas`, '0.9'),
   entry(`${SITE}/clientes`, '0.85'),
   entry(`${SITE}/blog`, '0.9', 'weekly'),
   entry(`${SITE}/contact`, '0.8'),

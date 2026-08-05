@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import Layout from '../../components/Layout'
 import SectionImage from '../../components/SectionImage'
 import { SECTION_IMAGES } from '../../data/sectionImages'
@@ -10,8 +11,8 @@ import './ServicesPage.css'
 
 const SERVICES_SEO = {
   title: 'Servicios de consultoría IA, automatización y BI | Metrio Consulting España',
-  description: 'Servicios de Metrio Consulting: implementación de IA empresarial, automatización de procesos, asesoría tecnológica, Business Intelligence (Power BI, Tableau), desarrollo de producto y transformación digital. Consultora en Valencia, España.',
-  keywords: 'consultoría IA España, automatización procesos empresariales, business intelligence Power BI, asesoría tecnológica, transformación digital, agentes IA, consultora Valencia'
+  description: 'Servicios de Metrio Consulting: implementación de IA empresarial, automatización de procesos, Business Intelligence, formación empresarial en IA y AI Act (FUNDAE), desarrollo de producto y transformación digital. Consultora en Valencia, España.',
+  keywords: 'consultoría IA España, formación IA empresas, AI Act, automatización procesos empresariales, business intelligence Power BI, asesoría tecnológica, transformación digital, consultora Valencia'
 }
 
 const VALUE_PILLARS = [
@@ -82,6 +83,18 @@ const servicesData = [
     whoFor: 'Cuando necesitas algo que no existe en el mercado o encaje exacto con tu operación.',
     outcomes: ['MVP en semanas, no meses', 'Stack moderna y escalable', 'Producto que evoluciona contigo'],
     keywords: ['desarrollo web', 'React', 'APIs', 'producto digital', 'software a medida']
+  },
+  {
+    id: 'formacion-empresas',
+    icon: 'school',
+    title: 'Formación para empresas',
+    subtitle: 'IA, AI Act y cumplimiento — no cursos sueltos',
+    description: 'Programas de formación empresarial en Inteligencia Artificial, uso responsable y AI Act. Packs de compliance y productividad, Programa de Implantación de IA, certificados y posibilidad de bonificación vía FUNDAE.',
+    whoFor: 'Empresas que necesitan AI literacy, políticas internas y equipos preparados para usar IA con seguridad.',
+    outcomes: ['Equipos formados con casos reales', 'Certificados de aprovechamiento', 'Orientación FUNDAE y AI Act'],
+    keywords: ['formación IA', 'AI Act', 'FUNDAE', 'AI literacy', 'ChatGPT empresas'],
+    href: '/formacion-empresas',
+    cta: 'Ver formación completa'
   },
   {
     id: 'leads-cualificados',
@@ -225,6 +238,12 @@ function ServicesPage () {
                   <li key={kw}><span>{kw}</span></li>
                 ))}
               </ul>
+              {service.href && (
+                <Link to={service.href} className="serviceCardLink">
+                  {service.cta || 'Saber más'}
+                  <span className="material-icons" aria-hidden="true">arrow_forward</span>
+                </Link>
+              )}
             </article>
           ))}
         </div>

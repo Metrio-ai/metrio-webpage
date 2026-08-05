@@ -1,8 +1,9 @@
 # Metrio Consulting — contexto para IA
 
 Consultora tecnológica en Valencia, España.
-Proyectos de consultoría: IA, automatización, BI, transformación digital.
+Proyectos: IA, automatización, BI, transformación digital, formación empresarial (AI Act / FUNDAE).
 
+Formación: https://metrio.es/formacion-empresas
 Documento completo: https://metrio.es/llms.txt
 Web: https://metrio.es
 Contacto: hola@metrio.es

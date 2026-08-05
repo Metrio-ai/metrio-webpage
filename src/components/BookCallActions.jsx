@@ -17,9 +17,10 @@ function BookCallActions ({
         Reservar llamada
       </Link>
       {showSecondary && (
-        <Link to={CONTACT_WRITE} className="bookCallActionsSecondary">
-          Escribirnos
-        </Link>
+      <Link to={CONTACT_WRITE} className="bookCallActionsSecondary">
+        <span className="material-icons" aria-hidden="true">mail</span>
+        Escribirnos
+      </Link>
       )}
       {scrollTarget && (
         <a href={scrollTarget} className="bookCallActionsScroll">

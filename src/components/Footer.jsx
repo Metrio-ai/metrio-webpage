@@ -21,7 +21,8 @@ const FOOTER_COLUMNS = [
       { to: '/services#implementacion-ia', label: 'Implementación de IA' },
       { to: '/services#automatizacion', label: 'Automatización' },
       { to: '/services#business-intelligence', label: 'Business Intelligence' },
-      { to: '/services#producto-digital', label: 'Producto digital' }
+      { to: '/services#producto-digital', label: 'Producto digital' },
+      { to: '/formacion-empresas', label: 'Formación para empresas' }
     ]
   },
   {

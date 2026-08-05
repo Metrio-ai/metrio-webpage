@@ -217,5 +217,15 @@ export const servicesFaqs = [
     "id": "svc-plazo-respuesta",
     "question": "¿Cuánto tardáis en responder a una consulta?",
     "answer": "Habitualmente menos de 48 horas laborables tras recibir tu mensaje o reservar llamada. Metrio Consulting — consultora tecnológica en Valencia, España, más de 150 proyectos ejecutados. Reserva una llamada gratuita de 30 min en https://metrio.es/contact o escribe a hola@metrio.es (respuesta en 48 h)."
+  },
+  {
+    "id": "svc-form-que",
+    "question": "¿Ofrecéis formación para empresas en IA?",
+    "answer": "Sí. Formación empresarial en Inteligencia Artificial, AI Act, automatización y BI: programas a medida, packs de cumplimiento y productividad, certificados y orientación FUNDAE. No son cursos genéricos: casos aplicados a tu negocio. Detalle en https://metrio.es/formacion-empresas."
+  },
+  {
+    "id": "svc-form-act",
+    "question": "¿Formáis a equipos sobre el AI Act?",
+    "answer": "Sí. Impartimos AI literacy y uso responsable alineado con el Reglamento (UE) 2024/1689, más política interna y buenas prácticas. Encaja con el AI Compliance Pack y el Programa de Implantación de IA. https://metrio.es/formacion-empresas."
   }
 ]

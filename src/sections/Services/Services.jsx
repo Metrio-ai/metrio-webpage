@@ -9,22 +9,26 @@ const HIGHLIGHTS = [
   {
     icon: 'settings_suggest',
     title: 'Automatización',
-    text: 'Workflows, ETL y reportes que eliminan trabajo manual y errores operativos.'
+    text: 'Workflows, ETL y reportes que eliminan trabajo manual y errores operativos.',
+    to: '/services#automatizacion'
   },
   {
-    icon: 'support_agent',
-    title: 'Asesoría estratégica',
-    text: 'Roadmap, arquitectura y priorización con visión de negocio y técnica.'
+    icon: 'psychology',
+    title: 'Implementación de IA',
+    text: 'Agentes, copilots y automatización inteligente en producción, no demos.',
+    to: '/services#implementacion-ia'
+  },
+  {
+    icon: 'school',
+    title: 'Formación para empresas',
+    text: 'IA, AI Act y productividad. Programas bonificables vía FUNDAE con certificados.',
+    to: '/formacion-empresas'
   },
   {
     icon: 'insights',
     title: 'Business Intelligence',
-    text: 'Dashboards, KPIs y una fuente de verdad para decidir con datos.'
-  },
-  {
-    icon: 'trending_up',
-    title: 'Transformación digital',
-    text: 'Procesos, producto y operaciones alineados con objetivos medibles.'
+    text: 'Dashboards, KPIs y una fuente de verdad para decidir con datos.',
+    to: '/services#business-intelligence'
   }
 ]
 
@@ -60,16 +64,20 @@ const Services = () => {
       <ul className="servicesGrid">
         {HIGHLIGHTS.map((item) => (
           <li key={item.title}>
-            <article className="servicesCard">
+            <Link to={item.to} className="servicesCard servicesCard--link">
               <span className="servicesCardIcon material-icons" aria-hidden="true">{item.icon}</span>
               <h3 className="servicesCardTitle">{item.title}</h3>
               <p className="servicesCardText">{item.text}</p>
-            </article>
+            </Link>
           </li>
         ))}
       </ul>
       <Link to="/services" className="servicesCtaLink">
         Ver todos los servicios
+        <span className="material-icons" aria-hidden="true">arrow_forward</span>
+      </Link>
+      <Link to="/formacion-empresas" className="servicesCtaLink servicesCtaLink--secondary">
+        Formación para empresas
         <span className="material-icons" aria-hidden="true">arrow_forward</span>
       </Link>
       <BookCallActions className="servicesBookCall" />
