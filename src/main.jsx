@@ -16,6 +16,7 @@ const ClientsPage = lazy(() => import('./sections/Clients/ClientsPage.jsx'))
 const FaqPage = lazy(() => import('./sections/Faq/FaqPage.jsx'))
 const FaqTopicPage = lazy(() => import('./sections/Faq/FaqTopicPage.jsx'))
 const CareersPage = lazy(() => import('./sections/Careers/CareersPage.jsx'))
+const TrainingPage = lazy(() => import('./sections/Training/TrainingPage.jsx'))
 const LocationHubPage = lazy(() => import('./sections/Locations/LocationHubPage.jsx'))
 const LocationPage = lazy(() => import('./sections/Locations/LocationPage.jsx'))
 
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
   {
     path: '/services',
     element: withSuspense(ServicesPage)
+  },
+  {
+    path: '/formacion-empresas',
+    element: withSuspense(TrainingPage)
   },
   {
     path: '/sobre-nosotros',

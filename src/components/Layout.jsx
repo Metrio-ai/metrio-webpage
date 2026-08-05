@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
+import ScrollToTop from './ScrollToTop'
 
 const BASE_URL = 'https://metrio.es'
 
@@ -31,6 +32,7 @@ function Layout ({ children, className }) {
   const wrapperClass = className ? `appContainer ${className}` : 'appContainer'
   return (
     <div className={wrapperClass} id="top">
+      <ScrollToTop />
       <Header />
       {children}
       <Footer />

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import Layout from '../../components/Layout'
 import CalEmbed from '../../components/CalEmbed'
 import ExpandableFaqSection, { buildFaqSchemaJsonLd } from '../../components/ExpandableFaqSection'
@@ -13,13 +12,12 @@ const TOPIC_OPTIONS = [
   'Implementación de IA',
   'Automatización de procesos',
   'Business Intelligence',
+  'Formación para empresas',
   'Transformación digital',
   'Otro'
 ]
 
 const ContactPage = () => {
-  const [searchParams] = useSearchParams()
-
   useEffect(() => {
     document.title = 'Contacto | Metrio Consulting – Agenda una llamada o escríbenos'
     const meta = document.querySelector('meta[name="description"]')
@@ -41,15 +39,6 @@ const ContactPage = () => {
       document.getElementById('contact-faq-schema')?.remove()
     }
   }, [])
-
-  useEffect(() => {
-    if (searchParams.get('tab') !== 'escribir') return
-    const el = document.getElementById('escribirnos')
-    if (!el) return
-    requestAnimationFrame(() => {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    })
-  }, [searchParams])
 
   const [formData, setFormData] = useState({
     companyName: '',

@@ -7,6 +7,7 @@ import { contactFaqs } from './faqs/contact.js'
 import { clientsFaqs } from './faqs/clients.js'
 import { blogFaqs } from './faqs/blog.js'
 import { homeFaqs } from './faqs/home.js'
+import { trainingFaqs } from './faqs/training.js'
 
 const pick = (items, prefix) => items.filter((i) => i.id.startsWith(prefix))
 
@@ -28,7 +29,8 @@ const servicesRest = servicesFaqs.filter(
   (i) =>
     !i.id.startsWith('svc-ia') &&
     !i.id.startsWith('svc-auto') &&
-    !i.id.startsWith('svc-bi')
+    !i.id.startsWith('svc-bi') &&
+    !i.id.startsWith('svc-form')
 )
 
 /** Preguntas destacadas en el hub /faq (no duplicar el catálogo completo). */
@@ -93,7 +95,19 @@ export const FAQ_TOPICS = [
     h1: 'Preguntas sobre Business Intelligence y dashboards',
     lead: 'Power BI, Tableau, KPIs accionables y fuente única de verdad para decidir con datos fiables.',
     items: [...pick(servicesFaqs, 'svc-bi'), ...pickIds(homeFaqs, ['home-bi'])],
-    relatedSlugs: ['automatizacion-procesos', 'servicios-consultoria', 'clientes-casos-exito']
+    relatedSlugs: ['automatizacion-procesos', 'servicios-consultoria', 'formacion-empresas']
+  },
+  {
+    slug: 'formacion-empresas',
+    icon: 'school',
+    label: 'Formación para empresas',
+    title: 'FAQ Formación IA y AI Act para empresas | Metrio Consulting',
+    description:
+      'Preguntas sobre formación empresarial en IA, AI Act, AI literacy, certificados, FUNDAE, packs de cumplimiento y Programa de Implantación de IA. Metrio Consulting, Valencia.',
+    h1: 'Preguntas sobre formación para empresas',
+    lead: 'Formación en IA, AI Act y productividad: packs, FUNDAE, certificados y programas a medida.',
+    items: trainingFaqs,
+    relatedSlugs: ['inteligencia-artificial', 'servicios-consultoria', 'contacto']
   },
   {
     slug: 'servicios-consultoria',

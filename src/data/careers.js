@@ -1,96 +1,70 @@
 /**
  * Posiciones abiertas — Metrio Consulting
+ * Foco actual: datos, análisis y Business Intelligence.
  */
 
 export const openPositions = [
   {
-    id: 'consultor-ia-automatizacion',
-    title: 'Consultor/a de IA y Automatización',
-    department: 'Consultoría',
+    id: 'analista-datos',
+    title: 'Analista de Datos',
+    department: 'Datos',
     location: 'Valencia · Remoto (España)',
     type: 'Tiempo completo',
-    summary: 'Diseñar e implementar agentes de IA, copilots y automatizaciones en producción para clientes de sectores variados.',
+    summary:
+      'Convertir datos en decisiones: análisis exploratorio, KPIs, reporting y acompañamiento a negocio para que los números se usen de verdad.',
     responsibilities: [
-      'Diagnosticar procesos automatizables y casos de uso de IA con criterio de negocio',
-      'Desarrollar agentes, integraciones API y workflows con Python o Node.js',
-      'Acompañar al cliente hasta el despliegue y la adopción real'
+      'Analizar datasets de clientes (ventas, operaciones, marketing, finanzas) y extraer insights accionables',
+      'Definir y calcular KPIs, segmentaciones y métricas de seguimiento',
+      'Preparar reportes, presentaciones y documentación clara para dirección y equipos',
+      'Colaborar con BI e ingeniería en la calidad y la trazabilidad de los datos'
     ],
     requirements: [
-      'Experiencia en Python o JavaScript y APIs REST',
-      'Conocimiento práctico de LLMs, prompts o agentes',
-      'Capacidad de comunicación con equipos no técnicos'
+      'SQL fluido y experiencia con Excel / Google Sheets a nivel avanzado',
+      'Python (pandas) o R para análisis; Power BI o Tableau valorados',
+      'Criterio de negocio y comunicación con perfiles no técnicos',
+      'Español fluido; inglés valorado'
     ]
   },
   {
-    id: 'ingeniero-datos-bi',
-    title: 'Ingeniero/a de Datos & Business Intelligence',
+    id: 'analista-business-intelligence',
+    title: 'Analista de Business Intelligence',
     department: 'Datos',
     location: 'Remoto · España',
     type: 'Tiempo completo',
-    summary: 'Construir modelos de datos, dashboards Power BI/Tableau y pipelines ETL que se conviertan en la fuente de verdad del negocio.',
+    summary:
+      'Diseñar y mantener dashboards Power BI (y stack afín) que se conviertan en la fuente de verdad del cliente: modelo, DAX, ETL ligero y adopción.',
     responsibilities: [
-      'Modelado de datos, DAX/SQL y diseño de dashboards orientados a KPIs',
-      'Automatización de reportes y calidad de datos',
-      'Trabajo codo a codo con dirección y operaciones'
+      'Modelado de datos, medidas DAX/SQL y diseño de dashboards orientados a KPIs',
+      'Automatización de reportes, refrescos y calidad de datos',
+      'Formación básica a usuarios finales para que el BI se use en el día a día',
+      'Trabajo codo a codo con dirección, operaciones y el equipo de consultoría Metrio'
     ],
     requirements: [
-      'Power BI, Tableau o stack equivalente',
-      'SQL y experiencia con ETL (Python, Power Query, etc.)',
-      'Mentalidad de producto: dashboards que la gente usa'
+      'Power BI (imprescindible) o Tableau / Looker Studio a nivel profesional',
+      'SQL y Power Query / ETL; Python valorado',
+      'Mentalidad de producto: dashboards que la gente abre cada semana',
+      'Autonomía y ganas de ownership en proyectos de cliente'
     ]
   },
   {
-    id: 'desarrollador-fullstack',
-    title: 'Desarrollador/a Full Stack',
-    department: 'Producto',
-    location: 'Valencia · Híbrido',
-    type: 'Tiempo completo',
-    summary: 'Desarrollar aplicaciones web, APIs e integraciones a medida con React, Node.js o Python para proyectos de producto digital.',
-    responsibilities: [
-      'Implementar MVPs y evolucionar producto con entregas iterativas',
-      'Diseñar APIs e integraciones con sistemas del cliente',
-      'Code review, tests y documentación clara'
-    ],
-    requirements: [
-      'React y backend con Node.js o Python',
-      'PostgreSQL o MongoDB, Git, Docker básico',
-      'Autonomía y ganas de ownership en proyectos'
-    ]
-  },
-  {
-    id: 'consultor-transformacion-digital',
-    title: 'Consultor/a de Transformación Digital',
-    department: 'Estrategia',
-    location: 'Remoto · España e internacional',
-    type: 'Tiempo completo / Freelance',
-    summary: 'Asesorar a empresas en roadmap tecnológico, priorización de inversiones y ejecución de transformación digital con impacto medible.',
-    responsibilities: [
-      'Auditorías, roadmaps y propuestas con quick wins identificados',
-      'Facilitar workshops con dirección y equipos técnicos',
-      'Puente entre negocio y ejecución técnica del equipo Metrio'
-    ],
-    requirements: [
-      'Experiencia en consultoría tecnológica o digital',
-      'Capacidad analítica y comunicación ejecutiva',
-      'Inglés y español fluidos valorados'
-    ]
-  },
-  {
-    id: 'practicas-data-ia',
-    title: 'Prácticas — Data & IA',
+    id: 'practicas-analista-datos-bi',
+    title: 'Prácticas — Analista de Datos y BI',
     department: 'Talento júnior',
     location: 'Valencia · Remoto parcial',
     type: 'Prácticas · 6 meses',
-    summary: 'Rotación por proyectos reales de BI, automatización e IA aplicada con mentoría de consultores senior.',
+    summary:
+      'Prácticas reales en análisis de datos y Business Intelligence: dashboards, SQL, Excel y apoyo en proyectos de clientes con mentoría senior.',
     responsibilities: [
-      'Apoyar en dashboards, scripts de automatización y documentación',
-      'Investigar herramientas y prototipar soluciones',
-      'Participar en reuniones de cliente y aprendizaje continuo'
+      'Apoyar en limpieza de datos, consultas SQL y construcción de reportes',
+      'Ayudar en dashboards Power BI y documentación de KPIs',
+      'Participar en reuniones de proyecto y aprendizaje continuo con el equipo',
+      'Investigar herramientas y prototipar análisis bajo supervisión'
     ],
     requirements: [
-      'Estudios en ingeniería, informática, ADE, matemáticas o afín',
-      'Ganas de aprender Python, datos o desarrollo web',
-      'Proactividad y espíritu emprendedor'
+      'Estudios en ingeniería, informática, matemáticas, estadística, ADE o afín',
+      'Base de SQL y Excel; interés fuerte en Power BI / análisis de datos',
+      'Ganas de aprender en proyectos reales (no solo ejercicios de clase)',
+      'Proactividad y comunicación clara'
     ]
   }
 ]
@@ -100,10 +74,13 @@ export function getJobPostingSchema (position) {
     '@type': 'JobPosting',
     title: position.title,
     description: `${position.summary} ${position.responsibilities.join(' ')}`,
+    datePosted: '2026-08-05',
+    validThrough: '2026-12-31',
     hiringOrganization: {
       '@type': 'Organization',
       name: 'Metrio Consulting',
-      sameAs: 'https://metrio.es'
+      sameAs: 'https://metrio.es',
+      url: 'https://metrio.es'
     },
     jobLocation: {
       '@type': 'Place',
@@ -117,6 +94,8 @@ export function getJobPostingSchema (position) {
     applicantLocationRequirements: {
       '@type': 'Country',
       name: 'España'
-    }
+    },
+    directApply: true,
+    url: 'https://metrio.es/trabaja-con-nosotros'
   }
 }

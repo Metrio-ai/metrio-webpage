@@ -202,7 +202,7 @@
 }
 
 .contactBlock {
-  scroll-margin-top: calc(5rem + var(--space-4));
+  scroll-margin-top: calc(7.5rem + env(safe-area-inset-top, 0px));
 }
 
 .contactBlockHeader {

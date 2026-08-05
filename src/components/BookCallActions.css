@@ -13,24 +13,38 @@
   justify-content: flex-start;
 }
 
+.bookCallActions--end {
+  justify-content: flex-end;
+}
+
 .bookCallActionsPrimary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-2);
-  min-height: 48px;
-  padding: var(--space-3) var(--space-6);
+  min-height: 52px;
+  padding: 0.85rem 1.6rem;
   font-size: var(--text-base);
   font-weight: var(--font-semibold);
-  color: #fff;
-  background: var(--color-cta);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  transition: background var(--transition-base), transform var(--transition-fast);
+  letter-spacing: 0.01em;
+  color: #fff !important;
+  background: var(--gradient-accent, var(--color-cta));
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.18);
+  transition: filter var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
 }
 
 .bookCallActionsPrimary:hover {
-  background: var(--color-cta-hover);
-  transform: translateY(-1px);
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.22);
+  color: #fff !important;
+}
+
+.bookCallActionsPrimary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 .bookCallActionsPrimary .material-icons {
@@ -40,20 +54,30 @@
 .bookCallActionsSecondary {
   display: inline-flex;
   align-items: center;
-  min-height: 48px;
-  padding: var(--space-3) var(--space-5);
-  font-size: var(--text-sm);
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 52px;
+  padding: 0.85rem 1.4rem;
+  font-size: var(--text-base);
   font-weight: var(--font-semibold);
-  color: var(--color-accent);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-md);
+  color: var(--color-text-strong);
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
   background: var(--color-bg-elevated);
-  transition: border-color var(--transition-base), background var(--transition-base);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-base), background var(--transition-base), color var(--transition-base), transform var(--transition-fast);
 }
 
 .bookCallActionsSecondary:hover {
   border-color: var(--color-accent);
+  color: var(--color-accent);
   background: var(--color-accent-muted);
+  transform: translateY(-1px);
+}
+
+.bookCallActionsSecondary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 .bookCallActionsScroll {
@@ -78,25 +102,21 @@
 }
 
 .bookCallActions--hero {
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 
 .bookCallActions--hero .bookCallActionsPrimary {
-  min-height: 52px;
-  padding: var(--space-4) var(--space-8);
-  font-size: var(--text-lg);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  min-height: 56px;
+  padding: 1rem 1.75rem;
+  font-size: var(--text-base);
 }
 
 .bookCallActions--hero .bookCallActionsSecondary {
-  min-height: 52px;
-  padding: var(--space-4) var(--space-7);
-  font-size: var(--text-base);
-  border-radius: var(--radius-lg);
+  min-height: 56px;
+  padding: 1rem 1.5rem;
 }
 
 .bookCallActions--hero .bookCallActionsScroll {
-  min-height: 52px;
+  min-height: 56px;
   font-size: var(--text-base);
 }

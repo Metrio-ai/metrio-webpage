@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 72" role="img" aria-label="Comisión Europea">
+  <title>Comisión Europea</title>
+  <rect x="4" y="12" width="56" height="48" rx="2" fill="#003399"/>
+  <!-- 12 stars around a circle (EU flag) -->
+  <g fill="#FFCC00" transform="translate(32 36)">
+    <polygon transform="translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(30) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(60) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(90) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(120) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(150) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(180) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(210) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(240) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(270) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(300) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+    <polygon transform="rotate(330) translate(0 -16)" points="0,-5 1.1,-1.5 4.8,-1.5 1.8,0.6 2.9,4 0,2 -2.9,4 -1.8,0.6 -4.8,-1.5 -1.1,-1.5"/>
+  </g>
+  <text x="74" y="34" font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="700" fill="#1A1A2E">Comisión</text>
+  <text x="74" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="700" fill="#1A1A2E">Europea</text>
+  <rect x="198" y="18" width="4" height="36" fill="#003399"/>
+</svg>

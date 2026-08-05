@@ -8,14 +8,15 @@ export const MAIN_NAV = [
     type: 'dropdown',
     label: 'Servicios',
     to: '/services',
-    matchPaths: ['/services'],
+    matchPaths: ['/services', '/formacion-empresas'],
     items: [
       { to: '/services', label: 'Todos los servicios' },
       { to: '/services#implementacion-ia', label: 'Implementación de IA' },
       { to: '/services#automatizacion', label: 'Automatización de procesos' },
       { to: '/services#business-intelligence', label: 'Business Intelligence' },
       { to: '/services#producto-digital', label: 'Producto digital' },
-      { to: '/services#asesoria', label: 'Transformación digital' }
+      { to: '/services#asesoria', label: 'Transformación digital' },
+      { to: '/formacion-empresas', label: 'Formación para empresas' }
     ]
   },
   { type: 'link', to: '/clientes', label: 'Clientes', homeHash: '#clientes' },
@@ -28,6 +29,7 @@ export const MAIN_NAV = [
     items: [
       { to: '/faq', label: 'Preguntas frecuentes' },
       { to: '/faq/inteligencia-artificial', label: 'FAQ sobre IA' },
+      { to: '/faq/formacion-empresas', label: 'FAQ formación empresas' },
       { to: '/faq/automatizacion-procesos', label: 'FAQ automatización' },
       { to: '/faq/business-intelligence', label: 'FAQ Business Intelligence' },
       { to: '/blog?filter=casos-exito', label: 'Casos de éxito' },

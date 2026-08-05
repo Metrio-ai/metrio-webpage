@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 90" role="img" aria-label="FUNDAE — Fundación Estatal para la Formación en el Empleo">
+  <title>FUNDAE — Fundación Estatal para la Formación en el Empleo</title>
+  <text
+    x="8"
+    y="40"
+    font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+    font-size="32"
+    font-weight="700"
+    fill="#2F6FB5"
+  >Fundación Estatal</text>
+  <text
+    x="8"
+    y="66"
+    font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+    font-size="12"
+    font-weight="600"
+    letter-spacing="0.07em"
+    fill="#1E3A6E"
+  >PARA LA FORMACIÓN EN EL EMPLEO</text>
+  <path
+    fill="none"
+    stroke="#F5A623"
+    stroke-width="12"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    d="M418 45c0-14 11-24 24-24 8 0 14 4 18 10 4-6 10-10 18-10 13 0 24 10 24 24s-11 24-24 24c-8 0-14-4-18-10-4 6-10 10-18 10-13 0-24-10-24-24z"
+  />
+</svg>
