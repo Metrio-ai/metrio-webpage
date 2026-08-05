@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [react()],
   base: process.env.BASE_PATH || '/',
   build: {
+    assetsDir: 'chunks',
     cssMinify: true,
     target: 'es2020',
     modulePreload: false,

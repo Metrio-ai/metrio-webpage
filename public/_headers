@@ -40,28 +40,42 @@
 /automatizacion-empresas*
   Cache-Control: public, max-age=0, must-revalidate
 
-# 404 de assets: nunca cachear (evita envenenar el edge con HTML/404)
-/assets/404.html
+# 404 de chunks: nunca cachear
+/chunks/404.html
   Cache-Control: no-store
   X-Content-Type-Options: nosniff
 
-# Assets hasheados por Vite: caché larga solo en JS/CSS/map (no en 404.html)
-/assets/*.js
-  Cache-Control: public, max-age=31536000, immutable
+# Chunks hasheados: caché larga PERO sin immutable.
+# immutable + SPA fallback HTML en carrera de deploy envenena el edge 1 año.
+/chunks/*.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
   X-Content-Type-Options: nosniff
   Access-Control-Allow-Origin: *
+
+/chunks/*.css
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+  X-Content-Type-Options: nosniff
+  Access-Control-Allow-Origin: *
+
+/chunks/*.js.map
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+  X-Content-Type-Options: nosniff
+
+/chunks/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+# Legacy /assets (deploys antiguos): no immutable, dejar caducar el veneno
+/assets/*.js
+  Cache-Control: public, max-age=60, must-revalidate
+  X-Content-Type-Options: nosniff
 
 /assets/*.css
-  Cache-Control: public, max-age=31536000, immutable
-  X-Content-Type-Options: nosniff
-  Access-Control-Allow-Origin: *
-
-/assets/*.js.map
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=60, must-revalidate
   X-Content-Type-Options: nosniff
 
-/assets/*.woff2
-  Cache-Control: public, max-age=31536000, immutable
+/assets/404.html
+  Cache-Control: no-store
   X-Content-Type-Options: nosniff
 
 # Imágenes estáticas
