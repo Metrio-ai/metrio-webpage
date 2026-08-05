@@ -32,6 +32,45 @@ const withSuspense = (Component) => (
   </Suspense>
 )
 
+/** Tras un deploy, chunks viejos pueden fallar: recargar una vez con la HTML nueva. */
+function installChunkReload () {
+  if (typeof window === 'undefined') return
+  const KEY = 'metrio_chunk_reload'
+
+  const reloadOnce = () => {
+    try {
+      if (sessionStorage.getItem(KEY) === '1') return
+      sessionStorage.setItem(KEY, '1')
+    } catch {
+      /* ignore */
+    }
+    window.location.reload()
+  }
+
+  window.addEventListener('vite:preloadError', (event) => {
+    event.preventDefault()
+    reloadOnce()
+  })
+
+  window.addEventListener('unhandledrejection', (event) => {
+    const msg = String(event?.reason?.message || event?.reason || '')
+    if (
+      msg.includes('Failed to fetch dynamically imported module') ||
+      msg.includes('Importing a module script failed') ||
+      msg.includes('error loading dynamically imported module')
+    ) {
+      reloadOnce()
+    }
+  })
+
+  // Limpiar flag tras carga correcta
+  window.setTimeout(() => {
+    try { sessionStorage.removeItem(KEY) } catch { /* ignore */ }
+  }, 4000)
+}
+
+installChunkReload()
+
 const router = createBrowserRouter([
   {
     path: '/casos-exito',

@@ -1,2 +1,6 @@
-# SPA: rutas sin archivo físico → index.html con 200 (indexable por Google)
+# Assets con hash: si no existen, 404 real (NUNCA servir index.html).
+# Si se sirve HTML con 200 + Cache-Control immutable, el navegador cachea basura como "JS".
+/assets/*  /asset-404.html  404
+
+# SPA: el resto de rutas sin archivo → index.html 200 (SEO / crawlers)
 /*    /index.html   200
