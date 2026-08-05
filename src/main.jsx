@@ -33,14 +33,15 @@ const withSuspense = (Component) => (
 )
 
 /** Tras un deploy, chunks viejos pueden fallar: recargar una vez con la HTML nueva. */
+const CHUNK_RELOAD_KEY = 'metrio_chunk_reload_v2'
+
 function installChunkReload () {
   if (typeof window === 'undefined') return
-  const KEY = 'metrio_chunk_reload'
 
   const reloadOnce = () => {
     try {
-      if (sessionStorage.getItem(KEY) === '1') return
-      sessionStorage.setItem(KEY, '1')
+      if (sessionStorage.getItem(CHUNK_RELOAD_KEY) === '1') return
+      sessionStorage.setItem(CHUNK_RELOAD_KEY, '1')
     } catch {
       /* ignore */
     }
@@ -65,7 +66,7 @@ function installChunkReload () {
 
   // Limpiar flag tras carga correcta
   window.setTimeout(() => {
-    try { sessionStorage.removeItem(KEY) } catch { /* ignore */ }
+    try { sessionStorage.removeItem(CHUNK_RELOAD_KEY) } catch { /* ignore */ }
   }, 4000)
 }
 

@@ -4,7 +4,7 @@ import Layout from '../../components/Layout'
 import ExpandableFaqSection, { buildFaqSchema } from '../../components/ExpandableFaqSection'
 import { METRIO_EMAIL } from '../../constants/contact'
 import { submitContactForm, openMailtoFallback } from '../../utils/submitContact'
-import { openPositions, getJobPostingSchema } from '../../data/careers'
+import { openPositions, getJobPostingSchema, careersChunkRev } from '../../data/careers'
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../../data/seo'
 import './CareersPage.css'
 
@@ -164,7 +164,7 @@ function CareersPage () {
 
   return (
     <Layout className="careersPage">
-      <main>
+      <main data-careers-rev={careersChunkRev}>
         <header className="careersHero">
           <p className="sectionLabel">Trabaja con nosotros</p>
           <h1 className="careersHeroTitle">Construye consultoría que ejecuta</h1>

@@ -1,6 +1,4 @@
-# Assets con hash: si no existen, 404 real (NUNCA servir index.html).
-# Si se sirve HTML con 200 + Cache-Control immutable, el navegador cachea basura como "JS".
-/assets/*  /asset-404.html  404
-
-# SPA: el resto de rutas sin archivo → index.html 200 (SEO / crawlers)
+# SPA: rutas sin archivo → index.html 200 (SEO / crawlers).
+# NO usar rewrite 404 aquí: Cloudflare Pages no soporta status 404 en _redirects.
+# Los assets faltantes se resuelven con public/assets/404.html (404 real en /assets/*).
 /*    /index.html   200

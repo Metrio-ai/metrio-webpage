@@ -40,11 +40,29 @@
 /automatizacion-empresas*
   Cache-Control: public, max-age=0, must-revalidate
 
-# Assets hasheados por Vite: caché larga (solo si el archivo existe)
-/assets/*
+# 404 de assets: nunca cachear (evita envenenar el edge con HTML/404)
+/assets/404.html
+  Cache-Control: no-store
+  X-Content-Type-Options: nosniff
+
+# Assets hasheados por Vite: caché larga solo en JS/CSS/map (no en 404.html)
+/assets/*.js
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
   Access-Control-Allow-Origin: *
+
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+  Access-Control-Allow-Origin: *
+
+/assets/*.js.map
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/assets/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 
 # Imágenes estáticas
 /hero/*
