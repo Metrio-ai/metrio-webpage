@@ -3,6 +3,9 @@
  * Foco actual: datos, análisis y Business Intelligence.
  */
 
+/** Bump para invalidar chunk CareersPage tras envenenamiento de caché CDN. */
+export const careersChunkRev = 2
+
 export const openPositions = [
   {
     id: 'analista-datos',
