@@ -1,11 +1,57 @@
-# Caché larga para assets con hash (Vite)
+# HTML y rutas SPA: siempre revalidar (evita chunks viejos tras deploy)
+/
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sobre-nosotros*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/services*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/formacion-empresas*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/clientes*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/blog*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/contact*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/faq*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/trabaja-con-nosotros*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/consultora-ia*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/consultora-tecnologica*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/automatizacion-empresas*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Assets hasheados por Vite: caché larga (solo si el archivo existe)
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+  Access-Control-Allow-Origin: *
 
 # Imágenes estáticas
 /hero/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
 /sections/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/partners/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
 /blog/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
@@ -13,6 +59,9 @@
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
 /*.svg
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.png
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
 /llms.txt
   Cache-Control: public, max-age=86400, stale-while-revalidate=3600
 /ai.txt
@@ -22,14 +71,7 @@
 /sitemap.xml
   Cache-Control: public, max-age=86400, stale-while-revalidate=3600
 
-# HTML sin caché para siempre servir la última versión
-/*.html
-  Cache-Control: public, max-age=0, must-revalidate
-
-/
-  Cache-Control: public, max-age=0, must-revalidate
-
-# Seguridad y rendimiento
+# Seguridad base
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
